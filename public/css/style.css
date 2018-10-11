@@ -1,4 +1,44 @@
 /* Author: theGrandmaster */
 /* Author URL: https://github.com/theGrandmaster05 */
+body {
+  margin: 0;
+  overflow-y: hidden; }
+  body a {
+    text-decoration: none; }
+  body nav {
+    height: 70px;
+    background: #0bb1a3; }
+    body nav .container {
+      max-width: 1200px; }
+      body nav .container .menu {
+        width: 20%; }
+        body nav .container .menu img {
+          height: 40px;
+          width: 40px;
+          padding: 20px;
+          cursor: pointer; }
+      body nav .container ul {
+        list-style-type: none;
+        float: right;
+        width: 80%;
+        display: flex;
+        flex-direction: row-reverse;
+        align-content: flex-end !important;
+        flex-wrap: wrap;
+        margin: 0; }
+        body nav .container ul li {
+          margin: 25px 10px;
+          padding-bottom: 5px; }
+          body nav .container ul li a {
+            color: #fff;
+            font-family: -apple-system, SansSerif, Ubuntu, Cantarell, serif;
+            font-size: 16px; }
+          body nav .container ul li.active {
+            border-bottom: 5px solid #ffffff;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px; }
+        @media (max-width: 424px) {
+          body nav .container ul {
+            display: none; } }
 
 /*# sourceMappingURL=style.css.map */
