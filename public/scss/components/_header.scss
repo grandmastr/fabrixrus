@@ -1,21 +1,42 @@
+::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+::-webkit-scrollbar-thumb {
+    background: $navBackground;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: $navBackground;
+}
 body{
     margin:0;
-    overflow-y: hidden;
+    overflow-x: hidden;
     a{
         text-decoration: none;
     }
     nav{
         height:70px;
-        background:#0bb1a3;
+        background:$navBackground;
         .container{
             max-width: 1200px;
-            .menu{
+            .logo{
                 width:20%;
-                img{
-                    height:40px;
-                    width:40px;
-                    padding:20px;
-                    cursor: pointer;
+                margin:0;
+                span{
+                    color:#fff;
+                    font:{
+                        family:$fontFamily;
+                        weight:bolder;
+                        size:20px;
+                    }
+                    text-transform: uppercase;
+                    margin: 20px 30px;
+                    position: relative;
+                    top:22px;
                 }
             }
             ul{
@@ -28,8 +49,9 @@ body{
                 flex-wrap: wrap;
                 margin:0;
                 li{
-                    margin:25px 10px;
+                    margin:0 10px;
                     padding-bottom:5px;
+                    transition: 0.3s all ease-in-out;
                     a{
                         color:#fff;
                         font:{
@@ -42,6 +64,7 @@ body{
                         border-bottom-left-radius: 3px;
                         border-bottom-right-radius: 3px;                        
                         a{
+                            font-weight: bold;
                         }
                     }
                 }

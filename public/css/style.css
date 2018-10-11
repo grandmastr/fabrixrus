@@ -1,8 +1,22 @@
 /* Author: theGrandmaster */
 /* Author URL: https://github.com/theGrandmaster05 */
+::-webkit-scrollbar {
+  width: 3px;
+  border-radius: 3px; }
+
+::-webkit-scrollbar-track {
+  background: #fff; }
+
+::-webkit-scrollbar-thumb {
+  background: #0bb1a3;
+  border-radius: 3px; }
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0bb1a3; }
+
 body {
   margin: 0;
-  overflow-y: hidden; }
+  overflow-x: hidden; }
   body a {
     text-decoration: none; }
   body nav {
@@ -10,13 +24,18 @@ body {
     background: #0bb1a3; }
     body nav .container {
       max-width: 1200px; }
-      body nav .container .menu {
-        width: 20%; }
-        body nav .container .menu img {
-          height: 40px;
-          width: 40px;
-          padding: 20px;
-          cursor: pointer; }
+      body nav .container .logo {
+        width: 20%;
+        margin: 0; }
+        body nav .container .logo span {
+          color: #fff;
+          font-family: -apple-system, SansSerif, Ubuntu, Cantarell, serif;
+          font-weight: bolder;
+          font-size: 20px;
+          text-transform: uppercase;
+          margin: 20px 30px;
+          position: relative;
+          top: 22px; }
       body nav .container ul {
         list-style-type: none;
         float: right;
@@ -27,8 +46,9 @@ body {
         flex-wrap: wrap;
         margin: 0; }
         body nav .container ul li {
-          margin: 25px 10px;
-          padding-bottom: 5px; }
+          margin: 0 10px;
+          padding-bottom: 5px;
+          transition: 0.3s all ease-in-out; }
           body nav .container ul li a {
             color: #fff;
             font-family: -apple-system, SansSerif, Ubuntu, Cantarell, serif;
@@ -37,6 +57,8 @@ body {
             border-bottom: 5px solid #ffffff;
             border-bottom-left-radius: 3px;
             border-bottom-right-radius: 3px; }
+            body nav .container ul li.active a {
+              font-weight: bold; }
         @media (max-width: 424px) {
           body nav .container ul {
             display: none; } }
