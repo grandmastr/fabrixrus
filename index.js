@@ -7,30 +7,26 @@ app.set('view engine','handlebars');
 app.set('port',process.env.PORT || 3000);
 
 app.get('/',(req,res) => {
-    res.type('text/plain');
-    res.send('Welcome to MeadowLake Travels Website');
+    res.render('home');
 });
 app.get('/about',(req,res) => {
-    res.type('text/plain');
-    res.send('About Meadowlake services')
+    res.render('about');
 });
 app.get('/contact',(req,res) => {
-    res.type('text/plain');
-    res.send('Contact page for MeadowLake Travels')
+    res.render('contact');
 });
+
 //custom 404 page
 app.use((req,res) => {
-    res.type('text/plain');
+    res.render('404');
     res.status(404);
-    res.send('404 - Not Found');
 });
 
 //custom error 500 page
 app.use((err,req,res,next) => {
     console.error(err.stack);
-    res.type('text/plain');
     res.status(500);
-    res.send('500 - Internal Server Error');
+    res.render('500');
 });
 
 app.listen(app.get('port'), () => {
