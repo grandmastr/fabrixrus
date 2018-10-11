@@ -1,2 +1,2 @@
 # meadowlake-travels
-A travel website built with NodeJS
+A travel website built with NodeJS,SASS,and Handlebars

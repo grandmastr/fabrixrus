@@ -9,8 +9,15 @@ app.set('port',process.env.PORT || 3000);
 app.get('/',(req,res) => {
     res.render('home');
 });
+
+let names = [
+    'Israel',
+    'Tolulope',
+    'Akintunde'
+];
 app.get('/about',(req,res) => {
-    res.render('about');
+    let randomName = names[Math.floor(Math.random() * names.length)];
+    res.render('about', { name: randomName });
 });
 app.get('/contact',(req,res) => {
     res.render('contact');
