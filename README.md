@@ -1,2 +1,2 @@
-# meadowlake-trsvels
+# meadowlake-travels
 A travel website built with NodeJS
