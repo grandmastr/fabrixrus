@@ -1,4 +1,4 @@
 #hiding the damn node_modules folder
 node_modules
 .vscode
-.sass-cache
+public/.sass-cache
