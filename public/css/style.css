@@ -32,7 +32,6 @@ body {
         width: 20%;
         margin: 0; }
         body nav .container .logo span {
-          color: #fff;
           font-family: -apple-system, SansSerif, Ubuntu, Cantarell, serif;
           font-weight: bolder;
           font-size: 20px;
@@ -40,6 +39,8 @@ body {
           margin: 25px 30px;
           position: relative;
           top: 22px; }
+          body nav .container .logo span a {
+            color: #ffffff; }
       body nav .container ul {
         list-style-type: none;
         float: right;

@@ -31,7 +31,6 @@ body{
                 width:20%;
                 margin:0;
                 span{
-                    color:#fff;
                     font:{
                         family:$fontFamily;
                         weight:bolder;
@@ -41,6 +40,9 @@ body{
                     margin: 25px 30px;
                     position: relative;
                     top:22px;
+                    a{
+                        color:#ffffff;
+                    }
                 }
             }
             ul{
