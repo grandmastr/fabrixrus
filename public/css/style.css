@@ -25,7 +25,10 @@ body {
     text-decoration: none; }
   body nav {
     height: 70px;
-    background: #0bb1a3; }
+    width: 100%;
+    background: #0bb1a3;
+    position: fixed;
+    z-index: 999; }
     body nav .container {
       max-width: 1300px; }
       body nav .container .logo {
@@ -69,8 +72,11 @@ body {
             display: none; } }
 
 section {
-  background-image: url("/images/about-video-gym-img.jpg");
+  background-image: url("/images/travel-bg-right.jpg");
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+  top: 70px; }
 
 /*# sourceMappingURL=style.css.map */

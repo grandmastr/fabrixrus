@@ -24,7 +24,10 @@ body{
     }
     nav{
         height:70px;
+        width:100%;
         background:$navBackground;
+        position: fixed;
+        z-index: 999;
         .container{
             max-width: 1300px;
             .logo{
