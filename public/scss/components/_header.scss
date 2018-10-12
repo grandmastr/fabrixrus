@@ -26,7 +26,7 @@ body{
         height:70px;
         background:$navBackground;
         .container{
-            max-width: 1200px;
+            max-width: 1300px;
             .logo{
                 width:20%;
                 margin:0;
@@ -74,7 +74,7 @@ body{
                         }
                     }
                 }
-                @media (max-width:424px) {
+                @media (max-width:767px) {
                     display: none;
                 }
             }

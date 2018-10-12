@@ -27,7 +27,7 @@ body {
     height: 70px;
     background: #0bb1a3; }
     body nav .container {
-      max-width: 1200px; }
+      max-width: 1300px; }
       body nav .container .logo {
         width: 20%;
         margin: 0; }
@@ -64,8 +64,11 @@ body {
             border-bottom-right-radius: 3px; }
             body nav .container ul li.active a {
               font-weight: bold; }
-        @media (max-width: 424px) {
+        @media (max-width: 767px) {
           body nav .container ul {
             display: none; } }
+
+section {
+  background-image: url("/images/about-video-gym-img.jpg"); }
 
 /*# sourceMappingURL=style.css.map */
