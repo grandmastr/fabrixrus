@@ -69,6 +69,8 @@ body {
             display: none; } }
 
 section {
-  background-image: url("/images/about-video-gym-img.jpg"); }
+  background-image: url("/images/about-video-gym-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 /*# sourceMappingURL=style.css.map */
