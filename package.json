@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "theGrandmaster",
+  "author-url":"https://github.com/theGrandmaster05",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
