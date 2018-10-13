@@ -71,12 +71,4 @@ body {
           body nav .container ul {
             display: none; } }
 
-section {
-  background-image: url("/images/travel-bg-right.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  position: relative;
-  top: 70px; }
-
 /*# sourceMappingURL=style.css.map */
