@@ -23,6 +23,9 @@ app.get('/contact',(req,res) => {
     res.render('contact');
 });
 
+app.get('/services'.length(req,res) => {
+    res.render('service');
+});
 //custom 404 page
 app.use((req,res) => {
     res.render('404');
