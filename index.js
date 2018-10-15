@@ -23,8 +23,12 @@ app.get('/contact',(req,res) => {
     res.render('contact');
 });
 
-app.get('/services'.length(req,res) => {
-    res.render('service');
+app.get('/services',(req,res) => {
+    res.render('services');
+});
+
+app.get('/FAQs',(req,res) => {
+    res.render('FAQs');
 });
 //custom 404 page
 app.use((req,res) => {
