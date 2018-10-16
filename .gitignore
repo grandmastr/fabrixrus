@@ -1,7 +1,9 @@
 #hiding the damn node_modules folder
 node_modules
+.idea
 .vscode
 public/.sass-cache
 sass-cache
 .DS_Store
+public/css/style.css.map
 #modified

@@ -1,6 +1,7 @@
 let express = require('express'),
     app = express(),
     handlebars = require('express3-handlebars').create({ defaultLayout: 'main'});
+let randomName = require('./lib/fortune');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 app.use(express.static(`${__dirname}/public`));
@@ -9,15 +10,8 @@ app.set('port',process.env.PORT || 3000);
 app.get('/',(req,res) => {
     res.render('home');
 });
-
-let names = [
-    'Israel',
-    'Tolulope',
-    'Akintunde'
-];
 app.get('/about',(req,res) => {
-    let randomName = names[Math.floor(Math.random() * names.length)];
-    res.render('about', { name: randomName });
+    res.render('about');
 });
 app.get('/contact',(req,res) => {
     res.render('contact');
