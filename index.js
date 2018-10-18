@@ -1,7 +1,6 @@
 let express = require('express'),
     app = express(),
     handlebars = require('express3-handlebars').create({ defaultLayout: 'main'});
-let randomName = require('./lib/fortune');
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
