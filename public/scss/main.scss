@@ -1,11 +1,30 @@
 /* Author: theGrandmaster */
 /* Author URL: https://github.com/theGrandmaster05 */
 $primaryColor: #daa3ce;
+
 html, body{
   margin:0;
   font-size: 100%;
   background: #fff;
   font-family: 'Open Sans', sans-serif;
+  ::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $primaryColor;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: $primaryColor;
+  }
+  ::selection {
+    color:#fff;
+    background: $primaryColor;
+  }
 }
 body a {
   text-decoration:none;
@@ -221,7 +240,7 @@ li.share {
   text-align: center;
 }
 .logo_agile span {
-  background: #000;
+  background: $primaryColor;
   padding: 0 17px;
   font-weight: bold;
   color: #fff;

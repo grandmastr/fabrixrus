@@ -6,6 +6,19 @@ html, body {
   font-size: 100%;
   background: #fff;
   font-family: 'Open Sans', sans-serif; }
+  html ::-webkit-scrollbar, body ::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 3px; }
+  html ::-webkit-scrollbar-track, body ::-webkit-scrollbar-track {
+    background: #fff; }
+  html ::-webkit-scrollbar-thumb, body ::-webkit-scrollbar-thumb {
+    background: #daa3ce;
+    border-radius: 3px; }
+  html ::-webkit-scrollbar-thumb:hover, body ::-webkit-scrollbar-thumb:hover {
+    background: #daa3ce; }
+  html ::selection, body ::selection {
+    color: #fff;
+    background: #daa3ce; }
 
 body a {
   text-decoration: none;
@@ -220,7 +233,7 @@ li.share {
   text-align: center; }
 
 .logo_agile span {
-  background: #000;
+  background: #daa3ce;
   padding: 0 17px;
   font-weight: bold;
   color: #fff; }
