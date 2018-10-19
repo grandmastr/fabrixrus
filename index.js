@@ -5,7 +5,7 @@ app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 app.use(express.static(`${__dirname}/public`));
-app.set('port',process.env.PORT || 3000);
+app.set('port',process.env.PORT || 4000);
 
 app.use((req,res,next) => {
     res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
@@ -26,6 +26,10 @@ app.get('/contact',(req,res) => {
 
 app.get('/services',(req,res) => {
     res.render('services');
+});
+
+app.get('/login',(req,res) => {
+    res.render('login');
 });
 
 app.get('/FAQs',(req,res) => {
