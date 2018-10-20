@@ -13,27 +13,29 @@ app.use((req,res,next) => {
 });
 
 app.get('/',(req,res) => {
-    res.render('home');
+    res.render('home',{ title: 'Home'});
 });
 app.get('/about',(req,res) => {
     res.render('about',{
-        pageTestScript : '/qa/tests-about.js'
+        pageTestScript : '/qa/tests-about.js',
+        title: 'About Us'
     });
 });
 app.get('/contact',(req,res) => {
-    res.render('contact');
-});
-
-app.get('/services',(req,res) => {
-    res.render('services');
+    res.render('contact',{
+        title: 'Contact Us'
+    });
 });
 
 app.get('/login',(req,res) => {
-    res.render('login');
+    res.render('login',{
+        title: 'Login'
+    });
 });
-
-app.get('/FAQs',(req,res) => {
-    res.render('FAQs');
+app.get('/products',(req,res) => {
+    res.render('products',{
+        title: 'Products'
+    });
 });
 //custom 404 page
 app.use((req,res) => {
