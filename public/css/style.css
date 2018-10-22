@@ -11,8 +11,7 @@ body::-webkit-scrollbar-thumb:hover {
 body::selection {
   color: #fff;
   background: #b6e581; }
-
-a {
+body a {
   text-decoration: none !important; }
 
 /*# sourceMappingURL=style.css.map */
