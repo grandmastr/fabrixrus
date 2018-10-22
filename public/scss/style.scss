@@ -2,12 +2,15 @@ $primaryColor: #b6e581;
 body{
   &::-webkit-scrollbar {
     width: 3px;
-    border-radius: 3px; }
+    border-radius: 3px;
+  }
   &::-webkit-scrollbar-track {
-    background: #fff; }
+    background: #fff;
+  }
   &::-webkit-scrollbar-thumb {
     background: $primaryColor;
-    border-radius: 3px; }
+    border-radius: 3px;
+  }
   &::-webkit-scrollbar-thumb:hover {
     background: $primaryColor; }
   &::selection{
