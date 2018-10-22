@@ -39,7 +39,8 @@ app.get('/products',(req,res) => {
 });
 //custom 404 page
 app.use((req,res) => {
-    res.render('404').status(404);
+    res.render('404');
+    res.status(404);
 });
 
 //custom error 500 page
