@@ -1,6 +1,7 @@
 let express = require('express'),
     app = express(),
-    handlebars = require('express3-handlebars').create({ defaultLayout: 'main'});
+    handlebars = require('express3-handlebars').create({ defaultLayout: 'main'}),
+    bodyParser = require('body-parser');
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
