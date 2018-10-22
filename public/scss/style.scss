@@ -1,14 +1,20 @@
-$primaryColor: #e54832;
-::-webkit-scrollbar {
-  width: 5px;
-  border-radius: 3px; }
-::-webkit-scrollbar-track {
-  background: #fff; }
-::-webkit-scrollbar-thumb {
-  background: $primaryColor;
-  border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover {
-  background: $primaryColor; }
+$primaryColor: #b6e581;
+body{
+  &::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 3px; }
+  &::-webkit-scrollbar-track {
+    background: #fff; }
+  &::-webkit-scrollbar-thumb {
+    background: $primaryColor;
+    border-radius: 3px; }
+  &::-webkit-scrollbar-thumb:hover {
+    background: $primaryColor; }
+  &::selection{
+    color:#fff;
+    background: $primaryColor;
+  }
+}
 a{
   text-decoration: none !important;
 }
