@@ -1,5 +1,24 @@
+/*
+Theme Name: Beeta
+Theme URI: http://demo.roadthemes.com/beeta/
+Author: Plazathemes
+Author URI: http://plazathemes.com/
+Description:  Beeta is a new WordPress theme for Online Shopping. With this theme, we have presets and different layouts. With drag and drop home page layout manager, we can build many variations of home page layout. We also have ajax cart, wishlist, compare, zoom and fancybox to bring into a modern look of website. Some of amazing features like Revolution Slider, Mega Menu, Visual Composer, Product Tabs & Carousel, Contact Form with Google map will makes your website more attractive.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, two-columns, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, post-formats, sticky-post, threaded-comments
+Text Domain: beeta
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
 /*------------------------------------------------------------------
 [Table of contents]
+
+This theme compiles .less files into .css files. Please open "less" folder to see all LESS file.
+
 1. Theme variables
 	1.1 Fonts
 	1.2 Colors
