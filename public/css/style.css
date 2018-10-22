@@ -1,3 +1,18 @@
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 3px; }
 
+::-webkit-scrollbar-track {
+  background: #fff; }
+
+::-webkit-scrollbar-thumb {
+  background: #e54832;
+  border-radius: 3px; }
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e54832; }
+
+a {
+  text-decoration: none !important; }
 
 /*# sourceMappingURL=style.css.map */
