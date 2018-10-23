@@ -14,10 +14,13 @@ body{
   &::-webkit-scrollbar-thumb:hover {
     background: $primaryColor; }
   &::selection{
-    color:#fff;
-    background: $primaryColor;
+    color:#fff !important;
+    background: $primaryColor !important;
   }
   a{
     text-decoration: none !important;
   }
+}
+.wpb_wrapper > .image > a > img{
+  max-height: 270px !important;
 }

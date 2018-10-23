@@ -9,9 +9,12 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:hover {
   background: #b6e581; }
 body::selection {
-  color: #fff;
-  background: #b6e581; }
+  color: #fff !important;
+  background: #b6e581 !important; }
 body a {
   text-decoration: none !important; }
+
+.wpb_wrapper > .image > a > img {
+  max-height: 270px !important; }
 
 /*# sourceMappingURL=style.css.map */
