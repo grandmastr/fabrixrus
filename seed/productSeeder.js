@@ -24,13 +24,5 @@ let products = [
 ];
 let done = 0;
 for (let product of products) {
-    product.save((err,result) => {
-        done++;
-        if (done === products.length) {
-            exit();
-        }
-    });
+    console.log(product);
 }
-const exit = () => {
-    mongoose.disconnect();
-};
