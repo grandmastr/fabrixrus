@@ -1,5 +1,5 @@
-let Product = require('../models/product'),
-    mongoose = require('mongoose');
+let Product = require('../models/product');
+let mongoose = require('mongoose');
 mongoose.connect('localhost:27017/fabrixrus');
 
 let products = [
@@ -24,5 +24,10 @@ let products = [
 ];
 let done = 0;
 for (let product of products) {
-    console.log(product);
+    product.save((err,result) => {
+        done++;
+        if (done === products.length) {
+            exit();
+        }
+    });
 }
