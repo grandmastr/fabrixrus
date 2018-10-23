@@ -21,7 +21,7 @@ let products = [
         title: 'Aso-Oke',
         description: 'Amazing!!!!!!!!!!!',
         price: 200
-    }),
+    })
 ];
 let done = 0;
 for (let product of products) {
