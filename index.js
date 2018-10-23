@@ -1,12 +1,15 @@
 let express = require('express'),
     app = express(),
     handlebars = require('express3-handlebars').create({ defaultLayout: 'main'}),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose');
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 app.use(express.static(`${__dirname}/public`));
 app.set('port',process.env.PORT || 4000);
+
+mongoose.connect('localhost:27017/fabrixrus');
 
 app.use((req,res,next) => {
     res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
