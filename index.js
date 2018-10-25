@@ -25,7 +25,10 @@ app.use((req,res,next) => {
 
 app.get('/',(req,res) => {
     Product.find((err,data) => {
-        res.render('home',{ title: 'Home', products: products });
+        res.render('home',{ title: 'Home', products: data });
+    })
+        .catch(err => {
+            console.warn(err);
     });
 });
 app.get('/about',(req,res) => {
