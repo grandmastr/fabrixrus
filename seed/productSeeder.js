@@ -1,11 +1,11 @@
 let Product = require('../models/product');
 let mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
+let dbname = 'fabrixrus';
+mongoose.connect(`mongodb://localhost/${dbname}`, { useNewUrlParser:true })
     .then(() => {
-        console.log('Connected!!!');
+        console.log(`Connected to ${dbname}`);
     }).catch((err) => {
-        console.warn(err);
+        console.warn(`The following error occurred: ${err}`);
 });
 
 
