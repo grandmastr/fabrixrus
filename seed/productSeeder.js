@@ -48,12 +48,10 @@ let products = [
     })
 ];
 let done = 0;
-for (let i = 0; i < products.length; i++) {
-    products[i].save((err,data) => {
-        done++;
-        if(done === products.length) {
-            exit();
-        }
+for (let product of products) {
+    product.save((err,data) => {
+       done++;
+       if (done === products.length) exit()
     });
 }
 const exit = () => {
