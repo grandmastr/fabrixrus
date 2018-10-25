@@ -51,7 +51,7 @@ let done = 0;
 for (let product of products) {
     product.save((err,data) => {
        done++;
-       if (done === products.length) exit()
+       if (done === products.length) exit();
     });
 }
 const exit = () => {
