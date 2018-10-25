@@ -3,6 +3,7 @@ let app = express();
 let handlebars = require('express3-handlebars').create({ defaultLayout: 'main'});
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
+let Product = require('./models/product');
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
@@ -23,7 +24,9 @@ app.use((req,res,next) => {
 });
 
 app.get('/',(req,res) => {
-    res.render('home',{ title: 'Home'});
+    Product.find((err,data) => {
+        res.render('home',{ title: 'Home', products: products });
+    });
 });
 app.get('/about',(req,res) => {
     res.render('about',{
