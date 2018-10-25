@@ -1,26 +1,27 @@
 $primaryColor: #b6e581;
 body{
-  &::-webkit-scrollbar {
-    width: 3px;
-    border-radius: 3px;
-  }
-  &::-webkit-scrollbar-track {
-    background: #fff;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: $primaryColor;
-    border-radius: 3px;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background: $primaryColor; }
-  &::selection{
-    color:#fff !important;
-    background: $primaryColor !important;
-  }
-  a{
-    text-decoration: none !important;
-  }
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+        width: 3px;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #fff;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $primaryColor;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: $primaryColor; }
+    &::selection{
+        color:#fff !important;
+        background: $primaryColor !important;
+    }
+    a{
+        text-decoration: none !important;
+    }
 }
 .wpb_wrapper > .image > a > img{
-  max-height: 270px !important;
+    max-height: 270px !important;
 }
