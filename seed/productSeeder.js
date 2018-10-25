@@ -27,6 +27,24 @@ let products = [
         title: 'Aso-Oke',
         description: 'Amazing!!!!!!!!!!!',
         price: 200
+    }),
+    new Product({
+        imagePath: '/images/sample.jpg',
+        title: 'Wonderful Aso-Oke',
+        description: 'Awesome!!!!!!!!!!!',
+        price: 400
+    }),
+    new Product({
+        imagePath: '/images/sample.jpg',
+        title: 'Wonderful Aso-Oke',
+        description: 'Awesome!!!!!',
+        price: 500
+    }),
+    new Product({
+        imagePath: '/images/sample.jpg',
+        title: 'Wonderful',
+        description: 'Awesome!!!!',
+        price: 1000
     })
 ];
 let done = 0;
