@@ -1,7 +1,13 @@
 let Product = require('../models/product');
 let mongoose = require('mongoose');
 
-mongoose.connect('localhost/fabrixrus');
+mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
+    .then(() => {
+        console.log('Connected!!!');
+    }).catch((err) => {
+        console.warn(err);
+});
+
 
 let products = [
     new Product({
@@ -24,10 +30,10 @@ let products = [
     })
 ];
 let done = 0;
-for (let product of products) {
-    product.save((err,result) => {
+for (let i = 0; i < products.length; i++) {
+    products[i].save((err,data) => {
         done++;
-        if (done === products.length) {
+        if(done === products.length) {
             exit();
         }
     });
