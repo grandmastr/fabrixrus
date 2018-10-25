@@ -1,7 +1,7 @@
 let Product = require('../models/product');
 let mongoose = require('mongoose');
 
-mongoose.connect('localhost:27017/fabrixrus');
+mongoose.connect('localhost/fabrixrus');
 
 let products = [
     new Product({
