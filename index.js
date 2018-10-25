@@ -12,7 +12,8 @@ app.set('port',process.env.PORT || 4000);
 mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     .then(() => {
         console.log('Connected!!!');
-    }).catch((err) => {
+    })
+    .catch((err) => {
     console.warn(err);
 });
 
