@@ -25,8 +25,8 @@ let products = [
     new Product({
         imagePath: '/images/sample2.png',
         title: 'Aso-Oke',
-        description: 'Amazing!!!!!!!!!!!',
-        price: 200
+        description: 'Amazing!!!!!!!!!!',
+        price: 2000
     }),
     new Product({
         imagePath: '/images/sample.jpg',
