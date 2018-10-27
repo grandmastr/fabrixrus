@@ -6,11 +6,13 @@ let mongoose = require('mongoose');
 let Product = require('./models/product');
 let csrf = require('csurf');
 let scrfProtect = csrf();
+let path = `${__dirname}/public`;
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
-app.use(express.static(`${__dirname}/public`));
-app.set('port',process.env.PORT || 4000);
+app.use(express.static(path));
+app.use('/user',express.static(path));
+app.set('port',process.env.PORT || 8040);
 
 mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     .then(() => {
@@ -18,11 +20,6 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     })
     .catch((err) => {
     console.warn(err);
-});
-
-app.use((req,res,next) => {
-    res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
-    next();
 });
 
 app.get('/',(req,res) => {
@@ -45,15 +42,15 @@ app.get('/contact',(req,res) => {
     });
 });
 
-app.get('/user/login',(req,res,next) => {
-    res.render('user/login',{
+app.get('/user/login',(req,res) => {
+    res.render('user/login', {
         title: 'Login'
     });
 });
 
 app.get('/user/register',(req,res) => {
     res.render('user/signup',{
-        title: 'Sign Up'
+        title: 'Register'
     });
 });
 
