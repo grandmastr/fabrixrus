@@ -798,8 +798,8 @@
                                                                     <div class="list-col4">
                                                                         <div class="product-image">
                                                                             <a href="product/aesthetica-5-piece-brow/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                                                <img width="300" height="353" src="wp-content/uploads/2018/06/3-300x353.jpg" class="primary_image wp-post-image"
-                                                                                     alt="" srcset="wp-content/uploads/2018/06/3-300x353.jpg 300w, wp-content/uploads/2018/06/3-255x300.jpg 255w, /wp-content/uploads/2018/06/3-100x118.jpg 100w, wp-content/uploads/2018/06/3.jpg 510w"
+                                                                                <img width="300" height="353" src="{{ this.imagePath }}" class="primary_image wp-post-image"
+                                                                                     alt="" srcset="{{ this.imagePath }} 300w, {{ this.imagePath }}, {{ this.imagePath }} 100w, {{ this.imagePath }} 510w"
                                                                                      sizes="(max-width: 300px) 100vw, 300px" /> <span class="shadow"></span>
                                                                             </a> </div>
                                                                     </div>
@@ -810,10 +810,18 @@
                                                                                 <a href="product-category/men/index.html" rel="tag">Men</a>
                                                                             </div>
                                                                             <h2 class="product-name">
-                                                                                <a href="product/aesthetica-5-piece-brow/index.html">Aesthetica 5-Piece Brow</a>
+                                                                                <a href="product/aesthetica-5-piece-brow/index.html">
+                                                                                    {{ this.title }} <br> {{ this.description }}
+                                                                                </a>
                                                                             </h2>
                                                                             <div class="box-rating">
-                                                                                <div class="price-box"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>79.00</span></div>
+                                                                                <div class="price-box">
+                                                                                    <span class="woocommerce-Price-amount amount">
+                                                                                        <span class="woocommerce-Price-currencySymbol">&#36;
+                                                                                            {{ this.price }}
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="product-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vit</div>
                                                                             <div class="count-down">
