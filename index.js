@@ -4,6 +4,7 @@ let handlebars = require('express3-handlebars').create({ defaultLayout: 'main'})
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 let Product = require('./models/product');
+let csrf = require('csurf');
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
@@ -44,10 +45,17 @@ app.get('/contact',(req,res) => {
 });
 
 app.get('/login',(req,res) => {
-    res.render('login',{
+    res.render('user/login',{
         title: 'Login'
     });
 });
+
+app.get('/signup',(req,res) => {
+    res.render('user/signup',{
+        title: 'Register'
+    });
+});
+
 app.get('/products',(req,res) => {
     res.render('products',{
         title: 'Products'
