@@ -5,6 +5,7 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 let Product = require('./models/product');
 let csrf = require('csurf');
+let scrfProtect = csrf();
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
@@ -44,15 +45,15 @@ app.get('/contact',(req,res) => {
     });
 });
 
-app.get('/login',(req,res) => {
+app.get('/user/login',(req,res,next) => {
     res.render('user/login',{
         title: 'Login'
     });
 });
 
-app.get('/signup',(req,res) => {
+app.get('/user/register',(req,res) => {
     res.render('user/signup',{
-        title: 'Register'
+        title: 'Sign Up'
     });
 });
 
@@ -63,7 +64,9 @@ app.get('/products',(req,res) => {
 });
 //custom 404 page
 app.use((req,res) => {
-    res.render('404');
+    res.render('404',{
+        title: 'Page Not Found'
+    });
     res.status(404);
 });
 
