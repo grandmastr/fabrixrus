@@ -6,6 +6,7 @@ let mongoose = require('mongoose');
 let Product = require('./models/product');
 let csrf = require('csurf');
 let scrfProtect = csrf();
+let session = require('express-session');
 let path = `${__dirname}/public`;
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
@@ -22,6 +23,7 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     console.warn(err);
 });
 
+app.use(session());
 app.get('/',(req,res) => {
     Product.find((err,data) => {
         res.render('home',{ title: 'Home', products: data });
