@@ -40,7 +40,7 @@ app.get('/',(req,res) => {
     Product.find((err,data) => {
         res.render('home',{ title: 'Home', products: data });
     })
-    .catch(err => { console.warn(`The following error occured: ${err}`);});
+    .catch(err => { console.warn(`The following error occurred: ${err}`);});
 });
 
 app.get('/about',(req,res) => {
@@ -68,7 +68,7 @@ app.get('/user/register',(req,res,next) => {
     });
 });
 
-app.post('/user/register',(req,res) => {
+app.post('/user/register', (req,res) => {
     res.redirect('/');
 });
 
@@ -88,7 +88,10 @@ app.use((req,res) => {
 //custom error 500 page
 app.use((err,req,res,next) => {
     console.error(err.stack);
-    res.status(500).render('500');
+    res.status(500);
+    res.render('500', {
+        title: 'internal server error'
+    });
 });
 
 app.listen(app.get('port'), () => {
