@@ -10,6 +10,7 @@ let csrfProtection = csrf({cookie: true});
 let path = `${__dirname}/public`;
 let passport = require('passport');
 let flash = require('connect-flash');
+let passport = require('passport');
 
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
@@ -73,8 +74,8 @@ app.get('/user/register', (req,res,next) => {
 });
 
 app.post('/user/register', passport.authenticate('local.signup', {
-    successRedirect: '/profile',
-    failureRedirect: '/signup',
+    successRedirect: '/user/profile',
+    failureRedirect: '/user/signup',
     failureFlash: true
 }));
 
