@@ -34,7 +34,7 @@ app.get('/',(req,res) => {
     Product.find((err,data) => {
         res.render('home',{ title: 'Home', products: data });
     })
-        .catch(err => { console.warn(`The following error occured: ${err}`);});
+    .catch(err => { console.warn(`The following error occured: ${err}`);});
 });
 
 app.get('/about',(req,res) => {
