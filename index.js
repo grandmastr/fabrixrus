@@ -3,17 +3,22 @@ let app = express();
 let handlebars = require('express3-handlebars').create({ defaultLayout: 'main'});
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
-let Product = require('./models/product');
+let cookieParser = require('cookie-parser');
 let csrf = require('csurf');
-let scrfProtect = csrf();
-let session = require('express-session');
+let csrfProtection = csrf({cookie: true});
 let path = `${__dirname}/public`;
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 app.use(express.static(path));
 app.use('/user',express.static(path));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(csrfProtection);
 app.set('port',process.env.PORT || 8040);
+
+//models
+let Product = require('./models/product');
 
 mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     .then(() => {
@@ -27,10 +32,9 @@ app.get('/',(req,res) => {
     Product.find((err,data) => {
         res.render('home',{ title: 'Home', products: data });
     })
-        .catch(err => {
-            console.warn(`The following error occured: ${err}`);
-    });
+        .catch(err => { console.warn(`The following error occured: ${err}`);});
 });
+
 app.get('/about',(req,res) => {
     res.render('about',{
         pageTestScript : '/qa/tests-about.js',
@@ -49,10 +53,15 @@ app.get('/user/login',(req,res) => {
     });
 });
 
-app.get('/user/register',(req,res) => {
+app.get('/user/register',(req,res,next) => {
     res.render('user/signup',{
-        title: 'Register'
+        title: 'Register',
+        // csrfToken: req.csrfToken()
     });
+});
+
+app.post('/user/register',(req,res) => {
+    res.redirect('/');
 });
 
 app.get('/products',(req,res) => {
