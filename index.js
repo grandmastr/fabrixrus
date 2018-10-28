@@ -17,7 +17,7 @@ app.use(session({secret: 'supersecret', resave: false, saveUninitialized: false}
 app.use(csrfProtection);
 app.use(express.static(path));
 app.use('/user',express.static(path));
-app.set('port',process.env.PORT || 8040);
+app.set('port',process.env.PORT || 4000);
 
 //models
 let Product = require('./models/product');
