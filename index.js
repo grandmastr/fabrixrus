@@ -68,9 +68,11 @@ app.get('/user/register', (req,res,next) => {
     });
 });
 
-app.post('/user/register', (req,res) => {
-    res.redirect('/');
-});
+app.post('/user/register', passport.authenticate('local.signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/signup',
+    failureFlash: true
+}));
 
 app.get('/products', (req,res) => {
     res.render('products',{
