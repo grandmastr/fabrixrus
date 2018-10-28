@@ -23,7 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path));
 app.use('/user',express.static(path));
-app.set('port',process.env.PORT || 4000);
+app.set('port', process.env.PORT || 4000);
 
 //models
 let Product = require('./models/product');
