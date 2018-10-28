@@ -36,14 +36,14 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
         console.warn(err);
 });
 
-app.get('/',(req,res) => {
+app.get('/', (req,res) => {
     Product.find((err,data) => {
         res.render('home',{ title: 'Home', products: data });
     })
     .catch(err => { console.warn(`The following error occurred: ${err}`);});
 });
 
-app.get('/about',(req,res) => {
+app.get('/about', (req,res) => {
     res.render('about',{
         pageTestScript : '/qa/tests-about.js',
         title: 'About Us'
@@ -72,7 +72,7 @@ app.post('/user/register', (req,res) => {
     res.redirect('/');
 });
 
-app.get('/products',(req,res) => {
+app.get('/products', (req,res) => {
     res.render('products',{
         title: 'Products'
     });
