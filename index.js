@@ -56,7 +56,7 @@ app.get('/user/login',(req,res) => {
 app.get('/user/register',(req,res,next) => {
     res.render('user/signup',{
         title: 'Register',
-        // csrfToken: req.csrfToken()
+        csrfToken: req.csrfToken()
     });
 });
 
