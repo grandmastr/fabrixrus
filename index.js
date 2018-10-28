@@ -35,7 +35,7 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     .catch((err) => {
         console.warn(err);
 });
-
+require('./config/passport');
 app.get('/', (req,res) => {
     Product.find((err,data) => {
         res.render('home',{ title: 'Home', products: data });
@@ -59,6 +59,10 @@ app.get('/user/login', (req,res) => {
     res.render('user/login', {
         title: 'Login'
     });
+});
+
+app.get('/profile', (req,res,next) => {
+   res.render('profile');
 });
 
 app.get('/user/register', (req,res,next) => {
