@@ -8,7 +8,6 @@ let session = require('express-session');
 let csrf = require('csurf');
 let csrfProtection = csrf({cookie: true});
 let path = `${__dirname}/public`;
-let passport = require('passport');
 let flash = require('connect-flash');
 let passport = require('passport');
 
