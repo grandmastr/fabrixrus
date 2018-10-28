@@ -4,17 +4,19 @@ let handlebars = require('express3-handlebars').create({ defaultLayout: 'main'})
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 let cookieParser = require('cookie-parser');
+let session = require('express-session');
 let csrf = require('csurf');
 let csrfProtection = csrf({cookie: true});
 let path = `${__dirname}/public`;
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
-app.use(express.static(path));
-app.use('/user',express.static(path));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({secret: 'supersecret', resave: false, saveUninitialized: false}));
 app.use(csrfProtection);
+app.use(express.static(path));
+app.use('/user',express.static(path));
 app.set('port',process.env.PORT || 8040);
 
 //models
