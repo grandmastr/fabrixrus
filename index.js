@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
         console.log('Connected to FabrixRus');
     })
     .catch((err) => {
-    console.warn(err);
+        console.warn(err);
 });
 
 app.get('/',(req,res) => {
