@@ -49,19 +49,19 @@ app.get('/about',(req,res) => {
         title: 'About Us'
     });
 });
-app.get('/contact',(req,res) => {
-    res.render('contact',{
+app.get('/contact', (req,res) => {
+    res.render('contact', {
         title: 'Contact Us'
     });
 });
 
-app.get('/user/login',(req,res) => {
+app.get('/user/login', (req,res) => {
     res.render('user/login', {
         title: 'Login'
     });
 });
 
-app.get('/user/register',(req,res,next) => {
+app.get('/user/register', (req,res,next) => {
     res.render('user/signup',{
         title: 'Register',
         csrfToken: req.csrfToken()
