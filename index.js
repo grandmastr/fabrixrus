@@ -14,8 +14,8 @@ let csrfProtection = csrf({cookie: true});
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(session({secret: 'supersecret', resave: false, saveUninitialized: false}));
 app.use(csrfProtection);
 app.use(flash());
@@ -71,12 +71,17 @@ app.get('/user/register', (req,res,next) => {
         csrfToken: req.csrfToken()
     });
 });
-
-app.post('/user/register', passport.authenticate('local.signup', {
-    successRedirect: '/user/profile',
-    failureRedirect: '/user/signup',
-    failureFlash: true
-}));
+// passport.authenticate('local.signup', {
+//     successRedirect: '/user/profile',
+//     failureRedirect: '/user/signup',
+//     failureFlash: true
+app.post('/user/register', (req,res) => {
+    console.log(`Form is coming from ${req.body.form}`);
+    console.log(`Form sender email is ${req.body.email}`);
+    console.log(`Form csrf token is ${req.body._csrf}`);
+    console.log(`Form user password is ${req.body.password}`);
+    res.redirect(303,'/');
+});
 
 app.get('/products', (req,res) => {
     res.render('products',{
