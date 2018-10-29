@@ -67,9 +67,13 @@ app.get('/profile', (req,res,next) => {
 });
 
 app.get('/product/single', (req,res) => {
-    res.render('products/single', {
-        title: 'Aso - Oke'
-    });
+    Product.find((err,data) => {
+        res.render('products/single', {
+            title: 'Aso - Oke',
+            product: data
+        });
+    })
+        .catch(err => { console.warn(`The following error occurred ${err}`); });
 });
 
 app.get('/user/register', (req,res,next) => {
