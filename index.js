@@ -76,7 +76,6 @@ app.get('/user/register', (req,res,next) => {
 //     failureRedirect: '/user/signup',
 //     failureFlash: true
 app.post('/user/register', (req,res) => {
-    console.log(`Form is coming from ${req.body.form}`);
     console.log(`Form sender email is ${req.body.email}`);
     console.log(`Form csrf token is ${req.body._csrf}`);
     console.log(`Form user password is ${req.body.password}`);

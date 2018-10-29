@@ -29,3 +29,9 @@ body{
 .product-image img.min-height-set{
     min-height:300px !important;
 }
+.login-space{
+    @media(max-width: 625px) {
+        width: 60%;
+        margin:auto;
+    }
+}
