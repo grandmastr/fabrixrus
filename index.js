@@ -66,6 +66,12 @@ app.get('/profile', (req,res,next) => {
    res.render('profile');
 });
 
+app.get('/product/single', (req,res) => {
+    res.render('products/single', {
+        title: 'Aso - Oke'
+    });
+});
+
 app.get('/user/register', (req,res,next) => {
     res.render('user/signup',{
         title: 'Register',
