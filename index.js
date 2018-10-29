@@ -5,11 +5,11 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 let cookieParser = require('cookie-parser');
 let session = require('express-session');
-let csrf = require('csurf');
-let csrfProtection = csrf({cookie: true});
 let path = `${__dirname}/public`;
 let flash = require('connect-flash');
 let passport = require('passport');
+let csrf = require('csurf');
+let csrfProtection = csrf({cookie: true});
 
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
