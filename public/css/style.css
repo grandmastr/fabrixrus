@@ -1,6 +1,6 @@
 body {
   outline: none !important;
-  overflow-x: hidden; }
+  overflow-x: hidden !important; }
   body::-webkit-scrollbar {
     width: 3px;
     border-radius: 3px; }
@@ -22,10 +22,5 @@ body {
 
 .product-image img.min-height-set {
   min-height: 300px !important; }
-
-@media (max-width: 625px) {
-  .login-space {
-    width: 60%;
-    margin: auto; } }
 
 /*# sourceMappingURL=style.css.map */
