@@ -23,11 +23,4 @@ body {
 .product-image img.min-height-set {
   min-height: 300px !important; }
 
-.nav-container {
-  height: 80px; }
-  .nav-container .logo-sticky {
-    width: 250px !important; }
-    .nav-container .logo-sticky img {
-      height: 70px; }
-
 /*# sourceMappingURL=style.css.map */
