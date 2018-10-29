@@ -79,7 +79,7 @@ app.get('/user/register', (req,res,next) => {
 app.post('/user/register', passport.authenticate('local.signup', {
     successRedirect: '/user/profile',
     failureRedirect: '/user/signup',
-    failureFlash: true
+    failureFlash: true,
 }));
 
 app.get('/products', (req,res) => {
