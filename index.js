@@ -68,9 +68,13 @@ app.get('/profile', (req,res,next) => {
 
 app.get('/product/single', (req,res) => {
     Product.find((err,data) => {
+        let productNumber = 0;
+        for (let datum of data) {
+            productNumber += 1;
+        }
         res.render('products/single', {
-            title: 'Aso - Oke',
-            product: data
+            products: data,
+            productsTotal: productNumber
         });
     })
         .catch(err => { console.warn(`The following error occurred ${err}`); });

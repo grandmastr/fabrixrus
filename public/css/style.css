@@ -20,7 +20,8 @@ body {
 .wpb_wrapper > .image > a > img {
   max-height: 270px !important; }
 
-.product-image img.min-height-set {
-  min-height: 300px !important; }
+.product-image img.min-height-set, .product-page-product {
+  min-height: 300px !important;
+  border-radius: 5px; }
 
 /*# sourceMappingURL=style.css.map */
