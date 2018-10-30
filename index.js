@@ -28,6 +28,7 @@ app.set('port', process.env.PORT || 4000);
 
 //models
 let Product = require('./models/product');
+let User = require('./models/user');
 
 mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     .then(() => {
@@ -86,16 +87,13 @@ app.get('/user/register', (req,res,next) => {
         csrfToken: req.csrfToken()
     });
 });
-// (req,res) => {
-//     console.log(`Form sender email is ${req.body.email}`);
-//     console.log(`Form csrf token is ${req.body._csrf}`);
-//     console.log(`Form user password is ${req.body.password}`);
-//     res.redirect(303,'/');
-app.post('/user/register', passport.authenticate('local.signup', {
-    successRedirect: '/user/profile',
-    failureRedirect: '/user/signup',
-    failureFlash: true,
-}));
+
+app.post('/user/register', (req,res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+
+});
 
 app.get('/products', (req,res) => {
     res.render('products',{
