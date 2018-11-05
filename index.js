@@ -1,15 +1,15 @@
-let express = require('express');
-let app = express();
-let handlebars = require('express3-handlebars').create({ defaultLayout: 'main'});
-let bodyParser = require('body-parser');
-let mongoose = require('mongoose');
-let cookieParser = require('cookie-parser');
-let session = require('express-session');
-let path = `${__dirname}/public`;
-let flash = require('connect-flash');
-let passport = require('passport');
-let csrf = require('csurf');
-let csrfProtection = csrf({cookie: true});
+const express = require('express');
+const app = express();
+const handlebars = require('express3-handlebars').create({ defaultLayout: 'main'});
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const path = `${__dirname}/public`;
+const flash = require('connect-flash');
+const passport = require('passport');
+const csrf = require('csurf');
+const csrfProtection = csrf({cookie: true});
 
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
@@ -27,8 +27,8 @@ app.use('/product',express.static(path));
 app.set('port', process.env.PORT || 4000);
 
 //models
-let Product = require('./models/product');
-let User = require('./models/user');
+const Product = require('./models/product');
+const User = require('./models/user');
 
 mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     .then(() => {
@@ -69,8 +69,8 @@ app.get('/profile', (req,res,next) => {
 
 app.get('/product/single', (req,res) => {
     Product.find((err,data) => {
-        let productNumber = 0;
-        for (let datum of data) {
+        const productNumber = 0;
+        for (const datum of data) {
             productNumber += 1;
         }
         res.render('products/single', {
