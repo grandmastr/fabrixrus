@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const handlebars = require('express3-handlebars').create({ defaultLayout: 'main'});
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 const path = `${__dirname}/public`;
 const flash = require('connect-flash');
 const passport = require('passport');
+const localStategy = require('passport-local').Strategy;
 const csrf = require('csurf');
 const csrfProtection = csrf({cookie: true});
 
