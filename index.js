@@ -24,7 +24,7 @@ app.use(passport.session());
 app.use(express.static(path));
 app.use('/user',express.static(path));
 app.use('/product',express.static(path));
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 5000);
 
 //models
 const Product = require('./models/product');
@@ -69,13 +69,14 @@ app.get('/profile', (req,res,next) => {
 
 app.get('/product/single', (req,res) => {
     Product.find((err,data) => {
-        const productNumber = 0;
-        for (const datum of data) {
+        let productNumber = 0;
+        for (let datum of data) {
             productNumber += 1;
         }
         res.render('products/single', {
             products: data,
-            productsTotal: productNumber
+            productsTotal: productNumber,
+            title: 'Product'
         });
     })
         .catch(err => { console.warn(`The following error occurred ${err}`); });
@@ -91,8 +92,6 @@ app.get('/user/register', (req,res,next) => {
 app.post('/user/register', (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
-
-
 });
 
 app.get('/products', (req,res) => {
@@ -104,19 +103,18 @@ app.get('/products', (req,res) => {
 app.use((req,res) => {
     res.render('404',{
         title: 'Page Not Found'
-    });
-    res.status(404);
+    }).status(404);
 });
 
 //custom error 500 page
 app.use((err,req,res,next) => {
     console.error(err.stack);
-    res.status(500);
-    res.render('500', {
+    res.status(500)
+    .render('500', {
         title: 'Internal server error'
     });
 });
 
 app.listen(app.get('port'), () => {
-    console.log(`Express started on localhost:${app.get('port')}; press ctrl - C to terminate`)
+    console.log(`Express started on localhost:${app.get('port')}`)
 });
