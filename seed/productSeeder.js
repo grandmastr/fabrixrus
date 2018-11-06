@@ -21,6 +21,42 @@ let products = [
         title: 'Aso-Oke',
         description: 'Israel\"s picture',
         price: 200
+    }),
+    new Product({
+        imagePath: '/images/clothe2.jpg',
+        title: 'Aso-Oke',
+        description: 'Amazing Clothing!!!!!!!!!!!',
+        price: 200
+    }),
+    new Product({
+        imagePath: '/images/clothe1.jpg',
+        title: 'Aso-Oke',
+        description: 'Israel\"s picture',
+        price: 200
+    }),
+    new Product({
+        imagePath: '/images/clothe3.jpg',
+        title: 'Aso-Oke',
+        description: 'Amazing Clothing',
+        price: 200
+    }),
+    new Product({
+        imagePath: '/images/clothe1.jpg',
+        title: 'Aso-Oke',
+        description: 'Israel\"s picture',
+        price: 200
+    }),
+    new Product({
+        imagePath: '/images/clothe4.jpg',
+        title: 'Aso-Oke',
+        description: 'Amazing Clothing!!!!!!!!!!!',
+        price: 200
+    }),
+    new Product({
+        imagePath: '/images/clothe5.jpg',
+        title: 'Aso-Oke',
+        description: 'Israel\"s picture',
+        price: 200
     })
 ];
 let done = 0;
