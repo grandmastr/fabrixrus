@@ -43,7 +43,7 @@ app.get('/', (req,res) => {
     Product.find((err,data) => {
         res.render('home',{ title: 'Home', products: data });
     })
-    .catch(err => { console.warn(`The following error occurred: ${err}`);});
+    .catch(err => console.warn(`The following error occurred: ${err}`););
 });
 
 app.get('/about', (req,res) => {
@@ -80,7 +80,7 @@ app.get('/product/single', (req,res) => {
             title: 'Product'
         });
     })
-        .catch(err => { console.warn(`The following error occurred ${err}`); });
+        .catch(err => console.warn(`The following error occurred ${err}`););
 });
 
 app.get('/user/register', (req,res,next) => {
