@@ -51,7 +51,7 @@ app.set('port', process.env.PORT || 4000);
 
 
 //handling file uploads
-const upload = multer({dest: 'uploads/'})
+const upload = multer({dest: 'uploads/'});
 
 //models
 const Product = require('./models/product');
