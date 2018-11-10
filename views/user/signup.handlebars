@@ -25,6 +25,16 @@
                                     <div class="woocommerce">
                                         <div class="u-column2 col-md-6 col-lg-6 col-xs-12 col-sm-12" style="margin:auto;">
                                             <h2>SIGN UP</h2>
+                                            <br>
+                                            {{#if errors}}
+                                                <ul class="errors">
+                                                    {{#each errors}}
+                                                        <li class="alert alert-warning">
+                                                            {{ this.msg }}
+                                                        </li>
+                                                    {{/each}}
+                                                </ul>
+                                            {{/if}}
                                             <form method="post" action="/user/register" class="woocommerce-form woocommerce-form-register register">
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="reg_email">Email address </label>

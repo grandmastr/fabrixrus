@@ -117,27 +117,27 @@ app.get('/user/register', (req,res,next) => {
 });
 
 app.post('/user/register', (req,res) => {
-    const email = req.body.email;
-    const password = req.body.password;
-    const password2 = req.body.password;
+    let email = req.body.email;
+    let password = req.body.password;
+    let password2 = req.body.password;
     
     //form validation
     req.checkBody('email','Email field is required').notEmpty();
-    req.checkBody('email','Email field is required').isEmail();
+    req.checkBody('email','Please enter a valid email').isEmail();
     req.checkBody('password','Password is required').notEmpty();
-    req.checkBody('password2','Password is required').equals(req.body.password);
+    req.checkBody('password2','Passwords don\'t match').equals(password2);
     
     //checking for errors
     let errors = req.validationErrors();
     if(errors) {
-        res.render('user/login', {
+        res.render('user/signup', {
             errors: errors,
+            title: 'Register',
             email: email,
             password: password,
             password2: password2
         });
     } else {
-        res.redirect(302,'/');
         let newUser = new User({
             email: email,
             password: password
@@ -148,7 +148,10 @@ app.post('/user/register', (req,res) => {
         //     if(err) throw err;
         //     console.log(user);
         // });
-    }
+        req.flash('success', 'You are registered');
+        res.location('/');
+        res.redirect(302,'/');
+    }    
 });
 app.get('/products', (req,res) => {
     res.render('products',{

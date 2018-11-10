@@ -24,4 +24,8 @@ body {
   height: 300px !important;
   border-radius: 5px; }
 
+.errors {
+  list-style-type: none;
+  padding-left: 0; }
+
 /*# sourceMappingURL=style.css.map */
