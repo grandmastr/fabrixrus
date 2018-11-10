@@ -1,31 +1,59 @@
-const express = require('express');
-const app = express();
-const handlebars = require('express3-handlebars').create({ defaultLayout: 'main'});
-const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const bodyParser = require('body-parser');
-const path = `${__dirname}/public`;
-const flash = require('connect-flash');
-const passport = require('passport');
-const localStategy = require('passport-local').Strategy;
-const csrf = require('csurf');
-const csrfProtection = csrf({cookie: true});
+const express = require('express')
+,app = express()
+,handlebars = require('express3-handlebars').create({ defaultLayout: 'main'})
+,mongoose = require('mongoose')
+,cookieParser = require('cookie-parser')
+,session = require('express-session')
+,bodyParser = require('body-parser')
+,path = `${__dirname}/public`
+,flash = require('connect-flash')
+,expressValidator = require('express-validator')
+,passport = require('passport')
+,localStategy = require('passport-local').Strategy
+,csrf = require('csurf')
+,csrfProtection = csrf({cookie: true})
+,multer = require('multer');
 
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//express validator
+app.use(expressValidator({
+    errorFormatter: (param,msg,value) => {
+        let namespace = param.split('.'),
+        root = namespace.shift(),
+        formParam = root
+        while(namespace.length) {
+            formParam += `[${namespace.shift()}]`;
+        }
+        return {
+            param: formParam,
+            msg,
+            value
+        }
+    }
+}));
+app.use(flash());
+// app.use((req,res,next) => {
+//     //if there is a flash message , transfer it to context and delete
+//     res.locals.flash = req.session.flash;
+//     delete req.session.flash;
+//     next();
+// });
 app.use(cookieParser());
 app.use(session({secret: 'supersecret', resave: false, saveUninitialized: false}));
-app.use(csrfProtection);
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path));
 app.use('/user',express.static(path));
 app.use('/product',express.static(path));
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 4000);
+
+
+//handling file uploads
+const upload = multer({dest: 'uploads/'})
 
 //models
 const Product = require('./models/product');
@@ -43,13 +71,13 @@ app.get('/', (req,res) => {
     Product.find((err,data) => {
         res.render('home',{ title: 'Home', products: data });
     })
-    .catch(err => console.warn(`The following error occurred: ${err}`););
+    .catch(err => { console.warn(`The following error occurred: ${err}`); });
+    console.log(`${req.ip}`)
 });
 
 app.get('/about', (req,res) => {
     res.render('about',{
-        pageTestScript : '/qa/tests-about.js',
-        title: 'About Us'
+        title: 'About FabrixRus'
     });
 });
 app.get('/contact', (req,res) => {
@@ -80,7 +108,7 @@ app.get('/product/single', (req,res) => {
             title: 'Product'
         });
     })
-        .catch(err => console.warn(`The following error occurred ${err}`););
+        .catch(err => { console.warn(`The following error occurred ${err}`); });
 });
 
 app.get('/user/register', (req,res,next) => {
@@ -117,5 +145,5 @@ app.use((err,req,res,next) => {
 });
 
 app.listen(app.get('port'), () => {
-    console.log(`Express started on localhost:${app.get('port')}`)
-});
+    console.log(`Express started on localhost:${app.get('port')};`)
+});      
