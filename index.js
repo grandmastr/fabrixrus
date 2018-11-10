@@ -67,19 +67,21 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
 require('./config/passport');
 app.get('/', (req,res) => {
     Product.find((err,data) => {
-        res.render('home',{ title: 'Home', products: data });
+        res.render('home',{ title: 'Home', products: data, home:'home' });
     })
     .catch(err => { console.warn(`The following error occurred: ${err}`); });
 });
 
 app.get('/about', (req,res) => {
     res.render('about',{
-        title: 'About FabrixRus'
+        title: 'About FabrixRus',
+        about: 'about'
     });
 });
 app.get('/contact', (req,res) => {
     res.render('contact', {
-        title: 'Contact Us'
+        title: 'Contact Us',
+        contact: 'contact'
     });
 });
 
@@ -97,7 +99,7 @@ app.get('/product/single', (req,res) => {
     Product.find((err,data) => {
         let productNumber = 0;
         for (let datum of data) {
-            productNumber += 1;
+            productNumber ++;
         }
         res.render('products/single', {
             products: data,
@@ -117,13 +119,43 @@ app.get('/user/register', (req,res,next) => {
 app.post('/user/register', (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
-});
+    const password2 = req.body.password;
+    
+    //form validation
+    req.checkBody('email','Email field is required').notEmpty();
+    req.checkBody('email','Email field is required').isEmail();
+    req.checkBody('password','Password is required').notEmpty();
+    req.checkBody('password2','Password is required').equals(req.body.password);
+    
+    //checking for errors
+    let errors = req.validationErrors();
+    if(errors) {
+        res.render('user/login', {
+            errors: errors,
+            email: email,
+            password: password,
+            password2: password2
+        });
+    } else {
+        res.redirect(302,'/');
+        let newUser = new User({
+            email: email,
+            password: password
+        });
 
+        // //create user
+        // User.createUser(newUser,(err,user) => {
+        //     if(err) throw err;
+        //     console.log(user);
+        // });
+    }
+});
 app.get('/products', (req,res) => {
     res.render('products',{
         title: 'Products'
     });
 });
+
 //custom 404 page
 app.use((req,res) => {
     res.render('404',{
