@@ -10,9 +10,8 @@ const express = require('express')
 ,expressValidator = require('express-validator')
 ,passport = require('passport')
 ,localStategy = require('passport-local').Strategy
-,csrf = require('csurf')
-,csrfProtection = csrf({cookie: true})
 ,multer = require('multer');
+
 
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
@@ -37,8 +36,7 @@ app.use(expressValidator({
 }));
 app.use(flash());
 // app.use((req,res,next) => {
-//     //if there is a flash message , transfer it to context and delete
-//     res.locals.flash = req.session.flash;
+//     req.locals.flash = req.session.flash;
 //     delete req.session.flash;
 //     next();
 // });
@@ -72,7 +70,6 @@ app.get('/', (req,res) => {
         res.render('home',{ title: 'Home', products: data });
     })
     .catch(err => { console.warn(`The following error occurred: ${err}`); });
-    console.log(`${req.ip}`)
 });
 
 app.get('/about', (req,res) => {
@@ -113,8 +110,7 @@ app.get('/product/single', (req,res) => {
 
 app.get('/user/register', (req,res,next) => {
     res.render('user/signup',{
-        title: 'Register',
-        csrfToken: req.csrfToken()
+        title: 'Register'
     });
 });
 
