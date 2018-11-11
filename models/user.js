@@ -1,1 +1,23 @@
-let mongoose = require('mongoose');let Schema = mongoose.Schema;let userSchema = new Schema({    email: {        type: String,        required: true    },    password: {        type: String,        required: true    }});// userSchema.methods.encryptPassword = password => {//     return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);// };// userSchema.methods.validPassword = password => {//     return bcrypt.compareSync(password, this.password);// };module.exports = mongoose.model('user', userSchema);
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
+let bcrypt = require('bcrypt');
+let userSchema = new Schema({
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true,
+        bcrypt: true
+    }
+});
+
+module.exports = mongoose.model('user', userSchema);
+module.exports.createUser = (user,callback) => {
+    bcrypt.hash(user.password,10,(err,hashed) => {
+        if(err) throw err;
+        user.password = hashed;
+        user.save(callback);
+    });
+}

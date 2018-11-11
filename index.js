@@ -61,7 +61,7 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     .then(() => {
         console.log('Connected to FabrixRus');
     })
-    .catch((err) => {
+    .catch(err => {
         console.warn(err);
 });
 require('./config/passport');
@@ -143,11 +143,11 @@ app.post('/user/register', (req,res) => {
             password: password
         });
 
-        // //create user
-        // User.createUser(newUser,(err,user) => {
-        //     if(err) throw err;
-        //     console.log(user);
-        // });
+        //create user
+        User.createUser(newUser,(err,user) => {
+            if(err) throw err;
+            console.log(user);
+        });
         req.flash('success', 'You are registered');
         res.location('/');
         res.redirect(302,'/');
