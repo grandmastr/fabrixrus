@@ -38,11 +38,11 @@
                                             <form method="post" action="/user/register" class="woocommerce-form woocommerce-form-register register">
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="reg_email">Email address </label>
-                                                    <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="" />
+                                                    <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="{{#if email}}{{email}}{{/if}}" />
                                                 </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="reg_password">Password&nbsp;</label>
-                                                    <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password"/>
+                                                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" value=""/>
                                                 </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="reg_password">Confirm Password&nbsp;</label>
@@ -51,7 +51,6 @@
                                                 </p>
                                                 <div class="woocommerce-privacy-policy-text"></div>
                                                 <p class="woocommerce-FormRow form-row">
-                                                    <input type="hidden" id="woocommerce-register-nonce" name="_csrf" value="{{ csrfToken }}" />
                                                     <button type="submit" class="woocommerce-Button button" name="register" value="Register">
                                                         Register
                                                     </button>

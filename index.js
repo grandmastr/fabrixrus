@@ -9,7 +9,7 @@ const express = require('express')
 ,flash = require('connect-flash')
 ,expressValidator = require('express-validator')
 ,passport = require('passport')
-,localStategy = require('passport-local').Strategy
+,localStrategy = require('passport-local').Strategy
 ,multer = require('multer');
 
 
@@ -64,7 +64,7 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     .catch(err => {
         console.warn(err);
 });
-require('./config/passport');
+
 app.get('/', (req,res) => {
     Product.find((err,data) => {
         res.render('home',{ title: 'Home', products: data, home:'home' });
@@ -153,6 +153,18 @@ app.post('/user/register', (req,res) => {
         res.redirect(302,'/');
     }    
 });
+
+
+//user authentioation
+app.post('/user/login', passport.authenticate('local',{
+    failureRedirect:'/user/login',
+    failureFlash: 'Invalid username or password'
+}), (req,res) => {
+    console.log('Authentication Successful');
+    req.flash('Success','You are successfully logged in');
+    res.redirect(306,'/');
+});
+
 app.get('/products', (req,res) => {
     res.render('products',{
         title: 'Products'
