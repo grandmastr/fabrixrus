@@ -9,7 +9,7 @@ const express = require('express')
 ,flash = require('connect-flash')
 ,expressValidator = require('express-validator')
 ,passport = require('passport')
-,localStrategy = require('passport-local').Strategy
+,LocalStrategy = require('passport-local').Strategy
 ,multer = require('multer');
 
 
@@ -91,6 +91,26 @@ app.get('/user/login', (req,res) => {
     });
 });
 
+passport.use(new LocalStrategy((email, password, done) => {
+    User.getUserByEmail('israelakintunde005@gmail.com', (err, user) => {
+        if (err) throw err;
+        if (!user) {
+            console.log('Unknown user');
+            return done(null, false, { message: 'Unknown User' });
+        }
+    });
+}));
+
+//user authentioation
+app.post('/user/login', passport.authenticate('local', {
+    failureRedirect: '/user/login',
+    failureFlash: 'Invalid username or password'
+}), (req, res) => {
+    console.log('Authentication Successful');
+    req.flash('Success', 'You are successfully logged in');
+    res.redirect(306, '/');
+});
+
 app.get('/profile', (req,res,next) => {
    res.render('profile');
 });
@@ -152,17 +172,6 @@ app.post('/user/register', (req,res) => {
         res.location('/');
         res.redirect(302,'/');
     }    
-});
-
-
-//user authentioation
-app.post('/user/login', passport.authenticate('local',{
-    failureRedirect:'/user/login',
-    failureFlash: 'Invalid username or password'
-}), (req,res) => {
-    console.log('Authentication Successful');
-    req.flash('Success','You are successfully logged in');
-    res.redirect(306,'/');
 });
 
 app.get('/products', (req,res) => {

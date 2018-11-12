@@ -13,11 +13,15 @@ let userSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('user', userSchema);
+let User = module.exports = mongoose.model('user', userSchema);
+module.exports.getUserByEmail = (userEmail,callback) => {
+    let query = { email: userEmail };
+    User.findOne(query,callback);
+};
 module.exports.createUser = (user,callback) => {
     bcrypt.hash(user.password,10,(err,hashed) => {
         if(err) throw err;
         user.password = hashed;
         user.save(callback);
     });
-}
+};
