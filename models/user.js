@@ -15,8 +15,7 @@ let userSchema = new Schema({
 
 let User = module.exports = mongoose.model('user', userSchema);
 module.exports.getUserByEmail = (userEmail,callback) => {
-    let query = { email: userEmail };
-    User.findOne(query,callback);
+    User.findOne({email: userEmail},callback);
 };
 module.exports.createUser = (user,callback) => {
     bcrypt.hash(user.password,10,(err,hashed) => {

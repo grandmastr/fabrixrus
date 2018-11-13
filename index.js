@@ -40,6 +40,19 @@ app.use(flash());
 //     delete req.session.flash;
 //     next();
 // });
+//models
+const Product = require('./models/product');
+const User = require('./models/user');
+
+passport.use(new LocalStrategy({ usernameField: 'email',passReqToCallback: true },(username,password,done) => {
+    User.getUserByEmail(username,(req,err,data) => {
+        if (err) throw err;
+        if(!data) {
+            console.log('Unknown User');
+        }
+    });
+}));
+
 app.use(cookieParser());
 app.use(session({secret: 'supersecret', resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
@@ -52,10 +65,6 @@ app.set('port', process.env.PORT || 4000);
 
 //handling file uploads
 const upload = multer({dest: 'uploads/'});
-
-//models
-const Product = require('./models/product');
-const User = require('./models/user');
 
 mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
     .then(() => {
@@ -91,20 +100,10 @@ app.get('/user/login', (req,res) => {
     });
 });
 
-passport.use(new LocalStrategy((email, password, done) => {
-    User.getUserByEmail('israelakintunde005@gmail.com', (err, user) => {
-        if (err) throw err;
-        if (!user) {
-            console.log('Unknown user');
-            return done(null, false, { message: 'Unknown User' });
-        }
-    });
-}));
 
 //user authentioation
 app.post('/user/login', passport.authenticate('local', {
-    failureRedirect: '/user/login',
-    failureFlash: 'Invalid username or password'
+    failureRedirect:'/user/login'
 }), (req, res) => {
     console.log('Authentication Successful');
     req.flash('Success', 'You are successfully logged in');
