@@ -55,7 +55,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' },(username,password,don
             console.log('Unknown User');
             return done(null, false, { message: 'Unknown User' });
         };
-        bcrypt.compare(password,user.password, (err,isMatch) => {
+        User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
                 console.log('Successful');
@@ -65,16 +65,6 @@ passport.use(new LocalStrategy({ usernameField: 'email' },(username,password,don
                 return done(null, false, { message: 'Invalid Password' });
             }
         });
-        // User.comparePassword(password, user.password, (err, isMatch) => {
-        //     if (err) throw err;
-        //     if (isMatch) {
-        //         console.log('Successful');
-        //         return done(null, user);
-        //     } else {
-        //         console.log('Invalid Password');
-        //         return done(null, false, { message: 'Invalid Password' });
-        //     }
-        // });
 
     });
 }));
@@ -187,19 +177,34 @@ app.post('/user/register', (req,res) => {
             password2: password2
         });
     } else {
-        let newUser = new User({
-            email: email,
-            password: password
-        });
-
-        //create user
-        User.createUser(newUser,(err,user) => {
+        User.getUserByEmail(email,(err,itExists) => {
             if(err) throw err;
-            console.log(user);
+            if(itExists) {
+                console.log('Email already exists');
+                let emailExistsError = "Email already exists";
+                res.render('user/signup', {
+                    emailExists: emailExistsError,
+                    title: 'Register',
+                    email: email,
+                    password: password,
+                    password2: password2
+                });
+            } else {
+                let newUser = new User({
+                    email: email,
+                    password: password
+                });
+
+                //create user
+                User.createUser(newUser, (err, user) => {
+                    if (err) throw err;
+                    console.log(user);
+                });
+                req.flash('success', 'You are registered');
+                res.location('/');
+                res.redirect(302, '/');
+            }
         });
-        req.flash('success', 'You are registered');
-        res.location('/');
-        res.redirect(302,'/');
     }    
 });
 
