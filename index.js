@@ -47,25 +47,16 @@ passport.deserializeUser((id,done) => {
         done(err,user);
     });
 });
-passport.use(new LocalStrategy({ usernameField: 'email',passReqToCallback: true },(username,password,done) => {
-    User.getUserByEmail(username,(req,err,user) => {
+passport.use(new LocalStrategy({ usernameField: 'email',passReqToCallback: true },(req,username,password,done) => {
+    User.getUserByEmail(username,(err,user) => {
         if (err) throw err;
         if(!user) {
             console.log('Unknown User');
-            // return done(null,false,{ message: 'Unknown User' })
+            return done(null,false,{ message: 'Unknown User' })
         }
-        User.comparePassword(password,user.password, (err,isMatch) => {
-            if(err) throw err;
-            if(isMatch) {
-                return done(null,user);
-            } else {
-                console.log('Invalid Password');
-                // return done(null, false, { message: 'Invalid Password' })
-            }
-        })
+        if(user) console.log('Succesful')
     });
 }));
-
 app.use(cookieParser());
 app.use(session({secret: 'fabrixrusonline', resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
@@ -121,7 +112,7 @@ app.get('/user/login', (req,res) => {
 
 //user authentioation
 app.post('/user/login', passport.authenticate('local', {
-    failureRedirect:'/user/login'
+    failureRedirect:'/user/login', failureFlash: 'Not Succssful'
 }), (req, res) => {
     console.log('Authentication Successful');
     req.flash('Success', 'You are successfully logged in');
@@ -199,9 +190,9 @@ app.get('/products', (req,res) => {
 
 //custom 404 page
 app.use((req,res) => {
-    res.render('404',{
+    res.status(404).render('404', {
         title: 'Page Not Found'
-    }).status(404);
+    });
 });
 
 //custom error 500 page
