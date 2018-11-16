@@ -20,8 +20,8 @@ module.exports.getUserByEmail = (userEmail,callback) => {
 module.exports.getUserById = (id, callback) => {
     User.findById(id, callback);
 };
-module.exports.comparePassword = (candidatePassword,hash,callback) => {
-    bcrypt.compare(candidatePassword,hash, (err,isMatch) => {
+module.exports.comparePassword = (userPassword,hash,callback) => {
+    bcrypt.compare(userPassword,hash, (err,isMatch) => {
         if(err) return callback(err);
         callback(null, isMatch);
     });

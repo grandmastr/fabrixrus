@@ -10,7 +10,8 @@ const express = require('express')
 ,expressValidator = require('express-validator')
 ,passport = require('passport')
 ,LocalStrategy = require('passport-local').Strategy
-,multer = require('multer');
+,multer = require('multer')
+,bcrypt = require('bcrypt');
 
 
 app.disable('x-powered-by');
@@ -47,23 +48,34 @@ passport.deserializeUser((id,done) => {
         done(err,user);
     });
 });
-passport.use(new LocalStrategy({ usernameField: 'email',passReqToCallback: true },(req,username,password,done) => {
+passport.use(new LocalStrategy({ usernameField: 'email' },(username,password,done) => {
     User.getUserByEmail(username,(err,user) => {
         if (err) throw err;
         if(!user) {
             console.log('Unknown User');
-            return done(null,false,{ message: 'Unknown User' });
-        }
-        if(user) console.log('Succesful');
-        User.getUserById(password,user.password, (err,isMatch) => {
-            if(err) throw err;
-            if(isMatch) {
-                return done(null,user);
+            return done(null, false, { message: 'Unknown User' });
+        };
+        bcrypt.compare(password,user.password, (err,isMatch) => {
+            if (err) throw err;
+            if (isMatch) {
+                console.log('Successful');
+                return done(null, user);
             } else {
                 console.log('Invalid Password');
-                return done(null,false, { message: 'Invalid Password' });
+                return done(null, false, { message: 'Invalid Password' });
             }
         });
+        // User.comparePassword(password, user.password, (err, isMatch) => {
+        //     if (err) throw err;
+        //     if (isMatch) {
+        //         console.log('Successful');
+        //         return done(null, user);
+        //     } else {
+        //         console.log('Invalid Password');
+        //         return done(null, false, { message: 'Invalid Password' });
+        //     }
+        // });
+
     });
 }));
 app.use(cookieParser());
@@ -73,7 +85,7 @@ app.use(passport.session());
 app.use(express.static(path));
 app.use('/user',express.static(path));
 app.use('/product',express.static(path));
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 4000);
 
 
 //handling file uploads
