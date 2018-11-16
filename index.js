@@ -52,9 +52,18 @@ passport.use(new LocalStrategy({ usernameField: 'email',passReqToCallback: true 
         if (err) throw err;
         if(!user) {
             console.log('Unknown User');
-            return done(null,false,{ message: 'Unknown User' })
+            return done(null,false,{ message: 'Unknown User' });
         }
-        if(user) console.log('Succesful')
+        if(user) console.log('Succesful');
+        User.getUserById(password,user.password, (err,isMatch) => {
+            if(err) throw err;
+            if(isMatch) {
+                return done(null,user);
+            } else {
+                console.log('Invalid Password');
+                return done(null,false, { message: 'Invalid Password' });
+            }
+        });
     });
 }));
 app.use(cookieParser());
