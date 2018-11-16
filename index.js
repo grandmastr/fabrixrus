@@ -35,32 +35,45 @@ app.use(expressValidator({
     }
 }));
 app.use(flash());
-// app.use((req,res,next) => {
-//     req.locals.flash = req.session.flash;
-//     delete req.session.flash;
-//     next();
-// });
+
 //models
 const Product = require('./models/product');
 const User = require('./models/user');
-
+passport.serializeUser((user,done) => {
+    done(null,user.id);
+});
+passport.deserializeUser((id,done) => {
+    User.getUserById(id, (err,user) => {
+        done(err,user);
+    });
+});
 passport.use(new LocalStrategy({ usernameField: 'email',passReqToCallback: true },(username,password,done) => {
-    User.getUserByEmail(username,(req,err,data) => {
+    User.getUserByEmail(username,(req,err,user) => {
         if (err) throw err;
-        if(!data) {
+        if(!user) {
             console.log('Unknown User');
+            // return done(null,false,{ message: 'Unknown User' })
         }
+        User.comparePassword(password,user.password, (err,isMatch) => {
+            if(err) throw err;
+            if(isMatch) {
+                return done(null,user);
+            } else {
+                console.log('Invalid Password');
+                // return done(null, false, { message: 'Invalid Password' })
+            }
+        })
     });
 }));
 
 app.use(cookieParser());
-app.use(session({secret: 'supersecret', resave: false, saveUninitialized: false}));
+app.use(session({secret: 'fabrixrusonline', resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path));
 app.use('/user',express.static(path));
 app.use('/product',express.static(path));
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 8000);
 
 
 //handling file uploads
@@ -76,6 +89,11 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
 
 app.get('/', (req,res) => {
     Product.find((err,data) => {
+        let sliderProducts = [];
+        let desiredNumber = 8;
+        for (let i = 0; i < desiredNumber; i++) {
+            sliderProducts.push(data[i]);
+        }
         res.render('home',{ title: 'Home', products: data, home:'home' });
     })
     .catch(err => { console.warn(`The following error occurred: ${err}`); });

@@ -30,6 +30,7 @@
             s.parentNode.insertBefore(wf, s);
         })();
     </script>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link rel='dns-prefetch' href='http://fonts.googleapis.com/'/>
     <link rel='dns-prefetch' href='http://s.w.org/'/>
     <link rel="stylesheet" href="css/style.css">
@@ -82,6 +83,28 @@
                 "complete" === b.readyState && c.readyCallback()
             })), g = c.source || {}, g.concatemoji ? f(g.concatemoji) : g.wpemoji && g.twemoji && (f(g.twemoji), f(g.wpemoji)))
         }(window, document, window._wpemojiSettings);
+    </script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <!-- //js -->
+    <!-- /nav -->
+    <script src="js/demo1.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <script>
+        $(function () {
+            $("#slider4").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: true,
+                speed: 1000,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+        });
     </script>
     <style type="text/css">
         img.wp-smiley,

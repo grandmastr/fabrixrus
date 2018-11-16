@@ -35,6 +35,11 @@
                                                     {{/each}}
                                                 </ul>
                                             {{/if}}
+                                            {{#if emailErr}}
+                                                <div class="alert alert-danger">
+                                                    {{ emailErr }}
+                                                </div>
+                                            {{/if}}
                                             <form method="post" action="/user/register" class="woocommerce-form woocommerce-form-register register">
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="reg_email">Email address </label>
@@ -42,7 +47,7 @@
                                                 </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="reg_password">Password&nbsp;</label>
-                                                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" value=""/>
+                                                    <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" value=""/>
                                                 </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="reg_password">Confirm Password&nbsp;</label>
