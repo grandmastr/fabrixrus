@@ -16,7 +16,7 @@
 
                 <div class="row">
 
-                    <div class="col-12 ">
+                    <div class="col-12">
                         <div class="page-content default-page">
 
                             <article id="post-9" class="post-9 page type-page status-publish hentry">
@@ -35,9 +35,9 @@
                                                     {{/each}}
                                                 </ul>
                                             {{/if}}
-                                            {{#if emailErr}}
+                                            {{#if emailExists }}
                                                 <div class="alert alert-danger">
-                                                    {{ emailErr }}
+                                                    {{ emailExists }}
                                                 </div>
                                             {{/if}}
                                             <form method="post" action="/user/register" class="woocommerce-form woocommerce-form-register register">
