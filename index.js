@@ -35,7 +35,6 @@ app.use(expressValidator({
         }
     }
 }));
-app.use(flash());
 
 //models
 const Product = require('./models/product');
@@ -70,6 +69,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' },(username,password,don
 }));
 app.use(cookieParser());
 app.use(session({secret: 'fabrixrusonline', resave: false, saveUninitialized: false}));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path));
@@ -127,7 +127,13 @@ app.post('/user/login', passport.authenticate('local', {
 }), (req, res) => {
     console.log('Authentication Successful');
     req.flash('Success', 'You are successfully logged in');
-    res.redirect(306, '/');
+    res.redirect(302, '/');
+});
+
+app.get('/logout',(req,res) => {
+    req.logout;
+    req.flash('Success','You are logged out');
+    res.redirect(302,'/user/login');
 });
 
 app.get('/profile', (req,res,next) => {

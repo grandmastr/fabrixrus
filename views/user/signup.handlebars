@@ -5,9 +5,6 @@
                 <div class="container">
                     <div class="title-breadcrumb-inner">
                         <div class="breadcrumbs"><a href="../index.html">Home</a><span class="separator">/</span><span> My account</span></div>
-                        <header class="entry-header">
-                            <h1 class="entry-title">My account</h1>
-                        </header>
                     </div>
                 </div>
             </div>
@@ -29,7 +26,7 @@
                                             {{#if errors}}
                                                 <ul class="errors">
                                                     {{#each errors}}
-                                                        <li class="alert alert-warning">
+                                                        <li class="alert alert-danger">
                                                             {{ this.msg }}
                                                         </li>
                                                     {{/each}}
