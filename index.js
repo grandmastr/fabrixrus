@@ -18,7 +18,9 @@ app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(cookieParser());
+app.use(session({ secret: 'fabrixrusonline', resave: false, saveUninitialized: false }));
+app.use(flash());
 //express validator
 app.use(expressValidator({
     errorFormatter: (param,msg,value) => {
@@ -47,7 +49,7 @@ passport.deserializeUser((id,done) => {
         done(err,user);
     });
 });
-passport.use(new LocalStrategy({ usernameField: 'email' },(username,password,done) => {
+passport.use(new LocalStrategy({ usernameField: 'email',passReqToCallback:true },(req,username,password,done) => {
     User.getUserByEmail(username,(err,user) => {
         if (err) throw err;
         if(!user) {
@@ -67,9 +69,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' },(username,password,don
 
     });
 }));
-app.use(cookieParser());
-app.use(session({secret: 'fabrixrusonline', resave: false, saveUninitialized: false}));
-app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path));
@@ -81,15 +81,20 @@ app.set('port', process.env.PORT || 4000);
 //handling file uploads
 const upload = multer({dest: 'uploads/'});
 
-mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true })
-    .then(() => {
-        console.log('Connected to FabrixRus');
-    })
-    .catch(err => {
-        console.warn(err);
+mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true },err => {
+    if (err) console.warn(err);
+    console.log('Connected to FabrixRus');
 });
 
-app.get('/', (req,res) => {
+const ensureAuth = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect(302, '/user/login');
+    }
+}
+
+app.get('/', ensureAuth, (req,res) => {
     Product.find((err,data) => {
         let sliderProducts = [];
         let desiredNumber = 8;
@@ -97,9 +102,9 @@ app.get('/', (req,res) => {
             sliderProducts.push(data[i]);
         }
         res.render('home',{ title: 'Home', products: data, home:'home' });
-    })
-    .catch(err => { console.warn(`The following error occurred: ${err}`); });
+    }, err => { console.warn(`The following error occurred: ${err}`); })
 });
+
 
 app.get('/about', (req,res) => {
     res.render('about',{
@@ -116,14 +121,14 @@ app.get('/contact', (req,res) => {
 
 app.get('/user/login', (req,res) => {
     res.render('user/login', {
-        title: 'Login'
+        title: 'Login',
     });
 });
 
 
 //user authentioation
 app.post('/user/login', passport.authenticate('local', {
-    failureRedirect:'/user/login', failureFlash: 'Not Succssful'
+    failureRedirect:'/user/login', failureFlash: "Invalid Username and/or password"
 }), (req, res) => {
     console.log('Authentication Successful');
     req.flash('Success', 'You are successfully logged in');
@@ -132,7 +137,7 @@ app.post('/user/login', passport.authenticate('local', {
 
 app.get('/logout',(req,res) => {
     req.logout;
-    req.flash('Success','You are logged out');
+    req.flash('LoggedOut','You are logged out');
     res.redirect(302,'/user/login');
 });
 
@@ -151,8 +156,7 @@ app.get('/product/single', (req,res) => {
             productsTotal: productNumber,
             title: 'Product'
         });
-    })
-        .catch(err => { console.warn(`The following error occurred ${err}`); });
+    }, err => { console.warn(`The following error occurred: ${err}`); })
 });
 
 app.get('/user/register', (req,res,next) => {

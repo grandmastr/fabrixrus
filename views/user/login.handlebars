@@ -21,6 +21,9 @@
                                     <div class="woocommerce">
                                         <div class="u-columns col2-set" id="customer_login">
                                             <div class="u-column1 col-md-6 col-lg-6 col-xs-12 col-sm-12" style="margin:auto;">
+                                                {{#if loggedOut}}
+                                                    {{loggedOut}}
+                                                {{/if}}
                                                 <h2>Login</h2>
                                                 <form method="post" action="/user/login" class="woocommerce-form woocommerce-form-login login">
                                                     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
