@@ -39,6 +39,11 @@
                                             {{/if}}
                                             <form method="post" action="/user/register" class="woocommerce-form woocommerce-form-register register">
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                    <label for="reg_email">Name</label>
+                                                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_email"
+                                                        autocomplete="email" value="{{#if username}}{{username}}{{/if}}" />
+                                                </p>
+                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="reg_email">Email address </label>
                                                     <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="{{#if email}}{{email}}{{/if}}" />
                                                 </p>
@@ -51,6 +56,11 @@
                                                     <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password2" id="reg_password"
                                                         autocomplete="new-password" />
                                                 </p>
+                                                {{#if passwordLengthError}}
+                                                    <span style="color:#085743">
+                                                        {{passwordLengthError}}
+                                                    </span>
+                                                {{/if}}
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" hidden name="isAdmin" value="false"/>
                                                 </p>

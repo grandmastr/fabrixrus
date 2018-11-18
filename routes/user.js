@@ -75,25 +75,34 @@ router.get('/register', (req, res, next) => {
 });
 
 router.post('/register', (req, res) => {
+    let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
     let password2 = req.body.password;
 
     //form validation
+    req.checkBody('username', 'Name field is required').notEmpty();
     req.checkBody('email', 'Email field is required').notEmpty();
     req.checkBody('email', 'Please enter a valid email').isEmail();
     req.checkBody('password', 'Password is required').notEmpty();
     req.checkBody('password2', 'Passwords don\'t match').equals(password2);
 
+
     //checking for errors
+    let passwordLengthError = [];
+    if(req.body.password < 4) {
+        passwordLengthError.push('Your password should be 4 characters or more');
+    } 
     let errors = req.validationErrors();
-    if (errors) {
+    if (errors || passwordLengthError.length > 0) {
         res.render('user/signup', {
-            errors: errors,
+            errors,
             title: 'Register',
-            email: email,
-            password: password,
-            password2: password2
+            username,
+            email,
+            password,
+            password2,
+            passwordLengthError,
         });
     } else {
         User.getUserByEmail(email, (err, itExists) => {
@@ -104,12 +113,14 @@ router.post('/register', (req, res) => {
                 res.render('user/signup', {
                     emailExists: emailExistsError,
                     title: 'Register',
+                    username: username,
                     email: email,
                     password: password,
                     password2: password2
                 });
             } else {
                 let newUser = new User({
+                    name: username,
                     email: email,
                     isAdmin: 'user',
                     password: password
