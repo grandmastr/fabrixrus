@@ -146,7 +146,7 @@ app.post('/user/login', passport.authenticate('local', {
     if(req.user.isAdmin === true ) {
         res.redirect(302,'/contact');
     }
-    res.redirect(302,'/')
+    res.redirect(302,'/');
 });
 
 app.get('/logout',(req,res) => {
@@ -217,6 +217,7 @@ app.post('/user/register', (req,res) => {
             } else {
                 let newUser = new User({
                     email: email,
+                    isAdmin: 'user',
                     password: password
                 });
 
@@ -237,6 +238,72 @@ app.get('/products', (req,res) => {
     res.render('products',{
         title: 'Products'
     });
+});
+
+app.get('/admin/login',(req,res) => {
+    res.render('admin/login', {
+        title: 'Admin Login'
+    });
+});
+
+app.get('/admin/register', (req, res) => {
+    res.render('admin/register', {
+        title: 'Admin Register'
+    });
+});
+
+app.post('/admin/register',(req,res) => {
+    let email = req.body.email;
+    let password = req.body.password;
+    let password2 = req.body.password;
+
+    //form validation
+    req.checkBody('email', 'Email field is required').notEmpty();
+    req.checkBody('email', 'Please enter a valid email').isEmail();
+    req.checkBody('password', 'Password is required').notEmpty();
+    req.checkBody('password2', 'Passwords don\'t match').equals(password2);
+
+    //checking for errors
+    let errors = req.validationErrors();
+    if (errors) {
+        res.render('admin/register', {
+            errors: errors,
+            title: 'Admin Register',
+            email: email,
+            password: password,
+            password2: password2
+        });
+    } else {
+        User.getUserByEmail(email, (err, itExists) => {
+            if (err) throw err;
+            if (itExists) {
+                console.log('Email already exists');
+                let emailExistsError = "Email already exists";
+                res.render('admin/register', {
+                    emailExists: emailExistsError,
+                    title: 'Admin Register',
+                    email: email,
+                    password: password,
+                    password2: password2
+                });
+            } else {
+                let newUser = new User({
+                    email: email,
+                    isAdmin: 'admin',
+                    password: password
+                });
+
+                //create user
+                User.createUser(newUser, (err, user) => {
+                    if (err) throw err;
+                    console.log(user);
+                });
+                req.flash('success', 'You are registered');
+                res.location('/');
+                res.redirect(302, '/contact');
+            }
+        });
+    }    
 });
 
 //custom 404 page
