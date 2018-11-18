@@ -276,4 +276,14 @@ body{
 .callbacks_here a:after {
 	background: $primaryColor;
 }
+.admin-border{
+	border: 2px solid $primaryColor !important;
+	border-radius: px;
+}
+button.woocommerce-Button.button{
+	color:white !important;
+	&:hover{
+		color:whitesmoke !important;
+	}
+}
 /*-- //slider --*/

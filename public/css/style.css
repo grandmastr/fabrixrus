@@ -236,6 +236,15 @@ body {
 .callbacks_here a:after {
   background: #76cfb9; }
 
+.admin-border {
+  border: 2px solid #76cfb9 !important;
+  border-radius: px; }
+
+button.woocommerce-Button.button {
+  color: white !important; }
+  button.woocommerce-Button.button:hover {
+    color: whitesmoke !important; }
+
 /*-- //slider --*/
 
 /*# sourceMappingURL=style.css.map */

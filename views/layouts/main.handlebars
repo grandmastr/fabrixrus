@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Fabrixrus - {{title}} </title>
+    <title>Fabrixrus {{#if title}} - {{title}} {{/if}} </title>
     <style>
         .wishlist_table .add_to_cart, a.add_to_wishlist.button.alt {
             border-radius: 16px;
@@ -387,6 +387,8 @@
 <body class="home page-template page-template-page-templates page-template-front-page page-template-page-templatesfront-page-php page page-id-9719 mmm mega_main_menu-2-1-6 woocommerce-no-js wpb-js-composer js-comp-ver-5.5.4 vc_responsive">
 {{> header }}
 {{{ body }}}
-{{> footer }}
+{{#unless isAdmin}}
+    {{> footer }}
+{{/unless}}
 </body>
 </html>

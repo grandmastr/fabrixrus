@@ -10,8 +10,7 @@ const express = require('express')
 ,expressValidator = require('express-validator')
 ,passport = require('passport')
 ,LocalStrategy = require('passport-local').Strategy
-,multer = require('multer')
-,bcrypt = require('bcrypt');
+,multer = require('multer');
 
 
 app.disable('x-powered-by');
@@ -38,9 +37,12 @@ app.use(expressValidator({
     }
 }));
 
+
+
 //models
 const Product = require('./models/product');
 const User = require('./models/user');
+
 passport.serializeUser((user,done) => {
     done(null,user.id);
 });
@@ -75,6 +77,7 @@ app.use(passport.session());
 app.use(express.static(path));
 app.use('/user',express.static(path));
 app.use('/product',express.static(path));
+app.use('/admin',express.static(path));
 app.set('port', process.env.PORT || 4000);
 
 
@@ -93,6 +96,14 @@ const ensureAuth = (req, res, next) => {
         res.redirect(302, '/user/login');
     }
 }
+
+app.get('*', (req, res,next) => {
+    res.locals.user = req.user || null;
+    next();
+});
+
+
+// app.post('/admin/login',)
 
 app.get('/', ensureAuth, (req,res) => {
     Product.find((err,data) => {
@@ -132,11 +143,15 @@ app.post('/user/login', passport.authenticate('local', {
 }), (req, res) => {
     console.log('Authentication Successful');
     req.flash('Success', 'You are successfully logged in');
-    res.redirect(302, '/');
+    if(req.user.isAdmin === true ) {
+        res.redirect(302,'/contact');
+    }
+    res.redirect(302,'/')
 });
 
 app.get('/logout',(req,res) => {
-    req.logout;
+    req.logout();
+    console.log('You are logged out')
     req.flash('LoggedOut','You are logged out');
     res.redirect(302,'/user/login');
 });

@@ -4,54 +4,62 @@
             <div class="header">
                 <div class="header-content">
                     <p>
-                        <div class="vc_row wpb_row vc_row-fluid top-bar wrapper-padding vc_custom_1537341045708 vc_row-has-fill">
-                            <div class="row-container">
-                                <div class="wpb_column vc_column_container vc_col-sm-8">
-                                    <div class="vc_column-inner">
-                                        <div class="wpb_wrapper">
-                                            <div class="wpb_text_column wpb_content_element  header-phone">
+                        {{#unless isAdmin}}
+                            <div class="vc_row wpb_row vc_row-fluid top-bar wrapper-padding vc_custom_1537341045708 vc_row-has-fill">
+                                <div class="row-container">
+                                    <div class="wpb_column vc_column_container vc_col-sm-8">
+                                        <div class="vc_column-inner">
+                                            <div class="wpb_wrapper">
+                                                <div class="wpb_text_column wpb_content_element  header-phone">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="language-area wpb_column vc_column_container vc_col-sm-4">
-                                    <div class="vc_column-inner">
-                                        <div class="wpb_wrapper">
-                                            <div class="vc_wp_custommenu wpb_content_element currency switcher">
-                                                <div class="widget widget_nav_menu">
-                                                    <div class="menu-currency-container">
-                                                        <ul id="menu-currency" class="menu">
-                                                        </ul>
+                                    <div class="language-area wpb_column vc_column_container vc_col-sm-4">
+                                        <div class="vc_column-inner">
+                                            <div class="wpb_wrapper">
+                                                <div class="vc_wp_custommenu wpb_content_element currency switcher">
+                                                    <div class="widget widget_nav_menu">
+                                                        <div class="menu-currency-container">
+                                                            <ul id="menu-currency" class="menu">
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="vc_wp_custommenu wpb_content_element language switcher">
-                                                <div class="widget widget_nav_menu">
-                                                    <div class="menu-language-container">
-                                                        <ul id="menu-cart" class="menu">
-                                                            <li id="menu-item-9253" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children first menu-item-9253">
-                                                                <a href="#">Cart</a>
-                                                            </li>
-                                                        </ul>
+                                                <div class="vc_wp_custommenu wpb_content_element language switcher">
+                                                    <div class="widget widget_nav_menu">
+                                                        <div class="menu-language-container">
+                                                            <ul id="menu-cart" class="menu">
+                                                                <li id="menu-item-9253" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children first menu-item-9253">
+                                                                    <a href="#">Cart</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="vc_wp_custommenu wpb_content_element account switcher">
-                                                <div class="widget widget_nav_menu">
-                                                    <div class="menu-account-menu-container">
-                                                        <ul id="menu-account-menu" class="menu">
-                                                            <li id="menu-item-9478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children first menu-item-9478"><a
-                                                                    href="#">My Account</a>
-                                                                <ul class="sub-menu">
-                                                                    <li id="menu-item-9245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9245">
-                                                                        <a href="/checkout">Checkout</a>
-                                                                    </li>
-                                                                    <li id="menu-item-9702" class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-9702">
-                                                                        <a href="/user/login">Log In</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
+                                                <div class="vc_wp_custommenu wpb_content_element account switcher">
+                                                    <div class="widget widget_nav_menu">
+                                                        <div class="menu-account-menu-container">
+                                                            <ul id="menu-account-menu" class="menu">
+                                                                <li id="menu-item-9478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children first menu-item-9478"><a
+                                                                        href="#">My Account</a>
+                                                                    <ul class="sub-menu">
+                                                                        <li id="menu-item-9245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9245">
+                                                                            <a href="/checkout">Checkout</a>
+                                                                        </li>
+                                                                        {{#if user}}
+                                                                        <li id="menu-item-9702" class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-9702">
+                                                                            <a href="/logout">Logout</a>
+                                                                        </li>
+                                                                        {{else}}
+                                                                        <li id="menu-item-9702" class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-9702">
+                                                                            <a href="/user/login">Log In</a>
+                                                                        </li>
+                                                                        {{/if}}
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -59,7 +67,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {{/unless}}
                         <div class="vc_row wpb_row vc_row-fluid header-middle wrapper-padding vc_custom_1531900215718">
                             <div class="row-container">
                                 <div class="wpb_column vc_column_container vc_col-sm-2">
@@ -118,41 +126,37 @@
                                                                                 </span><!-- class="mobile_button" -->
                                                                             </span><!-- /class="mobile_toggle" -->
                                                                         </span><!-- /class="nav_logo" -->
-                                                                        <ul id="main_ul-primary" class="mega_main_menu_ul">
-                                                                            <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if home}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
-                                                                                <a href="/" class="item_link  disable_icon"
-                                                                                    tabindex="1">
-                                                                                    <i class=""></i>
-                                                                                    <span class="link_content">
-                                                                                        <span class="link_text">
-                                                                                            Home
+                                                                        {{#unless isAdmin}}
+                                                                            <ul id="main_ul-primary" class="mega_main_menu_ul">
+                                                                                <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if home}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
+                                                                                    <a href="/" class="item_link  disable_icon" tabindex="1">
+                                                                                        <i class=""></i>
+                                                                                        <span class="link_content">
+                                                                                            <span class="link_text">
+                                                                                                Home
+                                                                                            </span>
                                                                                         </span>
-                                                                                    </span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="menu-item menu-item-type-post_type menu-item-object-page {{#if contact}} current-menu-item {{/if}} last menu-item-9339 default_dropdown default_style drop_to_right submenu_default_width columns1">
-                                                                                <a href="/contact" class="item_link  disable_icon"
-                                                                                    tabindex="43">
-                                                                                    <i class=""></i>
-                                                                                    <span class="link_content">
-                                                                                        <span class="link_text">
-                                                                                            Contact Us
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page {{#if contact}} current-menu-item {{/if}} last menu-item-9339 default_dropdown default_style drop_to_right submenu_default_width columns1">
+                                                                                    <a href="/contact" class="item_link  disable_icon" tabindex="43">
+                                                                                        <i class=""></i>
+                                                                                        <span class="link_content">
+                                                                                            <span class="link_text">
+                                                                                                Contact Us
+                                                                                            </span>
                                                                                         </span>
-                                                                                    </span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="nav_search_box">
-                                                                                <form method="get" class="mega_main_menu_searchform"
-                                                                                    action="">
-                                                                                    <input type="text" class="field"
-                                                                                        name="s" id="s" />
-                                                                                    <i class="im-icon-search-3 icosearch"></i>
-                                                                                    <input type="submit" class="submit"
-                                                                                        name="submit" id="searchsubmit"
-                                                                                        value="Search" />
-                                                                                </form>
-                                                                            </li><!-- class="nav_search_box" -->
-                                                                        </ul>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="nav_search_box">
+                                                                                    <form method="get" class="mega_main_menu_searchform" action="">
+                                                                                        <input type="text" class="field" name="s" id="s" />
+                                                                                        <i class="im-icon-search-3 icosearch"></i>
+                                                                                        <input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
+                                                                                    </form>
+                                                                                </li><!-- class="nav_search_box" -->
+                                                                            </ul>
+                                                                        {{/unless}}
                                                                     </div><!-- /class="menu_inner" -->
                                                                 </div><!-- /class="menu_holder" -->
                                                             </div><!-- /id="mega_main_menu" -->
@@ -190,15 +194,16 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="widget woocommerce widget_product_search">
-                                                        <h2 class="widgettitle">Search</h2>
-                                                        <form role="search" method="get" id="searchform" action="">
-                                                            <div class="form-input"><input type="text" value="Search product..."
-                                                                    name="s" id="ws" placeholder="Search product..." /><button
-                                                                    class="btn btn-primary" type="submit" id="wsearchsubmit">search</button><input
-                                                                    type="hidden" name="post_type" value="product" /></div>
-                                                        </form>
-                                                    </div>
+                                                    {{#unless isAdmin}}
+                                                        <div class="widget woocommerce widget_product_search">
+                                                            <h2 class="widgettitle">Search</h2>
+                                                            <form role="search" method="get" id="searchform" action="">
+                                                                <div class="form-input"><input type="text" value="Search product..." name="s" id="ws" placeholder="Search product..." /><button
+                                                                        class="btn btn-primary" type="submit" id="wsearchsubmit">search</button><input type="hidden" name="post_type"
+                                                                        value="product" /></div>
+                                                            </form>
+                                                        </div>
+                                                    {{/unless}}
                                                 </div>
                                             </div>
                                         </div>
