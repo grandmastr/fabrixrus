@@ -78,31 +78,31 @@ router.post('/register', (req, res) => {
     let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
-    let password2 = req.body.password;
+    let password2 = req.body.password2;
 
     //form validation
-    req.checkBody('username', 'Name field is required').notEmpty();
+    req.checkBody('username', 'Good one but the name field is required').notEmpty();
     req.checkBody('email', 'Email field is required').notEmpty();
-    req.checkBody('email', 'Please enter a valid email').isEmail();
+    req.checkBody('email', 'I think you should try entering a correct email this time').isEmail();
     req.checkBody('password', 'Password is required').notEmpty();
-    req.checkBody('password2', 'Passwords don\'t match').equals(password2);
+    req.checkBody('password2', 'The password you tried to confirm does\'nt match').equals(password);
 
 
     //checking for errors
     let passwordLengthError = [];
-    if(req.body.password < 4) {
-        passwordLengthError.push('Your password should be 4 characters or more');
+    if(password.length < 4 ) {
+        passwordLengthError.push('Hey, your password should be at least 4 characters');
     } 
     let errors = req.validationErrors();
-    if (errors || passwordLengthError.length > 0) {
+    if (errors) {
         res.render('user/signup', {
-            errors,
+            errors: errors,
             title: 'Register',
-            username,
-            email,
-            password,
-            password2,
-            passwordLengthError,
+            username: username,
+            email: email,
+            password: password,
+            password2: password2,
+            passwordLengthError: passwordLengthError
         });
     } else {
         User.getUserByEmail(email, (err, itExists) => {

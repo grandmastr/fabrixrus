@@ -26,7 +26,7 @@
                                             {{#if errors}}
                                                 <ul class="errors">
                                                     {{#each errors}}
-                                                        <li class="alert alert-danger">
+                                                        <li class="alert alert-warning">
                                                             {{ this.msg }}
                                                         </li>
                                                     {{/each}}
@@ -89,11 +89,7 @@
     c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
     document.body.className = c;
 </script>
-<script type="text/template" id="tmpl-variation-template">
-    <div class="woocommerce-variation-description">{{{ data.variation.variation_description }}}</div>
-    <div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
-    <div class="woocommerce-variation-availability">{{{ data.variation.availability_html }}}</div>
-</script>
+
 <script type="text/template" id="tmpl-unavailable-variation-template">
     <p>Sorry, this product is unavailable. Please choose a different combination.</p>
 </script>

@@ -21,6 +21,11 @@
                                     <div class="woocommerce">
                                         <div class="u-columns col2-set" id="customer_login">
                                             <div class="u-column1 col-md-6 col-lg-6 col-xs-12 col-sm-12" style="margin:auto;">
+                                                {{#if error}}
+                                                    <div class="alert alert-danger">
+                                                        {{error}}
+                                                    </div>
+                                                {{/if}}
                                                 {{#if loggedOut}}
                                                     {{loggedOut}}
                                                 {{/if}}
