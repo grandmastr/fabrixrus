@@ -52,9 +52,9 @@ const Product = require('./models/product');
 
 app.use(express.static(path));
 app.use('/user',express.static(path));
-app.use('/product',express.static(path));
+app.use('/products',express.static(path));
 app.use('/admin',express.static(path));
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8082);
 
 
 //handling file uploads
@@ -100,13 +100,13 @@ app.get('/contact', (req,res) => {
     });
 });
 
-app.get('/products', (req, res) => {
+app.get('/products/store', (req, res) => {
     Product.find((err, data) => {
         let productNumber = 0;
         for (let datum of data) {
             productNumber++;
         }
-        res.render('products/single', {
+        res.render('products/product_list', {
             products: data,
             productsTotal: productNumber,
             title: 'Product',
@@ -115,18 +115,8 @@ app.get('/products', (req, res) => {
     }, err => { console.warn(`The following error occurred: ${err}`); })
 });
 
-app.get('/product/single', (req,res) => {
-    // Product.find((err,data) => {
-    //     let productNumber = 0;
-    //     for (let datum of data) {
-    //         productNumber ++;
-    //     }
-    //     res.render('products/single', {
-    //         products: data,
-    //         productsTotal: productNumber,
-    //         title: 'Product'
-    //     });
-    // }, err => { console.warn(`The following error occurred: ${err}`); })
+app.get('/products/single', (req,res) => {
+    res.render('products/product_detail');
 });
 
 
