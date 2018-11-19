@@ -75,7 +75,7 @@ app.get('*', (req, res, next) => {
 // app.post('/admin/login',)
 require('./helpers/auth');
 
-app.get('/',ensureAuth, (req,res) => {
+app.get('/', (req,res) => {
     Product.find((err,data) => {
         let sliderProducts = [];
         let desiredNumber = 8;
