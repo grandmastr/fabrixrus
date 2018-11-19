@@ -250,6 +250,9 @@ button.woocommerce-Button.button {
   width: 90% !important;
   margin-bottom: 20px; }
 
+.show-more {
+  height: 40px !important; }
+
 /*-- //slider --*/
 
 /*# sourceMappingURL=style.css.map */

@@ -100,6 +100,12 @@ app.get('/contact', (req,res) => {
     });
 });
 
+app.get('/cart',(req,res) => {
+    res.render('products/cart', {
+        shop: 'shop'
+    });
+})
+
 app.get('/products/store', (req, res) => {
     Product.find((err, data) => {
         let productNumber = 0;

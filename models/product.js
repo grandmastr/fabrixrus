@@ -18,18 +18,18 @@ let schema = new Schema({
         type: String,
         required: true 
     },
-    imagePath1: {
+    imagePath: {
         type: String,
         required: true
     },
-    imagePath2: {
-        type: String,
-        required: true
-    },
-    imagePath3: {
-        type: String,
-        required: true
-    }
+    // imagePath2: {
+    //     type: String,
+    //     required: true
+    // },
+    // imagePath3: {
+    //     type: String,
+    //     required: true
+    // }
 });
 let Product = module.exports = mongoose.model('Product', schema);
 module.exports.postProduct = (product,callback) => {
