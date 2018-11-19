@@ -121,7 +121,8 @@ app.get('/products/store', (req, res) => {
     }, err => { console.warn(`The following error occurred: ${err}`); })
 });
 
-app.get('/products/single', (req,res) => {
+
+app.get('/products/single/:id', (req,res) => {
     res.render('products/product_detail');
 });
 
