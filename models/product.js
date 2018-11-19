@@ -17,6 +17,10 @@ let schema = new Schema({
     price: {
         type: Number,
         required: true
+    },
+    color: {
+        type: String,
+        required: true 
     }
 });
 module.exports = mongoose.model('Product', schema);
