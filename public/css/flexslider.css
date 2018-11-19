@@ -147,8 +147,8 @@ html[xmlns] .flexslider .slides {
   *display: inline;
 }
 .flex-control-paging li a {
-  width: 11px;
-  height: 11px;
+  width: 5px;
+  height: 5px;
   display: block;
   background:#76cfb9;
   background: #76cfb9;

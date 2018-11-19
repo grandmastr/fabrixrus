@@ -198,8 +198,8 @@ body {
 .callbacks_tabs {
   list-style: none;
   position: absolute;
-  bottom: 10%;
-  left: 44%;
+  bottom: 8%;
+  right: 10%;
   padding: 0;
   margin: 0;
   display: block;
@@ -222,8 +222,8 @@ body {
   font-family: FontAwesome;
   visibility: visible;
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
   display: inline-block;
   background: none;
   border-radius: 50%;
@@ -244,6 +244,10 @@ button.woocommerce-Button.button {
   color: white !important; }
   button.woocommerce-Button.button:hover {
     color: whitesmoke !important; }
+
+.grid-product {
+  width: 90% !important;
+  margin-bottom: 20px; }
 
 /*-- //slider --*/
 

@@ -76,13 +76,13 @@ app.get('*', (req, res, next) => {
 require('./helpers/auth');
 
 app.get('/', (req,res) => {
-    Product.find((err,data) => {
-        let sliderProducts = [];
+    Product.find((err,products) => {
+        let partProducts = [];
         let desiredNumber = 8;
         for (let i = 0; i < desiredNumber; i++) {
-            sliderProducts.push(data[i]);
+            partProducts.push(products[i]);
         }
-        res.render('home',{ title: 'Home', products: data, home:'home' });
+        res.render('home',{ title: 'Home', partProducts: partProducts, home:'home' });
     }, err => { console.warn(`The following error occurred: ${err}`); })
 });
 

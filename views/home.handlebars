@@ -134,7 +134,7 @@
                                                     <p>Consequat magna massa vel suspendisse morbi aliquam faucibus ligula ante ipsum ac nulla.</p>
                                                 </div>
                                             </div>
-                                            <div class="recent_products slide style_4">
+                                            {{!-- <div class="recent_products slide style_4">
                                                 <div class="woocommerce columns-1 ">
                                                     <div class="shop-products products row grid-view sidebar">
                                                         {{#each products }}
@@ -218,84 +218,97 @@
                                                         {{/each}}
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="latest_products">
-                                                <div class="item-col col-12 col-full-hd col-md-12 post-9496 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
-                                                    <div class="product-wrapper gridview">
-                                                        <div class="list-col4">
-                                                            <div class="product-image">
-                                                                <a href="product/aesthetica-5-piece-brow/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                                    <img width="300" height="353" src="{{ this.imagePath }}" class="min-height-set primary_image wp-post-image"
-                                                                        alt="" srcset="{{ this.imagePath }} 300w, {{ this.imagePath }}, {{ this.imagePath }} 100w, {{ this.imagePath }} 510w"
-                                                                        sizes="(max-width: 300px) 100vw, 300px" /> <span class="shadow"></span>
-                                                                </a> </div>
-                                                        </div>
-                                                        <div class="list-col8">
-                                                            <div class="product-inner">
-                                                                <!--<div class="tag-cate">-->
-                                                                <!--<a href="product-category/clothings/index.html" rel="tag">Clothings</a>,-->
-                                                                <!--<a href="product-category/men/index.html" rel="tag">Men</a>-->
-                                                                <!--</div>-->
-                                                                <h2 class="product-name">
-                                                                    <a href="product/aesthetica-5-piece-brow/index.html">
-                                                                        {{ this.title }} <br> {{ this.description }}
-                                                                    </a>
-                                                                </h2>
-                                                                <div class="box-rating">
-                                                                    <div class="price-box">
-                                                                        <span class="woocommerce-Price-amount amount">
-                                                                            <span class="woocommerce-Price-currencySymbol">&#36;
-                                                                                {{ this.price }}
-                                                                            </span>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus
-                                                                    vit</div>
-                                                                <div class="count-down">
-                                                                </div>
-                                                                <div class="box-hover">
-                                                                    <div class="actions clearfix">
-                                                                        <ul class="add-to-links">
-                                                                            <li class="add-to-cart">
-                                                                                <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-                                                                                    <span class="woocommerce-Price-amount amount">
-                                                                                        <span class="woocommerce-Price-currencySymbol">&#36;</span>79.00
-                                                                                    </span>
-                                                                                    <a href="index937c.html?add-to-cart=9496" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart"
-                                                                                        data-product_id="9496" data-product_sku="" aria-label="Add &ldquo;Aesthetica 5-Piece Brow&rdquo; to your cart"
-                                                                                        rel="nofollow"> Buy Now</a></p>
-                                                                            </li>
-                                                                            <li>
-                                                                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-9496">
-                                                                                    <div class="yith-wcwl-add-button show" style="display:block">
-                                                                                        <a href="496" rel="nofollow" data-product-id="9496" data-product-type="simple"
-                                                                                            class="add_to_wishlist">
-                                                                                            Add to Cart</a>
+                                            </div> --}}
+                                            <br>
+                                            <div class="recent_products style_4">
+                                                <div class="woocommerce columns-1 ">
+                                                    <div class="shop-products products row grid-view sidebar">
+                                                        <div class="container-fluid">
+                                                            <div class="row">
+                                                                {{#each partProducts }}
+                                                                <div class="item-col col-12 col-full-hd col-sm-12 col-xs-12 col-lg-3 col-md-3 post-9496 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
+                                                                    <div class="grid-product">
+                                                                        <div class="product-wrapper gridview">
+                                                                            <div class="list-col4">
+                                                                                <div class="product-image">
+                                                                                    <a href="product/aesthetica-5-piece-brow/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                                                                        <img width="300" height="353" src="{{ this.imagePath }}" class="min-height-set primary_image wp-post-image"
+                                                                                            alt="" srcset="{{ this.imagePath }} 300w, {{ this.imagePath }}, {{ this.imagePath }} 100w, {{ this.imagePath }} 510w"
+                                                                                            sizes="(max-width: 300px) 100vw, 300px" /> <span class="shadow"></span>
+                                                                                    </a> </div>
+                                                                            </div>
+                                                                            <div class="list-col8">
+                                                                                <div class="product-inner">
+                                                                                    <!--<div class="tag-cate">-->
+                                                                                    <!--<a href="product-category/clothings/index.html" rel="tag">Clothings</a>,-->
+                                                                                    <!--<a href="product-category/men/index.html" rel="tag">Men</a>-->
+                                                                                    <!--</div>-->
+                                                                                    <h2 class="product-name">
+                                                                                        <a href="product/aesthetica-5-piece-brow/index.html">
+                                                                                            {{ this.title }} <br> {{ this.description }}
+                                                                                        </a>
+                                                                                    </h2>
+                                                                                    <div class="box-rating">
+                                                                                        <div class="price-box">
+                                                                                            <span class="woocommerce-Price-amount amount">
+                                                                                                <span class="woocommerce-Price-currencySymbol">&#36;
+                                                                                                    {{ this.price }}
+                                                                                                </span>
+                                                                                            </span>
+                                                                                        </div>
                                                                                     </div>
-                                                
-                                                                                    <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                                        <span class="feedback">Product added!</span>
-                                                                                        <a href="wishlist/index.html" rel="nofollow">
-                                                                                            Browse Wishlist </a>
+                                                                                    <div class="product-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                                                                                        posuere metus vit</div>
+                                                                                    <div class="count-down">
                                                                                     </div>
-                                                
-                                                                                    <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                                        <span class="feedback">The product is already in the wishlist!</span>
-                                                                                        <a href="wishlist/index.html" rel="nofollow">
-                                                                                            Browse Wishlist </a>
+                                                                                    <div class="box-hover">
+                                                                                        <div class="actions clearfix">
+                                                                                            <ul class="add-to-links">
+                                                                                                <li class="add-to-cart">
+                                                                                                    <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
+                                                                                                        <span class="woocommerce-Price-amount amount">
+                                                                                                            <span class="woocommerce-Price-currencySymbol">&#36;</span>79.00
+                                                                                                        </span>
+                                                                                                        <a href="index937c.html?add-to-cart=9496" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart"
+                                                                                                            data-product_id="9496" data-product_sku="" aria-label="Add &ldquo;Aesthetica 5-Piece Brow&rdquo; to your cart"
+                                                                                                            rel="nofollow"> Buy Now</a></p>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-9496">
+                                                                                                        <div class="yith-wcwl-add-button show" style="display:block">
+                                                                                                            <a href="496" rel="nofollow" data-product-id="9496" data-product-type="simple"
+                                                                                                                class="add_to_wishlist">
+                                                                                                                Add to Cart</a>
+                                                                                                        </div>
+                                                                        
+                                                                                                        <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
+                                                                                                            <span class="feedback">Product added!</span>
+                                                                                                            <a href="wishlist/index.html" rel="nofollow">
+                                                                                                                Browse Wishlist </a>
+                                                                                                        </div>
+                                                                        
+                                                                                                        <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
+                                                                                                            <span class="feedback">The product is already in the wishlist!</span>
+                                                                                                            <a href="wishlist/index.html" rel="nofollow">
+                                                                                                                Browse Wishlist </a>
+                                                                                                        </div>
+                                                                                                        <div style="clear:both"></div>
+                                                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
+                                                                                                    </div>
+                                                                                                    <div class="clear"></div>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <div style="clear:both"></div>
-                                                                                    <div class="yith-wcwl-wishlistaddresponse"></div>
                                                                                 </div>
-                                                                                <div class="clear"></div>
-                                                                            </li>
-                                                                        </ul>
+                                                                            </div>
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+                                                                {{/each}}
                                                             </div>
                                                         </div>
-                                                        <div class="clearfix"></div>
                                                     </div>
                                                 </div>
                                             </div>
