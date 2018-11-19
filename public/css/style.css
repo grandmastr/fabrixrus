@@ -12,11 +12,12 @@ body {
     border-radius: 3px; }
   body::-webkit-scrollbar-thumb:hover {
     background: #76cfb9; }
-  body::selection {
-    color: #fff !important;
-    background: #76cfb9 !important; }
   body a {
     text-decoration: none !important; }
+
+::selection {
+  color: #fff !important;
+  background: #76cfb9 !important; }
 
 .wpb_wrapper > .image > a > img {
   max-height: 270px !important; }

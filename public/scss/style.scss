@@ -15,14 +15,14 @@ body{
     }
     &::-webkit-scrollbar-thumb:hover {
         background: $primaryColor; }
-    &::selection{
-        color:#fff !important;
-        background: $primaryColor !important;
-    }
     a{
         text-decoration: none !important;
     }
     overflow-x: hidden !important;
+}
+::selection{
+	color:#fff !important;
+    background: $primaryColor !important;
 }
 .wpb_wrapper > .image > a > img{
     max-height: 270px !important;

@@ -54,7 +54,7 @@ app.use(express.static(path));
 app.use('/user',express.static(path));
 app.use('/product',express.static(path));
 app.use('/admin',express.static(path));
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 8080);
 
 
 //handling file uploads
