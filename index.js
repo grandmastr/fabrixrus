@@ -50,9 +50,6 @@ app.use('/admin',admin);
 //models
 const Product = require('./models/product');
 
-
-
-
 app.use(express.static(path));
 app.use('/user',express.static(path));
 app.use('/product',express.static(path));
