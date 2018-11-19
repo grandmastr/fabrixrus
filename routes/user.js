@@ -4,8 +4,7 @@ const express = require('express')
     , LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 
-router.use(passport.initialize());
-router.use(passport.session());
+
 
 passport.serializeUser((user, done) => {
     done(null, user.id);

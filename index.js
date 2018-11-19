@@ -7,8 +7,10 @@ const express = require('express')
 ,bodyParser = require('body-parser')
 ,path = `${__dirname}/public`
 ,flash = require('connect-flash')
+,passport = require('passport')
 ,expressValidator = require('express-validator')
-,multer = require('multer');
+,multer = require('multer')
+,{ ensureAuth } = require('./helpers/auth');
 
 
 app.disable('x-powered-by');
@@ -17,6 +19,8 @@ app.set('view engine','handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({ secret: 'fabrixrusonline', resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 //express validator
 app.use(expressValidator({
@@ -29,8 +33,8 @@ app.use(expressValidator({
         }
         return {
             param: formParam,
-            msg,
-            value
+            msg:msg,
+            value:value
         }
     }
 }));
@@ -64,23 +68,17 @@ mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true },err =
     console.log('Connected to FabrixRus');
 });
 
-const ensureAuth = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        return next();
-    } else {
-        res.redirect(302, '/user/login');
-    }
-}
-
-app.get('*', (req, res,next) => {
+app.get('*', (req, res, next) => {
     res.locals.user = req.user || null;
     next();
 });
 
 
-// app.post('/admin/login',)
 
-app.get('/', ensureAuth, (req,res) => {
+// app.post('/admin/login',)
+require('./helpers/auth');
+
+app.get('/',ensureAuth, (req,res) => {
     Product.find((err,data) => {
         let sliderProducts = [];
         let desiredNumber = 8;
