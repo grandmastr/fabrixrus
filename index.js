@@ -101,23 +101,32 @@ app.get('/contact', (req,res) => {
 });
 
 app.get('/products', (req, res) => {
-    res.render('products', {
-        title: 'Products'
-    });
-});
-
-app.get('/product/single', (req,res) => {
-    Product.find((err,data) => {
+    Product.find((err, data) => {
         let productNumber = 0;
         for (let datum of data) {
-            productNumber ++;
+            productNumber++;
         }
         res.render('products/single', {
             products: data,
             productsTotal: productNumber,
-            title: 'Product'
+            title: 'Product',
+            shop: 'shop'
         });
     }, err => { console.warn(`The following error occurred: ${err}`); })
+});
+
+app.get('/product/single', (req,res) => {
+    // Product.find((err,data) => {
+    //     let productNumber = 0;
+    //     for (let datum of data) {
+    //         productNumber ++;
+    //     }
+    //     res.render('products/single', {
+    //         products: data,
+    //         productsTotal: productNumber,
+    //         title: 'Product'
+    //     });
+    // }, err => { console.warn(`The following error occurred: ${err}`); })
 });
 
 
