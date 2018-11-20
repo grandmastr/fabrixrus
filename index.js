@@ -50,12 +50,13 @@ app.use('/admin',admin);
 //models
 const Product = require('./models/product');
 
+
 app.use(express.static(path));
 app.use('/user',express.static(path));
 app.use('/products',express.static(path));
 app.use('/admin',express.static(path));
 app.use('/admin/edit', express.static(path));
-app.set('port', process.env.PORT || 8082);
+app.set('port', process.env.PORT || 8084);
 
 
 //handling file uploads

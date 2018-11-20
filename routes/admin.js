@@ -48,12 +48,13 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local', {
     failureRedirect: '/products', failureFlash: "Invalid Username and/or password"
 }), (req, res) => {
-    console.log('Admin Authentication Successful');
-    req.flash('Success', 'You are successfully logged in');
     if (req.user.isAdmin === 'admin') {
+        console.log('Admin Authentication Successful');
+        req.flash('Success', 'You are successfully logged in');
         res.redirect(302, '/admin');
     } else {
-        res.redirect(302, 'products');
+        console.log('You are not an admin')
+        res.redirect(302, '../user/login');
     }
 });
 
@@ -76,23 +77,26 @@ router.get('/edit/:id', (req,res) => {
 
 router.get('/edit-account', (req,res) => {
     res.render('admin/edit_profile');
-})
-// router.get('/admin/register', (req, res) => {
+});
+
+// router.get('/register', (req, res) => {
 //     res.render('admin/register', {
 //         title: 'Admin Register'
 //     });
 // });
 
-// router.post('/admin/register',(req,res) => {
+// router.post('/register',(req,res) => {
 //     let email = req.body.email;
+//     let name =  req.body.name;
 //     let password = req.body.password;
 //     let password2 = req.body.password;
 
 //     //form validation
 //     req.checkBody('email', 'Email field is required').notEmpty();
 //     req.checkBody('email', 'Please enter a valid email').isEmail();
+//     req.checkBody('name', 'name field is required').notEmpty();
 //     req.checkBody('password', 'Password is required').notEmpty();
-//     req.checkBody('password2', 'Passwords don\'t match').equals(password2);
+//     req.checkBody('password2', 'Passwords don\'t match').equals(password);
 
 //     //checking for errors
 //     let errors = req.validationErrors();
@@ -101,6 +105,7 @@ router.get('/edit-account', (req,res) => {
 //             errors: errors,
 //             title: 'Admin Register',
 //             email: email,
+//             name: name,
 //             password: password,
 //             password2: password2
 //         });
@@ -120,6 +125,7 @@ router.get('/edit-account', (req,res) => {
 //             } else {
 //                 let newUser = new User({
 //                     email: email,
+//                     name: name,
 //                     isAdmin: 'admin',
 //                     password: password
 //                 });
@@ -131,7 +137,7 @@ router.get('/edit-account', (req,res) => {
 //                 });
 //                 req.flash('success', 'You are registered');
 //                 res.location('/');
-//                 res.redirect(302, '/contact');
+//                 res.redirect(302, '/admin/login');
 //             }
 //         });
 //     }    
