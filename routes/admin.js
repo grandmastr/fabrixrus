@@ -51,19 +51,32 @@ router.post('/login', passport.authenticate('local', {
     console.log('Admin Authentication Successful');
     req.flash('Success', 'You are successfully logged in');
     if (req.user.isAdmin === 'admin') {
-        res.redirect(302, '/contact');
+        res.redirect(302, '/admin');
     } else {
         res.redirect(302, 'products');
     }
 });
 
 router.get('/', (req,res) => {
-    res.render('admin/dashboard')
+    res.render('admin/index', {
+        isAdminPage: 'isAdminPage',
+        dashboard: 'dashboard'
+    });
 });
+
+router.get('/dashboard', (req,res) => {
+    res.render('admin/dashboard', {
+        isAdminPage: 'isAdminPage'
+    });
+})
 
 router.get('/edit/:id', (req,res) => {
     res.render('admin/edit_product');
 });
+
+router.get('/edit-account', (req,res) => {
+    res.render('admin/edit_profile');
+})
 // router.get('/admin/register', (req, res) => {
 //     res.render('admin/register', {
 //         title: 'Admin Register'

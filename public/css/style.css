@@ -254,6 +254,15 @@ button.woocommerce-Button.button {
 .show-more {
   height: 40px !important; }
 
+.error-body {
+  text-align: center;
+  width: 70%;
+  height: 100vh;
+  margin: auto;
+  padding-top: 25%; }
+  .error-body h1 {
+    color: #76cfb9; }
+
 /*-- //slider --*/
 
 /*# sourceMappingURL=style.css.map */
