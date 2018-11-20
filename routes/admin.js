@@ -1,8 +1,9 @@
 const express = require('express')
     , router = express.Router()
     , passport = require('passport')
-    , LocalStrategy = require('passport-local').Strategy;
-const User = require('../models/user');
+    , LocalStrategy = require('passport-local').Strategy
+    , User = require('../models/user')
+    , { ensureUserIsAdmin } = require('../helpers/auth');
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -36,7 +37,8 @@ passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true
     });
 }));
 
-
+// router.get('*',(req,res) => {
+// });
 router.get('/login', (req, res) => {
     res.render('admin/login', {
         title: 'Admin Login'
@@ -55,6 +57,13 @@ router.post('/login', passport.authenticate('local', {
     }
 });
 
+router.get('/', (req,res) => {
+    res.render('admin/dashboard')
+});
+
+router.get('/edit/:id', (req,res) => {
+    res.render('admin/edit_product');
+});
 // router.get('/admin/register', (req, res) => {
 //     res.render('admin/register', {
 //         title: 'Admin Register'

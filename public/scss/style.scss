@@ -278,7 +278,8 @@ body{
 }
 .admin-border{
 	border: 2px solid $primaryColor !important;
-	border-radius: px;
+	border-radius: 3px;
+	width: 100% !important;
 }
 button.woocommerce-Button.button{
 	color:white !important;

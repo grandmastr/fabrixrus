@@ -178,7 +178,7 @@
     <meta name="generator" content="Powered by Slider Revolution 5.4.8 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
     <script type="text/javascript">function setREVStartSize(e) {
             try {
-            e.c = jQuery(e.c); var i = jQuery(window).width(), t = 9999, r = 0, n = 0, l = 0, f = 0, s = 0, h = 0;
+                e.c = jQuery(e.c); var i = jQuery(window).width(), t = 9999, r = 0, n = 0, l = 0, f = 0, s = 0, h = 0;
                 if (e.responsiveLevels && (jQuery.each(e.responsiveLevels, function (e, f) { f > i && (t = r = f, l = e), i > f && f > r && (r = f, n = e) }), t > r && (l = n)), f = e.gridheight[l] || e.gridheight[0] || e.gridheight, s = e.gridwidth[l] || e.gridwidth[0] || e.gridwidth, h = i / s, h = h > 1 ? 1 : h, f = Math.round(h * f), "fullscreen" == e.sliderLayout) { var u = (e.c.width(), jQuery(window).height()); if (void 0 != e.fullScreenOffsetContainer) { var c = e.fullScreenOffsetContainer.split(","); if (c) jQuery.each(c, function (e, i) { u = jQuery(i).length > 0 ? u - jQuery(i).outerHeight(!0) : u }), e.fullScreenOffset.split("%").length > 1 && void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 ? u -= jQuery(window).height() * parseInt(e.fullScreenOffset, 0) / 100 : void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 && (u -= parseInt(e.fullScreenOffset, 0)) } f = u } else void 0 != e.minHeight && f < e.minHeight && (f = e.minHeight); e.c.closest(".rev_slider_wrapper").css({ height: f })
             } catch (d) { console.log("Failure at Presize of Slider:" + d) }
         };</script>
@@ -257,31 +257,48 @@
 
                     <div class="row">
 
-                        <div class="col-12 col-lg-6 col-sm-12 col-xs-12 col-md-6" style="margin:auto">
+                        <div class="col-12 ">
                             <div class="page-content default-page">
 
                                 <article id="post-9" class="post-9 page type-page status-publish hentry">
 
                                     <div class="entry-content">
                                         <div class="woocommerce">
-                                            <form method="post" action="" class="woocommerce-form woocommerce-form-login login">
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="username">Title</label>
-                                                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text admin-border" name="text" id="username"
-                                                        value="" required /> </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Price</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="number" name="password"
-                                                        id="password" required />
+                                            <form method="post" style="margin:auto" class="woocommerce-ResetPassword lost_reset_password">
+                                                <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
+                                                    <label for="user_login">
+                                                        Title
+                                                    </label>
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
+                                                        type="text" name="user_login" id="user_login" autocomplete="username" />
                                                 </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Color</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="text" name="password"
-                                                        id="password" required />
+                                                <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
+                                                    <label for="user_login">
+                                                        Price
+                                                    </label>
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
+                                                        type="number" name="user_login" id="user_login" autocomplete="username" />
                                                 </p>
-                                                <p class="form-row">
-                                                    <button type="submit" class="woocommerce-Button button" name="login" value="Save Changes">Save changes</button>
+                                                <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
+                                                    <label for="user_login">
+                                                        Color
+                                                    </label>
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
+                                                        type="text" name="user_login" id="user_login" autocomplete="username" />
                                                 </p>
+                                                <div class="clear"></div>
+
+
+                                                <p class="woocommerce-form-row form-row">
+                                                    <input type="hidden" name="wc_reset_password" value="true" />
+                                                    <button type="submit" class="woocommerce-Button button" value="Reset password">
+                                                        Save Changes
+                                                    </button>
+                                                </p>
+
+                                                <input type="hidden" id="woocommerce-lost-password-nonce" name="woocommerce-lost-password-nonce"
+                                                    value="e71ad6b601" /><input type="hidden" name="_wp_http_referer"
+                                                    value="/beeta/my-account/lost-password/" />
                                             </form>
                                         </div>
                                     </div>
@@ -302,7 +319,7 @@
         document.body.className = c;
     </script>
     <script type="text/template" id="tmpl-variation-template">
-	
+
     <script type="text/template" id="tmpl-unavailable-variation-template">
 	<p>Sorry, this product is unavailable. Please choose a different combination.</p>
 </script>
