@@ -56,7 +56,7 @@ app.use('/user',express.static(path));
 app.use('/products',express.static(path));
 app.use('/admin',express.static(path));
 app.use('/admin/edit', express.static(path));
-app.set('port', process.env.PORT || 8084);
+app.set('port', process.env.PORT || 8003);
 
 
 //handling file uploads
@@ -71,8 +71,6 @@ app.get('*', (req, res, next) => {
     res.locals.user = req.user || null;
     next();
 });
-
-
 
 // app.post('/admin/login',)
 require('./helpers/auth');

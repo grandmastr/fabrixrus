@@ -8,6 +8,7 @@ let schema = new Schema({
     },
     description: {
         type: String,
+        default: '',
         required: true
     },
     price: {
@@ -18,18 +19,22 @@ let schema = new Schema({
         type: String,
         required: true 
     },
-    imagePath: {
+    imagePath1: {
         type: String,
         required: true
     },
-    // imagePath2: {
-    //     type: String,
-    //     required: true
-    // },
-    // imagePath3: {
-    //     type: String,
-    //     required: true
-    // }
+    imagePath2: {
+        type: String,
+        required: true
+    },
+    imagePath3: {
+        type: String,
+        required: true
+    },
+    datePosted: {
+        type: Date,
+        default: Date.now
+    }
 });
 let Product = module.exports = mongoose.model('Product', schema);
 module.exports.postProduct = (product,callback) => {

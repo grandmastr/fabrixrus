@@ -6,7 +6,7 @@ module.exports = {
             res.redirect(302, '/user/login');
         }
     },
-    ensureUserIsAdmin: (req,res,next) => {
+    ensureUserIsAdmin : (req,res,next) => {
         if(req.isAuthenticated() && req.user.isAdmin === 'admin') {
             return next()
         } else {

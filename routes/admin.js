@@ -37,11 +37,15 @@ passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true
     });
 }));
 
-// router.get('*',(req,res) => {
-// });
+router.get('*', (req, res, next) => {
+    res.locals.user = req.user || null;
+    next();
+});
+
 router.get('/login', (req, res) => {
     res.render('admin/login', {
-        title: 'Admin Login'
+        title: 'Admin Login',
+        isAdminPage: 'isAdminPage'
     });
 });
 
@@ -58,25 +62,39 @@ router.post('/login', passport.authenticate('local', {
     }
 });
 
-router.get('/', (req,res) => {
+router.get('/admin-logout', (req, res) => {
+    req.logout();
+    console.log('You are logged out as an admin')
+    req.flash('LoggedOut', 'You are logged out');
+    res.redirect(302, '/admin/login');
+});
+
+router.get('/', ensureUserIsAdmin, (req,res) => {
     res.render('admin/index', {
         isAdminPage: 'isAdminPage',
         dashboard: 'dashboard'
     });
 });
 
-router.get('/dashboard', (req,res) => {
+router.get('/dashboard',ensureUserIsAdmin, (req,res) => {
     res.render('admin/dashboard', {
         isAdminPage: 'isAdminPage'
     });
 })
 
-router.get('/edit/:id', (req,res) => {
+router.get('/edit/:id',ensureUserIsAdmin, (req,res) => {
     res.render('admin/edit_product');
 });
 
-router.get('/edit-account', (req,res) => {
+router.get('/edit-account',ensureUserIsAdmin, (req,res) => {
     res.render('admin/edit_profile');
+});
+
+router.get('/post', ensureUserIsAdmin, (req,res) => {
+    res.render('admin/post_product', {
+        isAdminPage: 'isAdminPage',
+        postProduct: 'postProduct'
+    });
 });
 
 // router.get('/register', (req, res) => {
