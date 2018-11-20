@@ -3,9 +3,24 @@ const express = require('express')
     , passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy
     , User = require('../models/user')
+    , path = require('path')
     , { ensureUserIsAdmin } = require('../helpers/auth')
     , multer = require('multer')
     , multerUploads = multer({ dest: 'upload/'});
+
+//importing models
+let Product = require('../models/product');
+//setting storage
+const storage = multer.diskStorage({
+    destination: './public/uploads',
+    filename: (req, file, cb) => {
+        cb(null, `${file.fieldname}-${Date.now()} ${path.extname(file.originalname)}`);
+    }
+});
+
+const upload = multer({
+    storage: storage
+}).array('pImages',3)
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -104,7 +119,18 @@ router.post('/post', (req,res) => {
     let price = req.body.price;
     let description = req.body.description;
     let color = req.body.color;
-    console.log(title + price + description + color);
+    
+    req.checkBody('title','But ma\'am the product must have a title, might I suggest *Aso-Ebi*').notEmpty();
+    req.checkBody('price','and the product also must have a price').notEmpty();
+    req.checkBody('price','and the product price must also be a number').isNumeric();
+    req.checkBody('description','The description field should not be left empty').notEmpty();
+    req.checkBody('color','People would love to know what color the clothe is').notEmpty();
+
+    let postError = req.validationErrors();
+
+    upload(req,res,err => {
+        if(err) throw err;
+    });
 });
 
 // router.get('/register', (req, res) => {
