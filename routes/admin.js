@@ -3,7 +3,9 @@ const express = require('express')
     , passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy
     , User = require('../models/user')
-    , { ensureUserIsAdmin } = require('../helpers/auth');
+    , { ensureUserIsAdmin } = require('../helpers/auth')
+    , multer = require('multer')
+    , multerUploads = multer({ dest: 'upload/'});
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -95,6 +97,14 @@ router.get('/post', ensureUserIsAdmin, (req,res) => {
         isAdminPage: 'isAdminPage',
         postProduct: 'postProduct'
     });
+});
+
+router.post('/post', (req,res) => {
+    let title = req.body.title;
+    let price = req.body.price;
+    let description = req.body.description;
+    let color = req.body.color;
+    console.log(title + price + description + color);
 });
 
 // router.get('/register', (req, res) => {
