@@ -264,11 +264,27 @@
 
                                     <div class="entry-content">
                                         <div class="woocommerce">
+                                            {{#if msg}}
+                                            <ul class="errors">
+                                                <li class="alert alert-danger">
+                                                    {{ msg }}
+                                                </li>
+                                            </ul>
+                                            {{/if}}
+                                            {{#if errors}}
+                                                <ul class="errors">
+                                                    {{#each errors}}
+                                                        <li class="alert alert-warning">
+                                                            {{ this.msg }}
+                                                        </li>
+                                                    {{/each}}
+                                                </ul>
+                                            {{/if}}
                                             <form method="post" action="/admin/post" enctype="multipart/form-data" class="woocommerce-form woocommerce-form-login login">
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="username">Title</label>
                                                     <input type="text" class="woocommerce-Input woocommerce-Input--text input-text admin-border"
-                                                        name="title" id="username" value="" required /> </p>
+                                                        name="title" id="username" required value="" /> </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="password">Price</label>
                                                     <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"

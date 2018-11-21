@@ -6,7 +6,7 @@ const express = require('express')
     , path = require('path')
     , { ensureUserIsAdmin } = require('../helpers/auth')
     , multer = require('multer')
-    , multerUploads = multer({ dest: 'upload/'});
+    , multerUploads = multer({ dest: 'uploads/'});
 
 //importing models
 let Product = require('../models/product');
@@ -14,7 +14,7 @@ let Product = require('../models/product');
 const storage = multer.diskStorage({
     destination: './public/uploads',
     filename: (req, file, cb) => {
-        cb(null, `${file.fieldname}-${Date.now()} ${path.extname(file.originalname)}`);
+        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
     }
 });
 
@@ -119,18 +119,43 @@ router.post('/post', (req,res) => {
     let price = req.body.price;
     let description = req.body.description;
     let color = req.body.color;
-    
-    req.checkBody('title','But ma\'am the product must have a title, might I suggest *Aso-Ebi*').notEmpty();
-    req.checkBody('price','and the product also must have a price').notEmpty();
-    req.checkBody('price','and the product price must also be a number').isNumeric();
+    let image = [];
+    req.checkBody('title','Ma\'am the product must have a title, might I suggest *Aso-Ebi*').notEmpty();
+    req.checkBody('price','And the product also must have a price').notEmpty();
+    req.checkBody('price','And the product price must also be a number').isNumeric();
     req.checkBody('description','The description field should not be left empty').notEmpty();
     req.checkBody('color','People would love to know what color the clothe is').notEmpty();
 
-    let postError = req.validationErrors();
-
-    upload(req,res,err => {
-        if(err) throw err;
+    let postErrors = req.validationErrors();
+    
+    upload(req, res, err => {
+        if (err) {
+            res.render('admin/post_product', {
+                title: 'Post product',
+                msg: err,
+                isAdminPage: 'isAdminPage'
+            });
+        } else {
+            for (let i = 0; i <= 3; i++) {
+                image[i] = req.files[i];
+            }
+            // console.log(image[0]);
+            // console.log(image[1]);
+            // console.log(image[2]);
+        }
     });
+    // if (postErrors) {
+    //     res.render('admin/post_product', {
+    //         errors: postErrors,
+    //         title: 'Post product',
+    //         ptitle: title,
+    //         price: price,
+    //         description: description,
+    //         color: color
+    //     });
+    // } else {
+        
+    // }
 });
 
 // router.get('/register', (req, res) => {
