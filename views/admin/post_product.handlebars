@@ -288,32 +288,22 @@
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="password">Price</label>
                                                     <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
-                                                        type="tel" name="price" id="password" required />
+                                                        type="number" name="price" id="password" required value=""/>
                                                 </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="password">Color</label>
                                                     <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
-                                                        type="text" name="color" id="password" required />
+                                                        type="text" name="color" id="password" value="" required />
                                                 </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="password">Description</label>
-                                                    <textarea name="descrption" cols="40" rows="20" required class="wpcf7-form-control wpcf7-textarea admin-border" aria-invalid="false"></textarea>
+                                                    <textarea name="description" cols="40" rows="20" required class="wpcf7-form-control wpcf7-textarea admin-border" aria-invalid="false">{{#if description}}{{description}}{{/if}}</textarea>
                                                 </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="password">Product Images(maximum of 3 images)</label>
                                                     <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="file" multiple name="pImages" id="password"
                                                      />
                                                 </p>
-                                                {{!-- <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Image2</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="file" name="pimage2" id="password"
-                                                         />
-                                                </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Image3</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="file" name="pimage3" id="password"
-                                                         />
-                                                </p> --}}
                                                 <p class="form-row">
                                                     <button type="submit" class="woocommerce-Button button" name="login"
                                                         value="Save Changes">Post</button>

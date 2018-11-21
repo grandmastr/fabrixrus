@@ -8,7 +8,6 @@ let schema = new Schema({
     },
     description: {
         type: String,
-        default: '',
         required: true
     },
     price: {

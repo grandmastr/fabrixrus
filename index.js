@@ -56,7 +56,7 @@ app.use('/user',express.static(path));
 app.use('/products',express.static(path));
 app.use('/admin',express.static(path));
 app.use('/admin/edit', express.static(path));
-app.set('port', process.env.PORT || 8002);
+app.set('port', process.env.PORT || 8000);
 
 
 //handling file uploads
@@ -100,7 +100,7 @@ app.get('/contact', (req,res) => {
     });
 });
 
-app.get('/cart',(req,res) => {
+app.get('/cart', (req,res) => {
     res.render('products/cart', {
         shop: 'shop'
     });

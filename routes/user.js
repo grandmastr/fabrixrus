@@ -50,7 +50,7 @@ router.post('/login', passport.authenticate('local', {
     if (req.user.isAdmin !== 'admin') {
         res.redirect(302, '/');
     } else {
-        // 
+        // res.redirect('/')
     }
     console.log('User Authentication Successful');
     req.flash('Success', 'You are successfully logged in');
