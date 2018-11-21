@@ -127,7 +127,23 @@ router.post('/post', (req,res) => {
     req.checkBody('color','People would love to know what color the clothe is').notEmpty();
 
     let postErrors = req.validationErrors();
-    
+
+    if(req.files.pImages) {
+        req.flash('uploading','Uploading image...');
+    } else {
+        // 
+    }
+
+    if (postErrors) {
+        res.render('admin/post_product', {
+            postErrors: errors,
+            title: 'Post Product',
+            ptitle: title,
+            price: price,
+            description: description,
+            color:color
+        });
+    }
     upload(req, res, err => {
         if (err) {
             res.render('admin/post_product', {
@@ -139,23 +155,8 @@ router.post('/post', (req,res) => {
             for (let i = 0; i <= 3; i++) {
                 image[i] = req.files[i];
             }
-            // console.log(image[0]);
-            // console.log(image[1]);
-            // console.log(image[2]);
         }
     });
-    // if (postErrors) {
-    //     res.render('admin/post_product', {
-    //         errors: postErrors,
-    //         title: 'Post product',
-    //         ptitle: title,
-    //         price: price,
-    //         description: description,
-    //         color: color
-    //     });
-    // } else {
-        
-    // }
 });
 
 // router.get('/register', (req, res) => {
