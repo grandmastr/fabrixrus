@@ -80,7 +80,9 @@ app.get('/', (req,res) => {
         let partProducts = [];
         let desiredNumber = 8;
         for (let i = 0; i < desiredNumber; i++) {
-            partProducts.push(products[i]);
+            if (products) {
+                partProducts.push(products[i]);
+            }
         }
         res.render('home',{ title: 'Home', partProducts: partProducts, home:'home' });
     }, err => { console.warn(`The following error occurred: ${err}`); })
