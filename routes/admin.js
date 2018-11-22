@@ -182,7 +182,13 @@ router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
     res.redirect(302,'/admin');
 });
 
+router.get('/delete-post/:id', (req,res) => {
 
+});
+
+router.get('/edit-post/:id', (req,res) => {
+
+});
 
 // router.get('/register', (req, res) => {
 //     res.render('admin/register', {
