@@ -92,7 +92,8 @@ router.get('/admin-logout', (req, res) => {
 router.get('/', ensureUserIsAdmin, (req,res) => {
     res.render('admin/index', {
         isAdminPage: 'isAdminPage',
-        dashboard: 'dashboard'
+        dashboard: 'dashboard',
+        postSuccess: req.flash('posted')
     });
 });
 
@@ -117,7 +118,7 @@ router.get('/post', ensureUserIsAdmin, (req,res) => {
     });
 });
 
-router.post('/postProduct',upload, (req,res) => {
+router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
     let title = req.body.title;
     let price = req.body.price;
     let color = req.body.color;
@@ -158,81 +159,11 @@ router.post('/postProduct',upload, (req,res) => {
         };
         console.log(product);
     });
+    req.flash('posted','Posted successfully');
+    res.redirect('/admin');
 });
 
-router.post('/post', ensureUserIsAdmin, (req, res) => {
-    let image = [];
-    let files = req.files;
-    let title = req.body.title;
-    let price = req.body.price;
-    let description = req.body.description;
-    let color = req.body.color;
-    console.log(title);
-    console.log(files);
-    req.checkBody('title','Ma\'am the product must have a title, might I suggest *Aso-Ebi*').notEmpty();
-    req.checkBody('price','And the product also must have a price').notEmpty();
-    req.checkBody('price','And the product price must also be a number').isNumeric();
-    req.checkBody('description','The description field should not be left empty').notEmpty();
-    req.checkBody('color','People would love to know what color the clothe is').notEmpty();
-    
-    let postErrors = req.validationErrors();
 
-    
-    // if (postErrors) {
-    //     res.render('admin/post_product', {
-    //         errors: postErrors,
-    //         title: 'Post Product',
-    //         ptitle: title,
-    //         price: price,
-    //         description: description,
-    //         color: color
-    //     });
-    // }
-    // if(req.body && req.files) {
-    //     console.log(req.body);
-    //     console.log(req.files);
-    //     upload(req, res, err => {
-    //         if (err) {
-    //             res.render('admin/post_product', {
-    //                 title: 'Post Product',
-    //                 ptitle: title,
-    //                 price: price,
-    //                 description: description,
-    //                 color: color,
-    //                 msg: err,
-    //                 isAdminPage: 'isAdminPage'
-    //             });
-    //             return;
-    //         };
-    //     });
-    //     if(req.files){
-    //         console.log(req.files);
-    //         for (let i = 0; i <= 3; i++) {
-    //             image[i] = req.files[i];
-    //         }
-    //         let newProduct = new Product({
-    //             title: title,
-    //             description: description,
-    //             price: price,
-    //             color: color,
-    //             imagePath1: `/uploads/${image[0].filename}`,
-    //             imagePath2: `/uploads/${image[1].filename}`,
-    //             imagePath3: `/uploads/${image[2].filename}`
-    //         });
-    //         Product.postProduct(newProduct, (err, product) => {
-    //             if (err) {
-    //                 console.log(`Images didnt upload for the following reasons ${err}`)
-    //             };
-    //             console.log(newProduct);
-    //         });
-    //     }
-    // }
-    // if(req.files) {
-    //     req.flash('uploading','Uploading image...');
-    // } else {
-    //     // 
-    // }
-});
 
 // router.get('/register', (req, res) => {
 //     res.render('admin/register', {

@@ -79,12 +79,20 @@ app.get('/', (req,res) => {
     Product.find((err,products) => {
         let partProducts = [];
         let desiredNumber = 8;
-        for (let i = 0; i < desiredNumber; i++) {
-            if (products) {
+        let userName;
+        if(req.user && req.user.isAdmin === 'admin') {
+            userName = 'Admin' 
+        } else if ( req.user && req.user.isAdmin !== 'admin') {
+            userName = req.user.name;
+        }
+        if (products.length >= desiredNumber) {
+            for (let i = 0; i < desiredNumber; i++) {
                 partProducts.push(products[i]);
             }
+        } else {
+            partProducts = products;
         }
-        res.render('home',{ title: 'Home', partProducts: partProducts, home:'home' });
+        res.render('home',{ title: 'Home', partProducts: partProducts, userName: userName, home:'home' });
     }, err => { console.warn(`The following error occurred: ${err}`); })
 });
 
