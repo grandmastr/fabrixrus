@@ -138,7 +138,7 @@ app.get('/products/single/:id', (req,res) => {
         if (err) throw err;
         console.log(product);
         Product.find({
-            title: product.title
+            color: product.color
         }, (error, relatedProducts) => {
             if (error) throw error;
             let relProducts = [];
@@ -153,10 +153,11 @@ app.get('/products/single/:id', (req,res) => {
                     relProducts.push(relatedProducts[i]);
                 }
             }
+            console.log(relProducts);
             res.render('products/product_detail', {
                 title: product.title,
-                thisProduct: product,
-                relatedProducts: relProducts
+                thisProduct: product
+                // relatedProducts: relProducts
             });
         });
     });

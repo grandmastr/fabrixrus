@@ -179,7 +179,7 @@ router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
         console.log(product);
     });
     req.flash('posted','Posted successfully');
-    res.redirect('/admin');
+    res.redirect(302,'/admin');
 });
 
 

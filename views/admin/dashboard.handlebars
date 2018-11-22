@@ -1,6 +1,8 @@
 {{#if postSuccess}}
-    <div class="alert alert-success">
-        {{ postSuccess }}
+    <div class="container">
+        <div class="alert alert-success">
+            {{ postSuccess }}
+        </div>
     </div>
 {{/if}}
 <div class="main-container front-age">
@@ -14,88 +16,95 @@
                                 <div class="wpb_wrapper">
                                     <div class="wpb_text_column wpb_content_element  title2">
                                         <div class="wpb_wrapper">
-                                            <h3 style="margin-bottom: 15px;">Recent Posts(8)</h3> 
+                                            <h3 style="margin-bottom: 15px;">Recent Posts</h3> 
                                         </div>
                                     </div>
-                                    <div class="recent_products slide style_4">
-                                        <div class="woocommerce columns-1 ">
-                                            <div class="shop-products products row grid-view sidebar">
-                                                {{#each partProducts }}
-                                                <div class="item-col col-12 col-full-hd col-md-12 post-9496 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
-                                                    <div class="product-wrapper gridview">
-                                                        <div class="list-col4">
-                                                            <div class="product-image">
-                                                                <a href="#" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                                    <img width="300" height="353" src="{{ this.imagePath1 }}"
-                                                                        class="min-height-set primary_image wp-post-image"
-                                                                        alt="" srcset="{{ this.imagePath1 }} 300w, {{ this.imagePath1 }}, {{ this.imagePath1 }} 100w, {{ this.imagePath1 }} 510w"
-                                                                        sizes="(max-width: 300px) 100vw, 300px" /> <span
-                                                                        class="shadow"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="list-col8">
-                                                            <div class="product-inner">
-                                                                <!--<div class="tag-cate">-->
-                                                                <!--<a href="product-category/clothings/index.html" rel="tag">Clothings</a>,-->
-                                                                <!--<a href="product-category/men/index.html" rel="tag">Men</a>-->
-                                                                <!--</div>-->
-                                                                <h2 class="product-name">
-                                                                    <a href="product/aesthetica-5-piece-brow/index.html">
-                                                                        {{ this.title }} 
+                                    {{#if partProducts}}
+                                        <div class="recent_products slide style_4">
+                                            <div class="woocommerce columns-1 ">
+                                                <div class="shop-products products row grid-view sidebar">
+                                                    {{#each partProducts }}
+                                                    <div class="item-col col-12 col-full-hd col-md-12 post-9496 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
+                                                        <div class="product-wrapper gridview">
+                                                            <div class="list-col4">
+                                                                <div class="product-image">
+                                                                    <a href="#" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                                                        <img width="300" height="353" src="{{ this.imagePath1 }}" class="min-height-set primary_image wp-post-image"
+                                                                            alt="" srcset="{{ this.imagePath1 }} 300w, {{ this.imagePath1 }}, {{ this.imagePath1 }} 100w, {{ this.imagePath1 }} 510w"
+                                                                            sizes="(max-width: 300px) 100vw, 300px" /> <span class="shadow"></span>
                                                                     </a>
-                                                                </h2>
-                                                                <div class="box-rating">
-                                                                    <div class="price-box">
-                                                                        <span class="woocommerce-Price-amount amount">
-                                                                            <span class="woocommerce-Price-currencySymbol">&#36;
-                                                                                {{ this.price }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="list-col8">
+                                                                <div class="product-inner">
+                                                                    <!--<div class="tag-cate">-->
+                                                                    <!--<a href="product-category/clothings/index.html" rel="tag">Clothings</a>,-->
+                                                                    <!--<a href="product-category/men/index.html" rel="tag">Men</a>-->
+                                                                    <!--</div>-->
+                                                                    <h2 class="product-name">
+                                                                        <a href="product/aesthetica-5-piece-brow/index.html">
+                                                                            {{ this.title }}
+                                                                        </a>
+                                                                    </h2>
+                                                                    <div class="box-rating">
+                                                                        <div class="price-box">
+                                                                            <span class="woocommerce-Price-amount amount">
+                                                                                <span class="woocommerce-Price-currencySymbol">&#36;
+                                                                                    {{ this.price }}
+                                                                                </span>
                                                                             </span>
-                                                                        </span>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="product-desc">{{ this.description }}</div>
-                                                                <div class="count-down">
-                                                                </div>
-                                                                <div class="box-hover">
-                                                                    <div class="actions clearfix">
-                                                                        <ul class="add-to-links">
-                                                                            <li class="pull-left add-to-cart">
-                                                                                <a class="pull-left" href="/admin/delete/{{ this._id }}">
-                                                                                    Delete Post
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="pull-right add-to-cart">
-                                                                                <a href="/admin/post-edit/{{ this._id }}">
-                                                                                    Edit Post
-                                                                                </a>
-                                                                            </li>
-                                                                            <span>
-                                                                                <li>
-                                                                                    <div class="">
-                                                                                        <div class="" style="display:block">
-                                                                                            <a href="/admin/edit/{{this._id}}" data-product-id="{{this._id}}" data-product-type="simple" class="add_to_wishlist">
-                                                                                                Edit Post
-                                                                                            </a>
-                                                                                        </div>
-                                                                                        <div style="clear:both"></div>
-                                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-                                                                                    </div>
-                                                                                    <div class="clear"></div>
+                                                                    <div class="product-desc">{{ this.description }}</div>
+                                                                    <div class="count-down">
+                                                                    </div>
+                                                                    <div class="box-hover">
+                                                                        <div class="actions clearfix">
+                                                                            <ul class="add-to-links">
+                                                                                <li class="pull-left add-to-cart">
+                                                                                    <a class="pull-left" href="/admin/delete/{{ this._id }}">
+                                                                                        Delete Post
+                                                                                    </a>
                                                                                 </li>
-                                                                            </span>
-                                                                        </ul>
+                                                                                <li class="pull-right add-to-cart">
+                                                                                    <a href="/admin/post-edit/{{ this._id }}">
+                                                                                        Edit Post
+                                                                                    </a>
+                                                                                </li>
+                                                                                <span>
+                                                                                    <li>
+                                                                                        <div class="">
+                                                                                            <div class="" style="display:block">
+                                                                                                <a href="/admin/edit/{{this._id}}" data-product-id="{{this._id}}"
+                                                                                                    data-product-type="simple" class="add_to_wishlist">
+                                                                                                    Edit Post
+                                                                                                </a>
+                                                                                            </div>
+                                                                                            <div style="clear:both"></div>
+                                                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
+                                                                                        </div>
+                                                                                        <div class="clear"></div>
+                                                                                    </li>
+                                                                                </span>
+                                                                            </ul>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="clearfix"></div>
                                                         </div>
-                                                        <div class="clearfix"></div>
                                                     </div>
+                                                    {{/each}}
                                                 </div>
-                                                {{/each}}
                                             </div>
                                         </div>
-                                    </div>
+                                    {{else}}
+                                        <div class="container">
+                                            <div class="alert alert-warning">
+                                                No posts yet. Click <a href="/admin/post"> here</a> to post
+                                            </div>
+                                        </div>
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>

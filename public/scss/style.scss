@@ -307,3 +307,43 @@ button.woocommerce-Button.button{
 	}
 }
 /*-- //slider --*/
+
+//styling image upload buttons
+input[name="pImages"] {
+	border:none !important;
+	color:white;
+	width:50px !important;
+	&::before {
+		height:38px;
+		width:auto !important;
+		background:$primaryColor;
+		content: 'Click to select file';
+		font:{
+			weight:bold;
+		}
+		margin:{
+			left:-10px !important;
+		}
+		box-shadow: 0 3px 15px grey;
+		cursor:pointer;		
+		padding: 10px 15px;
+		position:absolute;
+		transition: 0.2s all ease-in-out;
+	}
+	&::after{
+		// content:'(' attr(val) ')';
+		color:red !important;
+		position: relative;
+		right: 0 !important
+		// height:100px;
+		// width:500px;
+		// background-color:red;
+		// content: 'Red'
+	}
+}
+input[name="pImages"]:hover {
+	&::before{
+		background:  #a5d8cb;
+		transition: 0.2s all ease-in-out;
+	}
+}

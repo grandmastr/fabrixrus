@@ -131,7 +131,7 @@
                                             <div class="wpb_text_column wpb_content_element  title2">
                                                 <div class="wpb_wrapper">
                                                     <h3 style="margin-bottom: 15px;">New arrivals</h3>
-                                                    <p>Consequat magna massa vel suspendisse morbi aliquam faucibus ligula ante ipsum ac nulla.</p>
+                                                    <p>Checkout the latest additions to the fabrixRus collection.</p>
                                                 </div>
                                             </div>
                                             {{!-- <div class="recent_products slide style_4">
@@ -220,88 +220,95 @@
                                                 </div>
                                             </div> --}}
                                             <br>
-                                            <div class="recent_products style_4">
-                                                <div class="woocommerce columns-1 ">
-                                                    <div class="shop-products products row grid-view sidebar">
-                                                        <div class="container-fluid">
-                                                            <div class="row">
-                                                                {{#each partProducts }}
-                                                                <div class="item-col col-12 col-full-hd col-sm-12 col-xs-12 col-lg-3 col-md-3 post-9496 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
-                                                                    <div class="grid-product">
-                                                                        <div class="product-wrapper gridview">
-                                                                            <div class="list-col4">
-                                                                                <div class="product-image">
-                                                                                    <a href="products/single/{{ this._id }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                                                        <img width="300" height="353" src="{{ this.imagePath1 }}" class="min-height-set primary_image wp-post-image"
-                                                                                            alt="" srcset="{{ this.imagePath1 }} 300w, {{ this.imagePath1 }}, {{ this.imagePath1 }} 100w, {{ this.imagePath1 }} 510w"
-                                                                                            sizes="(max-width: 300px) 100vw, 300px" /> <span class="shadow"></span>
-                                                                                    </a> </div>
-                                                                            </div>
-                                                                            <div class="list-col8">
-                                                                                <div class="product-inner">
-                                                                                    <h2 class="product-name">
-                                                                                        <a href="/products/single">
-                                                                                            {{ this.title }} 
-                                                                                        </a>
-                                                                                    </h2>
-                                                                                    <div class="product-description"> {{ this.description }}</div>
-                                                                                    <div class="box-rating">
-                                                                                        <div class="price-box">
-                                                                                            <span class="woocommerce-Price-amount amount">
-                                                                                                <span class="woocommerce-Price-currencySymbol">&#36;
-                                                                                                    {{ this.price }}
+                                            {{#if partProducts}}
+                                                <div class="recent_products style_4">
+                                                    <div class="woocommerce columns-1 ">
+                                                        <div class="shop-products products row grid-view sidebar">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    {{#each partProducts }}
+                                                                    <div class="item-col col-12 col-full-hd col-sm-12 col-xs-12 col-lg-3 col-md-3 post-9496 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
+                                                                        <div class="grid-product">
+                                                                            <div class="product-wrapper gridview">
+                                                                                <div class="list-col4">
+                                                                                    <div class="product-image">
+                                                                                        <a href="products/single/{{ this._id }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                                                                            <img width="300" height="353" src="{{ this.imagePath1 }}" class="min-height-set primary_image wp-post-image"
+                                                                                                alt="" srcset="{{ this.imagePath1 }} 300w, {{ this.imagePath1 }}, {{ this.imagePath1 }} 100w, {{ this.imagePath1 }} 510w"
+                                                                                                sizes="(max-width: 300px) 100vw, 300px" /> <span class="shadow"></span>
+                                                                                        </a> </div>
+                                                                                </div>
+                                                                                <div class="list-col8">
+                                                                                    <div class="product-inner">
+                                                                                        <h2 class="product-name">
+                                                                                            <a href="/products/single">
+                                                                                                {{ this.title }}
+                                                                                            </a>
+                                                                                        </h2>
+                                                                                        <div class="product-description"> {{ this.description }}</div>
+                                                                                        <div class="box-rating">
+                                                                                            <div class="price-box">
+                                                                                                <span class="woocommerce-Price-amount amount">
+                                                                                                    <span class="woocommerce-Price-currencySymbol">&#36;
+                                                                                                        {{ this.price }}
+                                                                                                    </span>
                                                                                                 </span>
-                                                                                            </span>
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </div>
-                                                                                    <div class="box-hover">
-                                                                                        <div class="actions clearfix">
-                                                                                            <ul class="add-to-links">
-                                                                                                <li class="add-to-cart">
-                                                                                                    <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-                                                                                                        <span class="woocommerce-Price-amount amount">
-                                                                                                            <span class="woocommerce-Price-currencySymbol">&#36;</span>79.00
-                                                                                                        </span>
-                                                                                                        <a href="/cart" data-quantity="1" class="button product_type_simple add_to_cart_button "
-                                                                                                            data-product_id="9496" data-product_sku="" aria-label="Add &ldquo;Aesthetica 5-Piece Brow&rdquo; to your cart"
-                                                                                                            rel="nofollow"> Buy Now</a></p>
-                                                                                                </li>
-                                                                                                <li>
-                                                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-9496">
-                                                                                                        <div class="yith-wcwl-add-button show" style="display:block">
-                                                                                                            <a href="" rel="nofollow"
-                                                                                                                class="add_to_wishlist">
-                                                                                                                Add to Cart</a>
+                                                                                        <div class="box-hover">
+                                                                                            <div class="actions clearfix">
+                                                                                                <ul class="add-to-links">
+                                                                                                    <li class="add-to-cart">
+                                                                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
+                                                                                                            <span class="woocommerce-Price-amount amount">
+                                                                                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>79.00
+                                                                                                            </span>
+                                                                                                            <a href="/cart" data-quantity="1" class="button product_type_simple add_to_cart_button "
+                                                                                                                data-product_id="9496" data-product_sku="" aria-label="Add &ldquo;Aesthetica 5-Piece Brow&rdquo; to your cart"
+                                                                                                                rel="nofollow"> Buy Now</a></p>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-9496">
+                                                                                                            <div class="yith-wcwl-add-button show" style="display:block">
+                                                                                                                <a href="" rel="nofollow" class="add_to_wishlist">
+                                                                                                                    Add to Cart</a>
+                                                                                                            </div>
+                                                
+                                                
+                                                                                                            <div style="clear:both"></div>
+                                                                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
                                                                                                         </div>
-                                                                        
-                                                                                                        
-                                                                                                        <div style="clear:both"></div>
-                                                                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-                                                                                                    </div>
-                                                                                                    <div class="clear"></div>
-                                                                                                </li>
-                                                                                            </ul>
+                                                                                                        <div class="clear"></div>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                                <div class="clearfix"></div>
                                                                             </div>
-                                                                            <div class="clearfix"></div>
                                                                         </div>
                                                                     </div>
+                                                                    {{/each}}
                                                                 </div>
-                                                                {{/each}}
+                                                                <center>
+                                                                    <a href="/products/store">
+                                                                        <button type="submit" name="add-to-cart" value="9496" class="single_add_to_cart_button button alt woocommerce-Button button show-more">
+                                                                            See more...
+                                                                        </button>
+                                                                    </a>
+                                                                </center>
                                                             </div>
-                                                            <center>
-                                                                <a href="/products/store">
-                                                                    <button type="submit" name="add-to-cart" value="9496" class="single_add_to_cart_button button alt woocommerce-Button button show-more">
-                                                                        See more...
-                                                                    </button>
-                                                                </a>
-                                                            </center>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            {{else}}
+                                                <div class="container">
+                                                    <div class="alert alert-warning">
+                                                        No Posts yet
+                                                    </div>
+                                                </div>
+                                            {{/if}}
                                         </div>
                                     </div>
                                 </div>

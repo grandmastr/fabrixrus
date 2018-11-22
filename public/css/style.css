@@ -264,5 +264,29 @@ button.woocommerce-Button.button {
     color: #76cfb9; }
 
 /*-- //slider --*/
+input[name="pImages"] {
+  border: none !important;
+  color: white;
+  width: 50px !important; }
+  input[name="pImages"]::before {
+    height: 38px;
+    width: auto !important;
+    background: #76cfb9;
+    content: 'Click to select file';
+    font-weight: bold;
+    margin-left: -10px !important;
+    box-shadow: 0 3px 15px grey;
+    cursor: pointer;
+    padding: 10px 15px;
+    position: absolute;
+    transition: 0.2s all ease-in-out; }
+  input[name="pImages"]::after {
+    color: red !important;
+    position: relative;
+    right: 0 !important; }
+
+input[name="pImages"]:hover::before {
+  background: #a5d8cb;
+  transition: 0.2s all ease-in-out; }
 
 /*# sourceMappingURL=style.css.map */
