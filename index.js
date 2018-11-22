@@ -59,9 +59,6 @@ app.use('/admin/edit', express.static(path));
 app.set('port', process.env.PORT || 8000);
 
 
-//handling file uploads
-const upload = multer({dest: 'uploads/'});
-
 mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true },err => {
     if (err) console.warn(err);
     console.log('Connected to FabrixRus');
@@ -72,8 +69,7 @@ app.get('*', (req, res, next) => {
     next();
 });
 
-// app.post('/admin/login',)
-require('./helpers/auth');
+
 
 app.get('/', (req,res) => {
     Product.find((err,products) => {
@@ -86,12 +82,18 @@ app.get('/', (req,res) => {
             userName = req.user.name;
         }
         if (products.length >= desiredNumber) {
-            for (let i = 0; i < desiredNumber; i++) {
+            for (let i = 0; i < desiredNumber; i++) {                
+                console.log(products[i].description);
                 partProducts.push(products[i]);
             }
+            console.log(products);
         } else {
             partProducts = products;
         }
+        partProducts.map(product => {
+            product.description = product.description.substring(0, 25);
+            console.log(products);
+        })
         res.render('home',{ title: 'Home', partProducts: partProducts, userName: userName, home:'home' });
     }, err => { console.warn(`The following error occurred: ${err}`); })
 });
@@ -133,6 +135,7 @@ app.get('/products/store', (req, res) => {
 
 
 app.get('/products/single/:id', (req,res) => {
+    let relatedProducts = [];
     res.render('products/product_detail');
 });
 
