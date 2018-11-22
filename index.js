@@ -83,7 +83,6 @@ app.get('/', (req,res) => {
         }
         if (products.length >= desiredNumber) {
             for (let i = 0; i < desiredNumber; i++) {                
-                console.log(products[i].description);
                 partProducts.push(products[i]);
             }
             console.log(products);
@@ -91,13 +90,11 @@ app.get('/', (req,res) => {
             partProducts = products;
         }
         partProducts.map(product => {
-            product.description = product.description.substring(0, 25);
-            console.log(products);
-        })
+            product.description = `${product.description.substring(0, 25)}...`;
+        });
         res.render('home',{ title: 'Home', partProducts: partProducts, userName: userName, home:'home' });
     }, err => { console.warn(`The following error occurred: ${err}`); })
 });
-
 
 app.get('/about', (req,res) => {
     res.render('about',{
@@ -135,8 +132,34 @@ app.get('/products/store', (req, res) => {
 
 
 app.get('/products/single/:id', (req,res) => {
-    let relatedProducts = [];
-    res.render('products/product_detail');
+    Product.findOne({
+        _id: req.params.id
+    },(err,product) => {
+        if (err) throw err;
+        console.log(product);
+        Product.find({
+            title: product.title
+        }, (error, relatedProducts) => {
+            if (error) throw error;
+            let relProducts = [];
+            // relatedProducts.filter(relProduct => {
+            //     relProduct._id !== product._id
+            // }).map(realRelProducts => {
+            //     console.log(realRelProducts);
+            //     relProducts.push(realRelProducts);
+            // });
+            for (let i = 0; i < relatedProducts.length; i++) {
+                if (relatedProducts[i]._id !== product._id) {
+                    relProducts.push(relatedProducts[i]);
+                }
+            }
+            res.render('products/product_detail', {
+                title: product.title,
+                thisProduct: product,
+                relatedProducts: relProducts
+            });
+        });
+    });
 });
 
 

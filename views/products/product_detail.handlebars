@@ -255,747 +255,358 @@
                                     <nav class="woocommerce-breadcrumb">
 
 
-                                        <a href="http://demo.roadthemes.com/beeta">Home</a>
+                                        <a href="/">Home</a>
 
                                         <span class="separator">/</span>
 
 
-                                        <a href="../../product-category/men/index.html">Men</a>
+                                        <a href="/products">Products</a>
 
                                         <span class="separator">/</span>
-
-
-                                        Aesthetica 5-Piece Brow
-
-
-
+                                        {{#if thisProduct}} 
+                                            {{thisProduct.title}}
+                                        {{else}}
+                                            Not Found
+                                        {{/if}}
                                     </nav>
                                 </div>
                             </div>
                         </div>
-                        <div class="product-view">
-
-
-                            <div class="container">
+                        {{#if thisProduct}}
+                            <div class="product-view">
+                                <div class="container">
+                                </div>
+                                <div id="product-9496" class="post-9496 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 col-md-5">
+                                                <div class="single-product-image">
+                            
+                                                    <div class="images hasthumb">
+                            
+                                                        <a href="{{thisProduct.imagePath1}}" itemprop="image" class="yith_magnifier_zoom woocommerce-main-image"
+                                                            title="3"><img width="510" height="600" src="{{thisProduct.imagePath1}}"
+                                                                class="attachment-shop_single size-shop_single wp-post-image" alt="" srcset="{{thisProduct.imagePath1}} 510w, {{thisProduct.imagePath1}} 255w, {{thisProduct.imagePath1}} 300w, {{thisProduct.imagePath1}} 100w"
+                                                                sizes="(max-width: 510px) 100vw, 510px" /></a>
+                                                        <div class="zoom_in_marker"><i class="fa fa-expand"></i></div>
+                                                    </div>
+                            
+                                                    <div class="thumbnails slider">
+                                                        <div class="thumbnails-inner">
+                                                            <ul class="yith_magnifier_gallery">
+                                                                <li class="yith_magnifier_thumbnail first"><a href="{{thisProduct.imagePath1}}"
+                                                                        class="yith_magnifier_thumbnail first" title="{{thisProduct.title}} image 1, nice uhn?" data-small="{{thisProduct.imagePath1}}"><img
+                                                                            width="100" height="129" src="{{thisProduct.imagePath1}}"
+                                                                            class="attachment-shop_thumbnail size-shop_thumbnail" alt="{{thisProduct.imagePath3}}" /></a></li>
+                                                                <li class="yith_magnifier_thumbnail"><a href="{{thisProduct.imagePath2}}"
+                                                                        class="yith_magnifier_thumbnail" title="{{thisProduct.title}} image 2, sweet" data-small="{{thisProduct.imagePath2}}"><img
+                                                                            width="100" height="129" src="{{thisProduct.imagePath2}}"
+                                                                            class="attachment-shop_thumbnail size-shop_thumbnail" alt="{{thisProduct.imagePath3}}" /></a></li>
+                                                                <li class="yith_magnifier_thumbnail"><a href="{{thisProduct.imagePath3}}"
+                                                                        class="yith_magnifier_thumbnail" title="{{thisProduct.title}} image 3" data-small="{{thisProduct.imagePath3}}"><img
+                                                                            width="100" height="129" src="{{thisProduct.imagePath3}}"
+                                                                            class="attachment-shop_thumbnail size-shop_thumbnail" alt="{{thisProduct.imagePath3}}" /></a></li>
+                                                            </ul>
+                                                            <div id="slider-prev"><i class="icon-chevron-left"></i></i></div>
+                                                            <div id="slider-next"><i class="icon-chevron-right"></i></i></div>
+                                                        </div>
+                                                    </div>
+                            
+                                                </div>
+                            
+                                            </div>
+                                            <div class="col-12 col-md-7">
+                                                <div class="summary entry-summary single-product-info">
+                            
+                                                    <h1 class="product_title entry-title">{{thisProduct.title}}</h1>
+                                                    <div class="woocommerce-product-details__short-description">
+                                                        <p>{{thisProduct.description}}</p>
+                                                    </div>
+                                                    <p class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                        {{thisProduct.price}}
+                                                    </span></p>
+                            
+                            
+                                                    <form class="cart" action="http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/"
+                                                        method="post" enctype='multipart/form-data'>
+                            
+                                                        <div class="quantity">
+                                                            <label class="screen-reader-text" for="quantity_5bcc7046e7805">Quantity</label>
+                                                            <input type="number" id="quantity_5bcc7046e7805" class="input-text qty text" step="1"
+                                                                min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*"
+                                                                inputmode="numeric" aria-labelledby="" />
+                                                        </div>
+                                                        <button type="submit" class="single_add_to_cart_button button">
+                                                            <a href="/cart" style="color:white">
+                                                                Add to cart
+                                                            </a>
+                                                        </button>
+                            
+                            
+                                                    </form>
+                            
+                            
+                            
+                                                    {{!-- <div class="yith-wcwl-add-to-wishlist add-to-wishlist-9496">
+                                                        <div class="yith-wcwl-add-button show" style="display:block">
+                            
+                            
+                                                            <a href="indexd32f.html?add_to_wishlist=9496" rel="nofollow" data-product-id="9496"
+                                                                data-product-type="simple" class="add_to_wishlist">
+                                                                Add to Wishlist</a>
+                                                            <img src="../../wp-content/plugins/yith-woocommerce-wishlist/assets/images/wpspin_light.gif"
+                                                                class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden" />
+                                                        </div>
+                            
+                                                        <div class="yith-wcwl-wishlistaddedbrowse" style="display:none;">
+                                                            <span class="feedback">Product added!</span>
+                                                            <a href="../../wishlist/index.html" rel="nofollow">
+                                                                Browse Wishlist </a>
+                                                        </div>
+                            
+                                                        <div style="clear:both"></div>
+                                                        <div class="yith-wcwl-wishlistaddresponse"></div>
+                            
+                                                    </div> --}}
+                            
+                            
+                                                    {{!-- <div class="product_meta">
+                            
+                            
+                            
+                                                        <span class="posted_in">Categories: <a href="../../product-category/clothings/index.html"
+                                                                rel="tag">Clothings</a>, <a href="../../product-category/men/index.html" rel="tag">Men</a></span>
+                                                        <span class="tagged_as">Tags: <a href="../../product-tag/creams/index.html" rel="tag">Creams</a>,
+                                                            <a href="../../product-tag/lotions/index.html" rel="tag">Lotions</a></span>
+                            
+                                                    </div> --}}
+                            
+                                                    {{!-- <div class="share_buttons">
+                                                    </div>
+                                                    <div class="single-product-sharing">
+                                                        <div class="widget widget_socialsharing_widget">
+                                                            <ul class="social-icons">
+                                                                <li><a class="facebook social-icon" href="#" onclick="javascript: window.open('https://www.facebook.com/sharer/sharer.php?u=http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/'); return false;"
+                                                                        title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                                <li><a class="twitter social-icon" href="#" title="Twitter" onclick="javascript: window.open('https://twitter.com/home?status=Aesthetica%205-Piece%20Brow%20http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/'); return false;"
+                                                                        target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                                <li><a class="pinterest social-icon" href="#" onclick="javascript: window.open('https://pinterest.com/pin/create/button/?url=http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/&amp;media=http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/3.jpg&amp;description=Aesthetica%205-Piece%20Brow'); return false;"
+                                                                        title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                                                                <li><a class="gplus social-icon" href="#" onclick="javascript: window.open('https://plus.google.com/share?url=http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/'); return false;"
+                                                                        title="Google +" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                                                <li><a class="linkedin social-icon" href="#" onclick="javascript: window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/&amp;title=Aesthetica%205-Piece%20Brow'); return false;"
+                                                                        title="LinkedIn" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div> --}}
+                            
+                                                </div><!-- .summary -->
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="container">
+                            
+                                        <div class="woocommerce-tabs wc-tabs-wrapper">
+                                            <ul class="tabs wc-tabs" role="tablist">
+                                                <li class="description_tab" id="tab-title-description" role="tab" aria-controls="tab-description">
+                                                    <a href="#tab-description">Description</a>
+                                                </li>
+                                                {{!-- <li class="reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
+                                                    <a href="#tab-reviews">Reviews (0)</a>
+                                                </li> --}}
+                                            </ul>
+                                            <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab" id="tab-description"
+                                                role="tabpanel" aria-labelledby="tab-title-description">
+                            
+                                                <h2>Description</h2>
+                            
+                                                <p>{{thisProduct.description}}</p>
+                                            </div>
+                                            {{!-- <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab" id="tab-reviews"
+                                                role="tabpanel" aria-labelledby="tab-title-reviews">
+                                                <div id="reviews" class="woocommerce-Reviews">
+                                                    <div id="comments">
+                                                        <h2 class="woocommerce-Reviews-title">Reviews</h2>
+                            
+                            
+                                                        <p class="woocommerce-noreviews">There are no reviews yet.</p>
+                            
+                                                    </div>
+                            
+                            
+                                                    <div id="review_form_wrapper">
+                                                        <div id="review_form">
+                                                            <div id="respond" class="comment-respond">
+                                                                <span id="reply-title" class="comment-reply-title">Be the
+                                                                    first to review &ldquo;Aesthetica 5-Piece Brow&rdquo;
+                                                                    <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond"
+                                                                            style="display:none;">Cancel
+                                                                            reply</a></small></span>
+                                                                <form action="http://demo.roadthemes.com/beeta/wp-comments-post.php" method="post"
+                                                                    id="commentform" class="comment-form">
+                                                                    <p class="comment-notes"><span id="email-notes">Your
+                                                                            email address will not be published.</span>
+                                                                        Required fields are marked <span class="required">*</span></p>
+                                                                    <div class="comment-form-rating"><label for="rating">Your
+                                                                            rating</label><select name="rating" id="rating" aria-required="true"
+                                                                            required>
+                                                                            <option value="">Rate&hellip;</option>
+                                                                            <option value="5">Perfect</option>
+                                                                            <option value="4">Good</option>
+                                                                            <option value="3">Average</option>
+                                                                            <option value="2">Not that bad</option>
+                                                                            <option value="1">Very poor</option>
+                                                                        </select></div>
+                                                                    <p class="comment-form-comment"><label for="comment">Your
+                                                                            review&nbsp;<span class="required">*</span></label><textarea id="comment"
+                                                                            name="comment" cols="45" rows="8" aria-required="true" required></textarea></p>
+                                                                    <div class="comment-input">
+                                                                        <p class="comment-form-author"><label for="author">Name&nbsp;<span class="required">*</span></label>
+                                                                            <input id="author" name="author" type="text" value="" size="30"
+                                                                                aria-required="true" required /></p>
+                                                                        <p class="comment-form-email"><label for="email">Email&nbsp;<span class="required">*</span></label>
+                                                                            <input id="email" name="email" type="email" value="" size="30"
+                                                                                aria-required="true" required /></p>
+                                                                    </div>
+                                                                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit"
+                                                                            value="Submit" />
+                                                                        <input type='hidden' name='comment_post_ID' value='9496' id='comment_post_ID' />
+                                                                        <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                                                                    </p>
+                                                                </form>
+                                                            </div><!-- #respond -->
+                                                        </div>
+                                                    </div>
+                            
+                            
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div> --}}
+                                        </div>
+                            
+                            
+                                        {{#if relatedProducts}}
+                                            <section class="related products">
+                                            <div class="module-title">
+                                                <h3><span>Related Products</span></h3>
+                                            </div>
+                            
+                                            <div class="shop-products products row grid-view sidebar">
+                                                {{#each relatedProducts}}
+                                                    <div class=" item-col col-12 col-full-hd col-md-12 post-8284 product type-product status-publish has-post-thumbnail product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
+                                                    <div class="product-wrapper gridview">
+                                                        <div class="list-col4">
+                                                            <div class="product-image">
+                            
+                                                                <a href="../aftershave-lotion/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                                                    <img width="300" height="353" src="../../wp-content/uploads/2018/06/18-300x353.jpg"
+                                                                        class="primary_image wp-post-image" alt="" srcset="http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/18-300x353.jpg 300w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/18-255x300.jpg 255w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/18-100x118.jpg 100w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/18.jpg 510w"
+                                                                        sizes="(max-width: 300px) 100vw, 300px" /> <span class="shadow"></span>
+                                                                </a> </div>
+                                                        </div>
+                                                        <div class="list-col8">
+                                                            <div class="product-inner">
+                                                                <div class="tag-cate">
+                                                                    <a href="../../product-category/men/index.html" rel="tag">Men</a>
+                                                                </div>
+                                                                <h2 class="product-name">
+                                                                    <a href="../aftershave-lotion/index.html">Aftershave
+                                                                        Lotion</a>
+                                                                </h2>
+                                                                <div class="box-rating">
+                                                                    <div class="price-box"><span class="woocommerce-Price-amount amount"><span
+                                                                                class="woocommerce-Price-currencySymbol">&#36;</span>80.00</span></div>
+                                                                    <div class="ratings">
+                                                                        <div class="star-rating"><span style="width:100%">Rated
+                                                                                <strong class="rating">5.00</strong> out of
+                                                                                5</span></div>
+                                                                    </div>
+                                                                </div>
+                            
+                                                                <div class="product-desc">Lorem ipsum dolor sit amet,
+                                                                    consectetur adipiscing elit. Fusce posuere metus vit</div>
+                                                                <div class="count-down">
+                                                                </div>
+                                                                <div class="box-hover">
+                                                                    <div class="actions clearfix">
+                                                                        <ul class="add-to-links">
+                                                                            <li class="add-to-cart">
+                                                                                <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;"><span
+                                                                                        class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>80.00</span><a
+                                                                                        href="index7d21.html?add-to-cart=8284" data-quantity="1"
+                                                                                        class="button product_type_simple add_to_cart_button ajax_add_to_cart"
+                                                                                        data-product_id="8284" data-product_sku="" aria-label="Add &ldquo;Aftershave Lotion&rdquo; to your cart"
+                                                                                        rel="nofollow">Add to cart</a></p>
+                                                                            </li>
+                                                                            <li class="quickviewbtn">
+                                                                                <a class="detail-link quickview" data-quick-id="8284" href="../aftershave-lotion/index.html"
+                                                                                    title="Aftershave Lotion">Quick View</a>
+                                                                            </li>
+                                                                            <li>
+                            
+                                                                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-8284">
+                                                                                    <div class="yith-wcwl-add-button show" style="display:block">
+                            
+                            
+                                                                                        <a href="indexe77e.html?add_to_wishlist=8284" rel="nofollow"
+                                                                                            data-product-id="8284" data-product-type="simple" class="add_to_wishlist">
+                                                                                            Add to Wishlist</a>
+                            
+                                                                                    </div>
+                            
+                                                                                    <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
+                                                                                        <span class="feedback">Product
+                                                                                            added!</span>
+                                                                                        <a href="../../wishlist/index.html" rel="nofollow">
+                                                                                            Browse Wishlist </a>
+                                                                                    </div>
+                            
+                                                                                    <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
+                                                                                        <span class="feedback">The product
+                                                                                            is already in the wishlist!</span>
+                                                                                        <a href="../../wishlist/index.html" rel="nofollow">
+                                                                                            Browse Wishlist </a>
+                                                                                    </div>
+                            
+                                                                                    <div style="clear:both"></div>
+                                                                                    <div class="yith-wcwl-wishlistaddresponse"></div>
+                            
+                                                                                </div>
+                            
+                                                                                <div class="clear"></div>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="woocommerce product compare-button"><a href="http://demo.roadthemes.com/beeta?action=yith-woocompare-add-product&amp;id=8284"
+                                                                                        class="compare button" data-product_id="8284" rel="nofollow">Compare</a></div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    </div> 
+                                                {{/each}}   
+                                            </div>
+                                        </section>
+                                        {{else}}
+                                            No related Product
+                                        {{/if}}
+                                        <br>
+                            
+                                        <meta itemprop="url" content="index.html" />
+                                    </div>
+                                </div><!-- #product-9496 -->
+                            
+                            
+                            
+                            
+                            
+                            
                             </div>
-                            <div id="product-9496" class="post-9496 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-12 col-md-5">
-                                            <div class="single-product-image">
-
-                                                <div class="images hasthumb">
-
-                                                    <a href="../../wp-content/uploads/2018/06/3.jpg" itemprop="image"
-                                                        class="yith_magnifier_zoom woocommerce-main-image" title="3"><img
-                                                            width="510" height="600" src="../../wp-content/uploads/2018/06/3.jpg"
-                                                            class="attachment-shop_single size-shop_single wp-post-image"
-                                                            alt="" srcset="http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/3.jpg 510w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/3-255x300.jpg 255w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/3-300x353.jpg 300w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/3-100x118.jpg 100w"
-                                                            sizes="(max-width: 510px) 100vw, 510px" /></a>
-                                                    <div class="zoom_in_marker"><i class="fa fa-expand"></i></div>
-                                                </div>
-
-                                                <div class="thumbnails slider">
-                                                    <div class="thumbnails-inner">
-                                                        <ul class="yith_magnifier_gallery">
-                                                            <li class="yith_magnifier_thumbnail first"><a href="../../wp-content/uploads/2018/06/3.jpg"
-                                                                    class="yith_magnifier_thumbnail first" title="3"
-                                                                    data-small="../../wp-content/uploads/2018/06/3.jpg"><img
-                                                                        width="100" height="129" src="../../wp-content/uploads/2018/06/3-300x388.jpg"
-                                                                        class="attachment-shop_thumbnail size-shop_thumbnail"
-                                                                        alt="" /></a></li>
-                                                            <li class="yith_magnifier_thumbnail"><a href="../../wp-content/uploads/2018/06/3-3.jpg"
-                                                                    class="yith_magnifier_thumbnail" title="3-3"
-                                                                    data-small="../../wp-content/uploads/2018/06/3-3.jpg"><img
-                                                                        width="100" height="129" src="../../wp-content/uploads/2018/06/3-3-300x388.jpg"
-                                                                        class="attachment-shop_thumbnail size-shop_thumbnail"
-                                                                        alt="" /></a></li>
-                                                            <li class="yith_magnifier_thumbnail"><a href="../../wp-content/uploads/2018/06/5-5.jpg"
-                                                                    class="yith_magnifier_thumbnail" title="5-5"
-                                                                    data-small="../../wp-content/uploads/2018/06/5-5.jpg"><img
-                                                                        width="100" height="129" src="../../wp-content/uploads/2018/06/5-5-300x388.jpg"
-                                                                        class="attachment-shop_thumbnail size-shop_thumbnail"
-                                                                        alt="" /></a></li>
-                                                        </ul>
-                                                        <div id="slider-prev"><i class="icon-chevron-left"></i></i></div>
-                                                        <div id="slider-next"><i class="icon-chevron-right"></i></i></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="col-12 col-md-7">
-                                            <div class="summary entry-summary single-product-info">
-                                                
-                                                <h1 class="product_title entry-title">Aesthetica 5-Piece Brow</h1>
-                                                <div class="woocommerce-product-details__short-description">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                                                        posuere metus vitae arcu imperdiet, id aliquet ante
-                                                        scelerisque. Sed sit amet sem vitae urna fringilla tempus.</p>
-                                                </div>
-                                                <p class="price"><span class="woocommerce-Price-amount amount"><span
-                                                            class="woocommerce-Price-currencySymbol">&#36;</span>79.00</span></p>
-
-
-                                                <form class="cart" action="http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/"
-                                                    method="post" enctype='multipart/form-data'>
-
-                                                    <div class="quantity">
-                                                        <label class="screen-reader-text" for="quantity_5bcc7046e7805">Quantity</label>
-                                                        <input type="number" id="quantity_5bcc7046e7805" class="input-text qty text"
-                                                            step="1" min="1" max="" name="quantity" value="1" title="Qty"
-                                                            size="4" pattern="[0-9]*" inputmode="numeric"
-                                                            aria-labelledby="" />
-                                                    </div>
-                                                    <button type="submit" class="single_add_to_cart_button button">
-                                                        <a href="/cart" style="color:white">
-                                                            Add to cart
-                                                        </a>
-                                                    </button>
-                                                    
-
-                                                </form>
-
-
-
-                                                {{!-- <div class="yith-wcwl-add-to-wishlist add-to-wishlist-9496">
-                                                    <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                        <a href="indexd32f.html?add_to_wishlist=9496" rel="nofollow"
-                                                            data-product-id="9496" data-product-type="simple" class="add_to_wishlist">
-                                                            Add to Wishlist</a>
-                                                        <img src="../../wp-content/plugins/yith-woocommerce-wishlist/assets/images/wpspin_light.gif"
-                                                            class="ajax-loading" alt="loading" width="16" height="16"
-                                                            style="visibility:hidden" />
-                                                    </div>
-
-                                                    <div class="yith-wcwl-wishlistaddedbrowse" style="display:none;">
-                                                        <span class="feedback">Product added!</span>
-                                                        <a href="../../wishlist/index.html" rel="nofollow">
-                                                            Browse Wishlist </a>
-                                                    </div>
-
-                                                    <div style="clear:both"></div>
-                                                    <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                </div> --}}
-
-                                                
-                                                <div class="product_meta">
-
-
-
-                                                    <span class="posted_in">Categories: <a href="../../product-category/clothings/index.html"
-                                                            rel="tag">Clothings</a>, <a href="../../product-category/men/index.html"
-                                                            rel="tag">Men</a></span>
-                                                    <span class="tagged_as">Tags: <a href="../../product-tag/creams/index.html"
-                                                            rel="tag">Creams</a>, <a href="../../product-tag/lotions/index.html"
-                                                            rel="tag">Lotions</a></span>
-
-                                                </div>
-
-                                                {{!-- <div class="share_buttons">
-                                                </div>
-                                                <div class="single-product-sharing">
-                                                    <div class="widget widget_socialsharing_widget">
-                                                        <ul class="social-icons">
-                                                            <li><a class="facebook social-icon" href="#" onclick="javascript: window.open('https://www.facebook.com/sharer/sharer.php?u=http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/'); return false;"
-                                                                    title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                            <li><a class="twitter social-icon" href="#" title="Twitter"
-                                                                    onclick="javascript: window.open('https://twitter.com/home?status=Aesthetica%205-Piece%20Brow%20http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/'); return false;"
-                                                                    target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                            <li><a class="pinterest social-icon" href="#" onclick="javascript: window.open('https://pinterest.com/pin/create/button/?url=http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/&amp;media=http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/3.jpg&amp;description=Aesthetica%205-Piece%20Brow'); return false;"
-                                                                    title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-                                                            <li><a class="gplus social-icon" href="#" onclick="javascript: window.open('https://plus.google.com/share?url=http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/'); return false;"
-                                                                    title="Google +" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                                            <li><a class="linkedin social-icon" href="#" onclick="javascript: window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=http://demo.roadthemes.com/beeta/product/aesthetica-5-piece-brow/&amp;title=Aesthetica%205-Piece%20Brow'); return false;"
-                                                                    title="LinkedIn" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div> --}}
-
-                                            </div><!-- .summary -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="container">
-
-                                    <div class="woocommerce-tabs wc-tabs-wrapper">
-                                        <ul class="tabs wc-tabs" role="tablist">
-                                            <li class="description_tab" id="tab-title-description" role="tab"
-                                                aria-controls="tab-description">
-                                                <a href="#tab-description">Description</a>
-                                            </li>
-                                            {{!-- <li class="reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
-                                                <a href="#tab-reviews">Reviews (0)</a>
-                                            </li> --}}
-                                        </ul>
-                                        <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab"
-                                            id="tab-description" role="tabpanel" aria-labelledby="tab-title-description">
-
-                                            <h2>Description</h2>
-
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-                                                augue nec est tristique auctor. Donec non est at libero vulputate
-                                                rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-                                                vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                            <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat
-                                                sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce
-                                                ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate,
-                                                sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem
-                                                ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et
-                                                placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                                quis mi. Cras neque metus, consequat et blandit et, luctus a nunc.
-                                                Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
-                                        </div>
-                                        {{!-- <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab"
-                                            id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews">
-                                            <div id="reviews" class="woocommerce-Reviews">
-                                                <div id="comments">
-                                                    <h2 class="woocommerce-Reviews-title">Reviews</h2>
-
-
-                                                    <p class="woocommerce-noreviews">There are no reviews yet.</p>
-
-                                                </div>
-
-
-                                                <div id="review_form_wrapper">
-                                                    <div id="review_form">
-                                                        <div id="respond" class="comment-respond">
-                                                            <span id="reply-title" class="comment-reply-title">Be the
-                                                                first to review &ldquo;Aesthetica 5-Piece Brow&rdquo;
-                                                                <small><a rel="nofollow" id="cancel-comment-reply-link"
-                                                                        href="index.html#respond" style="display:none;">Cancel
-                                                                        reply</a></small></span>
-                                                            <form action="http://demo.roadthemes.com/beeta/wp-comments-post.php"
-                                                                method="post" id="commentform" class="comment-form">
-                                                                <p class="comment-notes"><span id="email-notes">Your
-                                                                        email address will not be published.</span>
-                                                                    Required fields are marked <span class="required">*</span></p>
-                                                                <div class="comment-form-rating"><label for="rating">Your
-                                                                        rating</label><select name="rating" id="rating"
-                                                                        aria-required="true" required>
-                                                                        <option value="">Rate&hellip;</option>
-                                                                        <option value="5">Perfect</option>
-                                                                        <option value="4">Good</option>
-                                                                        <option value="3">Average</option>
-                                                                        <option value="2">Not that bad</option>
-                                                                        <option value="1">Very poor</option>
-                                                                    </select></div>
-                                                                <p class="comment-form-comment"><label for="comment">Your
-                                                                        review&nbsp;<span class="required">*</span></label><textarea
-                                                                        id="comment" name="comment" cols="45" rows="8"
-                                                                        aria-required="true" required></textarea></p>
-                                                                <div class="comment-input">
-                                                                    <p class="comment-form-author"><label for="author">Name&nbsp;<span
-                                                                                class="required">*</span></label>
-                                                                        <input id="author" name="author" type="text"
-                                                                            value="" size="30" aria-required="true"
-                                                                            required /></p>
-                                                                    <p class="comment-form-email"><label for="email">Email&nbsp;<span
-                                                                                class="required">*</span></label>
-                                                                        <input id="email" name="email" type="email"
-                                                                            value="" size="30" aria-required="true"
-                                                                            required /></p>
-                                                                </div>
-                                                                <p class="form-submit"><input name="submit" type="submit"
-                                                                        id="submit" class="submit" value="Submit" />
-                                                                    <input type='hidden' name='comment_post_ID' value='9496'
-                                                                        id='comment_post_ID' />
-                                                                    <input type='hidden' name='comment_parent' id='comment_parent'
-                                                                        value='0' />
-                                                                </p>
-                                                            </form>
-                                                        </div><!-- #respond -->
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="clear"></div>
-                                            </div>
-                                        </div> --}}
-                                    </div>
-
-
-                                    <section class="related products">
-                                        <div class="module-title">
-                                            <h3><span>Related Products</span></h3>
-                                        </div>
-
-                                        <div class="shop-products products row grid-view sidebar">
-
-
-
-                                            <div class=" item-col col-12 col-full-hd col-md-12 post-8284 product type-product status-publish has-post-thumbnail product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
-                                                <div class="product-wrapper gridview">
-                                                    <div class="list-col4">
-                                                        <div class="product-image">
-
-                                                            <a href="../aftershave-lotion/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                                <img width="300" height="353" src="../../wp-content/uploads/2018/06/18-300x353.jpg"
-                                                                    class="primary_image wp-post-image" alt="" srcset="http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/18-300x353.jpg 300w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/18-255x300.jpg 255w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/18-100x118.jpg 100w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/18.jpg 510w"
-                                                                    sizes="(max-width: 300px) 100vw, 300px" /> <span
-                                                                    class="shadow"></span>
-                                                            </a> </div>
-                                                    </div>
-                                                    <div class="list-col8">
-                                                        <div class="product-inner">
-                                                            <div class="tag-cate">
-                                                                <a href="../../product-category/men/index.html" rel="tag">Men</a>
-                                                            </div>
-                                                            <h2 class="product-name">
-                                                                <a href="../aftershave-lotion/index.html">Aftershave
-                                                                    Lotion</a>
-                                                            </h2>
-                                                            <div class="box-rating">
-                                                                <div class="price-box"><span class="woocommerce-Price-amount amount"><span
-                                                                            class="woocommerce-Price-currencySymbol">&#36;</span>80.00</span></div>
-                                                                <div class="ratings">
-                                                                    <div class="star-rating"><span style="width:100%">Rated
-                                                                            <strong class="rating">5.00</strong> out of
-                                                                            5</span></div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="product-desc">Lorem ipsum dolor sit amet,
-                                                                consectetur adipiscing elit. Fusce posuere metus vit</div>
-                                                            <div class="count-down">
-                                                            </div>
-                                                            <div class="box-hover">
-                                                                <div class="actions clearfix">
-                                                                    <ul class="add-to-links">
-                                                                        <li class="add-to-cart">
-                                                                            <p class="product woocommerce add_to_cart_inline "
-                                                                                style="border:4px solid #ccc; padding: 12px;"><span
-                                                                                    class="woocommerce-Price-amount amount"><span
-                                                                                        class="woocommerce-Price-currencySymbol">&#36;</span>80.00</span><a
-                                                                                    href="index7d21.html?add-to-cart=8284"
-                                                                                    data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart"
-                                                                                    data-product_id="8284"
-                                                                                    data-product_sku="" aria-label="Add &ldquo;Aftershave Lotion&rdquo; to your cart"
-                                                                                    rel="nofollow">Add to cart</a></p>
-                                                                        </li>
-                                                                        <li class="quickviewbtn">
-                                                                            <a class="detail-link quickview"
-                                                                                data-quick-id="8284" href="../aftershave-lotion/index.html"
-                                                                                title="Aftershave Lotion">Quick View</a>
-                                                                        </li>
-                                                                        <li>
-
-                                                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-8284">
-                                                                                <div class="yith-wcwl-add-button show"
-                                                                                    style="display:block">
-
-
-                                                                                    <a href="indexe77e.html?add_to_wishlist=8284"
-                                                                                        rel="nofollow" data-product-id="8284"
-                                                                                        data-product-type="simple"
-                                                                                        class="add_to_wishlist">
-                                                                                        Add to Wishlist</a>
-
-                                                                                </div>
-
-                                                                                <div class="yith-wcwl-wishlistaddedbrowse hide"
-                                                                                    style="display:none;">
-                                                                                    <span class="feedback">Product
-                                                                                        added!</span>
-                                                                                    <a href="../../wishlist/index.html"
-                                                                                        rel="nofollow">
-                                                                                        Browse Wishlist </a>
-                                                                                </div>
-
-                                                                                <div class="yith-wcwl-wishlistexistsbrowse hide"
-                                                                                    style="display:none">
-                                                                                    <span class="feedback">The product
-                                                                                        is already in the wishlist!</span>
-                                                                                    <a href="../../wishlist/index.html"
-                                                                                        rel="nofollow">
-                                                                                        Browse Wishlist </a>
-                                                                                </div>
-
-                                                                                <div style="clear:both"></div>
-                                                                                <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                            </div>
-
-                                                                            <div class="clear"></div>
-                                                                        </li>
-                                                                        <li>
-                                                                            <div class="woocommerce product compare-button"><a
-                                                                                    href="http://demo.roadthemes.com/beeta?action=yith-woocompare-add-product&amp;id=8284"
-                                                                                    class="compare button"
-                                                                                    data-product_id="8284" rel="nofollow">Compare</a></div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-
-
-
-
-                                            <div class=" item-col col-12 col-full-hd col-md-12 post-9492 product type-product status-publish has-post-thumbnail product_cat-clothings product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-variable has-default-attributes">
-                                                <div class="product-wrapper gridview">
-                                                    <div class="list-col4">
-                                                        <div class="product-image">
-
-                                                            <a href="../kleancolor-nail-polish/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                                <img width="300" height="353" src="../../wp-content/uploads/2018/06/5-300x353.jpg"
-                                                                    class="primary_image wp-post-image" alt="" srcset="http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/5-300x353.jpg 300w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/5-255x300.jpg 255w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/5-100x118.jpg 100w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/5.jpg 510w"
-                                                                    sizes="(max-width: 300px) 100vw, 300px" /> <span
-                                                                    class="shadow"></span>
-                                                            </a> </div>
-                                                    </div>
-                                                    <div class="list-col8">
-                                                        <div class="product-inner">
-                                                            <div class="tag-cate">
-                                                                <a href="../../product-category/clothings/index.html"
-                                                                    rel="tag">Clothings</a> </div>
-                                                            <h2 class="product-name">
-                                                                <a href="../kleancolor-nail-polish/index.html">Kleancolor
-                                                                    Nail Polish</a>
-                                                            </h2>
-                                                            <div class="box-rating">
-                                                                <div class="price-box"><span class="woocommerce-Price-amount amount"><span
-                                                                            class="woocommerce-Price-currencySymbol">&#36;</span>111.00</span>
-                                                                    &ndash; <span class="woocommerce-Price-amount amount"><span
-                                                                            class="woocommerce-Price-currencySymbol">&#36;</span>123.00</span></div>
-                                                            </div>
-
-                                                            <div class="product-desc">Lorem ipsum dolor sit amet,
-                                                                consectetur adipiscing elit. Fusce posuere metus vit</div>
-                                                            <div class="count-down">
-                                                            </div>
-                                                            <div class="box-hover">
-                                                                <div class="actions clearfix">
-                                                                    <ul class="add-to-links">
-                                                                        <li class="add-to-cart">
-                                                                            <p class="product woocommerce add_to_cart_inline "
-                                                                                style="border:4px solid #ccc; padding: 12px;"><span
-                                                                                    class="woocommerce-Price-amount amount"><span
-                                                                                        class="woocommerce-Price-currencySymbol">&#36;</span>111.00</span>
-                                                                                &ndash; <span class="woocommerce-Price-amount amount"><span
-                                                                                        class="woocommerce-Price-currencySymbol">&#36;</span>123.00</span><a
-                                                                                    href="../kleancolor-nail-polish/index.html"
-                                                                                    data-quantity="1" class="button product_type_variable add_to_cart_button"
-                                                                                    data-product_id="9492"
-                                                                                    data-product_sku="" aria-label="Select options for &ldquo;Kleancolor Nail Polish&rdquo;"
-                                                                                    rel="nofollow">Select options</a></p>
-                                                                        </li>
-                                                                        <li class="quickviewbtn">
-                                                                            <a class="detail-link quickview"
-                                                                                data-quick-id="9492" href="../kleancolor-nail-polish/index.html"
-                                                                                title="Kleancolor Nail Polish">Quick
-                                                                                View</a>
-                                                                        </li>
-                                                                        <li>
-
-                                                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-9492">
-                                                                                <div class="yith-wcwl-add-button show"
-                                                                                    style="display:block">
-
-
-                                                                                    <a href="index7c11.html?add_to_wishlist=9492"
-                                                                                        rel="nofollow" data-product-id="9492"
-                                                                                        data-product-type="variable"
-                                                                                        class="add_to_wishlist">
-                                                                                        Add to Wishlist</a>
-
-                                                                                </div>
-
-                                                                                <div class="yith-wcwl-wishlistaddedbrowse hide"
-                                                                                    style="display:none;">
-                                                                                    <span class="feedback">Product
-                                                                                        added!</span>
-                                                                                    <a href="../../wishlist/index.html"
-                                                                                        rel="nofollow">
-                                                                                        Browse Wishlist </a>
-                                                                                </div>
-
-                                                                                <div class="yith-wcwl-wishlistexistsbrowse hide"
-                                                                                    style="display:none">
-                                                                                    <span class="feedback">The product
-                                                                                        is already in the wishlist!</span>
-                                                                                    <a href="../../wishlist/index.html"
-                                                                                        rel="nofollow">
-                                                                                        Browse Wishlist </a>
-                                                                                </div>
-
-                                                                                <div style="clear:both"></div>
-                                                                                <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                            </div>
-
-                                                                            <div class="clear"></div>
-                                                                        </li>
-                                                                        <li>
-                                                                            <div class="woocommerce product compare-button"><a
-                                                                                    href="http://demo.roadthemes.com/beeta?action=yith-woocompare-add-product&amp;id=9492"
-                                                                                    class="compare button"
-                                                                                    data-product_id="9492" rel="nofollow">Compare</a></div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-
-
-
-
-                                            <div class=" item-col col-12 col-full-hd col-md-12 post-8287 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-trending product_cat-women product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
-                                                <div class="product-wrapper gridview">
-                                                    <div class="list-col4">
-                                                        <div class="product-image">
-
-                                                            <a href="../bold-lash-effect-mascara/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                                <img width="300" height="353" src="../../wp-content/uploads/2018/06/11-300x353.jpg"
-                                                                    class="primary_image wp-post-image" alt="" srcset="http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/11-300x353.jpg 300w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/11-255x300.jpg 255w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/11-100x118.jpg 100w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/11.jpg 510w"
-                                                                    sizes="(max-width: 300px) 100vw, 300px" /> <span
-                                                                    class="shadow"></span>
-                                                            </a> </div>
-                                                    </div>
-                                                    <div class="list-col8">
-                                                        <div class="product-inner">
-                                                            <div class="tag-cate">
-                                                                <a href="../../product-category/clothings/index.html"
-                                                                    rel="tag">Clothings</a>, <a href="../../product-category/trending/index.html"
-                                                                    rel="tag">Trending</a>, <a href="../../product-category/women/index.html"
-                                                                    rel="tag">Women</a> </div>
-                                                            <h2 class="product-name">
-                                                                <a href="../bold-lash-effect-mascara/index.html">Bold
-                                                                    Lash Effect Mascara</a>
-                                                            </h2>
-                                                            <div class="box-rating">
-                                                                <div class="price-box"><span class="woocommerce-Price-amount amount"><span
-                                                                            class="woocommerce-Price-currencySymbol">&#36;</span>90.00</span></div>
-                                                                <div class="ratings">
-                                                                    <div class="star-rating"><span style="width:80%">Rated
-                                                                            <strong class="rating">4.00</strong> out of
-                                                                            5</span></div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="product-desc">Lorem ipsum dolor sit amet,
-                                                                consectetur adipiscing elit. Fusce posuere metus vit</div>
-                                                            <div class="count-down">
-                                                            </div>
-                                                            <div class="box-hover">
-                                                                <div class="actions clearfix">
-                                                                    <ul class="add-to-links">
-                                                                        <li class="add-to-cart">
-                                                                            <p class="product woocommerce add_to_cart_inline "
-                                                                                style="border:4px solid #ccc; padding: 12px;"><span
-                                                                                    class="woocommerce-Price-amount amount"><span
-                                                                                        class="woocommerce-Price-currencySymbol">&#36;</span>90.00</span><a
-                                                                                    href="indexa0c4.html?add-to-cart=8287"
-                                                                                    data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart"
-                                                                                    data-product_id="8287"
-                                                                                    data-product_sku="" aria-label="Add &ldquo;Bold Lash Effect Mascara&rdquo; to your cart"
-                                                                                    rel="nofollow">Add to cart</a></p>
-                                                                        </li>
-                                                                        <li class="quickviewbtn">
-                                                                            <a class="detail-link quickview"
-                                                                                data-quick-id="8287" href="../bold-lash-effect-mascara/index.html"
-                                                                                title="Bold Lash Effect Mascara">Quick
-                                                                                View</a>
-                                                                        </li>
-                                                                        <li>
-
-                                                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-8287">
-                                                                                <div class="yith-wcwl-add-button show"
-                                                                                    style="display:block">
-
-
-                                                                                    <a href="index7082.html?add_to_wishlist=8287"
-                                                                                        rel="nofollow" data-product-id="8287"
-                                                                                        data-product-type="simple"
-                                                                                        class="add_to_wishlist">
-                                                                                        Add to Wishlist</a>
-
-                                                                                </div>
-
-                                                                                <div class="yith-wcwl-wishlistaddedbrowse hide"
-                                                                                    style="display:none;">
-                                                                                    <span class="feedback">Product
-                                                                                        added!</span>
-                                                                                    <a href="../../wishlist/index.html"
-                                                                                        rel="nofollow">
-                                                                                        Browse Wishlist </a>
-                                                                                </div>
-
-                                                                                <div class="yith-wcwl-wishlistexistsbrowse hide"
-                                                                                    style="display:none">
-                                                                                    <span class="feedback">The product
-                                                                                        is already in the wishlist!</span>
-                                                                                    <a href="../../wishlist/index.html"
-                                                                                        rel="nofollow">
-                                                                                        Browse Wishlist </a>
-                                                                                </div>
-
-                                                                                <div style="clear:both"></div>
-                                                                                <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                            </div>
-
-                                                                            <div class="clear"></div>
-                                                                        </li>
-                                                                        <li>
-                                                                            <div class="woocommerce product compare-button"><a
-                                                                                    href="http://demo.roadthemes.com/beeta?action=yith-woocompare-add-product&amp;id=8287"
-                                                                                    class="compare button"
-                                                                                    data-product_id="8287" rel="nofollow">Compare</a></div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-
-
-
-
-                                            <div class=" item-col col-12 col-full-hd col-md-12 post-8289 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_cat-trending product_tag-eye-shadow first instock shipping-taxable purchasable product-type-simple">
-                                                <div class="product-wrapper gridview">
-                                                    <div class="list-col4">
-                                                        <div class="product-image">
-
-                                                            <a href="../essy-natural-eyelash-growth/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                                <img width="300" height="353" src="../../wp-content/uploads/2018/06/9-300x353.jpg"
-                                                                    class="primary_image wp-post-image" alt="" srcset="http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/9-300x353.jpg 300w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/9-255x300.jpg 255w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/9-100x118.jpg 100w, http://demo.roadthemes.com/beeta/wp-content/uploads/2018/06/9.jpg 510w"
-                                                                    sizes="(max-width: 300px) 100vw, 300px" /> <span
-                                                                    class="shadow"></span>
-                                                            </a> </div>
-                                                    </div>
-                                                    <div class="list-col8">
-                                                        <div class="product-inner">
-                                                            <div class="tag-cate">
-                                                                <a href="../../product-category/clothings/index.html"
-                                                                    rel="tag">Clothings</a>, <a href="../../product-category/men/index.html"
-                                                                    rel="tag">Men</a>, <a href="../../product-category/trending/index.html"
-                                                                    rel="tag">Trending</a> </div>
-                                                            <h2 class="product-name">
-                                                                <a href="../essy-natural-eyelash-growth/index.html">Essy
-                                                                    natural Eyelash Growth</a>
-                                                            </h2>
-                                                            <div class="box-rating">
-                                                                <div class="price-box"><span class="woocommerce-Price-amount amount"><span
-                                                                            class="woocommerce-Price-currencySymbol">&#36;</span>125.00</span></div>
-                                                                <div class="ratings">
-                                                                    <div class="star-rating"><span style="width:80%">Rated
-                                                                            <strong class="rating">4.00</strong> out of
-                                                                            5</span></div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="product-desc">Lorem ipsum dolor sit amet,
-                                                                consectetur adipiscing elit. Fusce posuere metus vit</div>
-                                                            <div class="count-down">
-                                                            </div>
-                                                            <div class="box-hover">
-                                                                <div class="actions clearfix">
-                                                                    <ul class="add-to-links">
-                                                                        <li class="add-to-cart">
-                                                                            <p class="product woocommerce add_to_cart_inline "
-                                                                                style="border:4px solid #ccc; padding: 12px;"><span
-                                                                                    class="woocommerce-Price-amount amount"><span
-                                                                                        class="woocommerce-Price-currencySymbol">&#36;</span>125.00</span><a
-                                                                                    href="index99cb.html?add-to-cart=8289"
-                                                                                    data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart"
-                                                                                    data-product_id="8289"
-                                                                                    data-product_sku="" aria-label="Add &ldquo;Essy natural Eyelash Growth&rdquo; to your cart"
-                                                                                    rel="nofollow">Add to cart</a></p>
-                                                                        </li>
-                                                                        <li class="quickviewbtn">
-                                                                            <a class="detail-link quickview"
-                                                                                data-quick-id="8289" href="../essy-natural-eyelash-growth/index.html"
-                                                                                title="Essy natural Eyelash Growth">Quick
-                                                                                View</a>
-                                                                        </li>
-                                                                        <li>
-
-                                                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-8289">
-                                                                                <div class="yith-wcwl-add-button show"
-                                                                                    style="display:block">
-
-
-                                                                                    <a href="indexacdf.html?add_to_wishlist=8289"
-                                                                                        rel="nofollow" data-product-id="8289"
-                                                                                        data-product-type="simple"
-                                                                                        class="add_to_wishlist">
-                                                                                        Add to Wishlist</a>
-
-                                                                                </div>
-
-                                                                                <div class="yith-wcwl-wishlistaddedbrowse hide"
-                                                                                    style="display:none;">
-                                                                                    <span class="feedback">Product
-                                                                                        added!</span>
-                                                                                    <a href="../../wishlist/index.html"
-                                                                                        rel="nofollow">
-                                                                                        Browse Wishlist </a>
-                                                                                </div>
-
-                                                                                <div class="yith-wcwl-wishlistexistsbrowse hide"
-                                                                                    style="display:none">
-                                                                                    <span class="feedback">The product
-                                                                                        is already in the wishlist!</span>
-                                                                                    <a href="../../wishlist/index.html"
-                                                                                        rel="nofollow">
-                                                                                        Browse Wishlist </a>
-                                                                                </div>
-
-                                                                                <div style="clear:both"></div>
-                                                                                <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                                            </div>
-
-                                                                            <div class="clear"></div>
-                                                                        </li>
-                                                                        <li>
-                                                                            <div class="woocommerce product compare-button"><a
-                                                                                    href="http://demo.roadthemes.com/beeta?action=yith-woocompare-add-product&amp;id=8289"
-                                                                                    class="compare button"
-                                                                                    data-product_id="8289" rel="nofollow">Compare</a></div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </section>
-
-
-                                    <meta itemprop="url" content="index.html" />
-                                </div>
-                            </div><!-- #product-9496 -->
-
-
-
-
-
-
-                        </div>
+                        {{/if}}
                     </div>
                 </div>
             </div>
