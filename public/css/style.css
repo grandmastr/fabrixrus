@@ -289,4 +289,7 @@ input[name="pImages"]:hover::before {
   background: #a5d8cb;
   transition: 0.2s all ease-in-out; }
 
+.tgm-dash-links a {
+  white-space: nowrap; }
+
 /*# sourceMappingURL=style.css.map */
