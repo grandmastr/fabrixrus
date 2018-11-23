@@ -178,7 +178,7 @@
     <meta name="generator" content="Powered by Slider Revolution 5.4.8 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
     <script type="text/javascript">function setREVStartSize(e) {
             try {
-            e.c = jQuery(e.c); var i = jQuery(window).width(), t = 9999, r = 0, n = 0, l = 0, f = 0, s = 0, h = 0;
+                e.c = jQuery(e.c); var i = jQuery(window).width(), t = 9999, r = 0, n = 0, l = 0, f = 0, s = 0, h = 0;
                 if (e.responsiveLevels && (jQuery.each(e.responsiveLevels, function (e, f) { f > i && (t = r = f, l = e), i > f && f > r && (r = f, n = e) }), t > r && (l = n)), f = e.gridheight[l] || e.gridheight[0] || e.gridheight, s = e.gridwidth[l] || e.gridwidth[0] || e.gridwidth, h = i / s, h = h > 1 ? 1 : h, f = Math.round(h * f), "fullscreen" == e.sliderLayout) { var u = (e.c.width(), jQuery(window).height()); if (void 0 != e.fullScreenOffsetContainer) { var c = e.fullScreenOffsetContainer.split(","); if (c) jQuery.each(c, function (e, i) { u = jQuery(i).length > 0 ? u - jQuery(i).outerHeight(!0) : u }), e.fullScreenOffset.split("%").length > 1 && void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 ? u -= jQuery(window).height() * parseInt(e.fullScreenOffset, 0) / 100 : void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 && (u -= parseInt(e.fullScreenOffset, 0)) } f = u } else void 0 != e.minHeight && f < e.minHeight && (f = e.minHeight); e.c.closest(".rev_slider_wrapper").css({ height: f })
             } catch (d) { console.log("Failure at Presize of Slider:" + d) }
         };</script>
@@ -264,23 +264,62 @@
 
                                     <div class="entry-content">
                                         <div class="woocommerce">
-                                            <form method="post" action="" class="woocommerce-form woocommerce-form-login login">
+                                            {{#if msg}}
+                                            <ul class="errors">
+                                                <li class="alert alert-danger">
+                                                    {{ msg }}
+                                                </li>
+                                            </ul>
+                                            {{/if}}
+                                            {{#if errors}}
+                                            <ul class="errors">
+                                                {{#each errors}}
+                                                <li class="alert alert-warning">
+                                                    {{ this.msg }}
+                                                </li>
+                                                {{/each}}
+                                            </ul>
+                                            {{/if}}
+                                            <form method="post" action="/admin/postProduct" enctype="multipart/form-data"
+                                                class="woocommerce-form woocommerce-form-login login">
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="username">Title</label>
-                                                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text admin-border" name="text" id="username"
-                                                        value="" required /> </p>
+                                                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text admin-border"
+                                                        name="title" id="username" required value="" /> </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="password">Price</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="number" name="password"
-                                                        id="password" required />
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
+                                                        type="number" name="price" id="password" required value="" />
                                                 </p>
                                                 <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                     <label for="password">Color</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="text" name="password"
-                                                        id="password" required />
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
+                                                        type="text" name="color" id="password" value="" required />
                                                 </p>
+                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                    <label for="password">Description</label>
+                                                    <textarea name="description" cols="40" rows="20" required class="wpcf7-form-control wpcf7-textarea admin-border"
+                                                        aria-invalid="false">{{#if description}}{{description}}{{/if}}</textarea>
+                                                </p>
+                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                    <label for="password">Product Image 1</label>
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text"
+                                                        type="file" value="" name="pImages" id="password" />
+                                                </p>
+                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                    <label for="password">Product Image 2</label>
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text"
+                                                        type="file" value="" name="pImages" id="password" />
+                                                </p>
+                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                    <label for="password">Product Image 3</label>
+                                                    <input class="woocommerce-Input woocommerce-Input--text input-text"
+                                                        type="file" name="pImages" value="" id="password" />
+                                                </p>
+                                                <br>
                                                 <p class="form-row">
-                                                    <button type="submit" class="woocommerce-Button button" name="login" value="Save Changes">Save changes</button>
+                                                    <button type="submit" class="woocommerce-Button button" name="login"
+                                                        value="Save Changes">Post</button>
                                                 </p>
                                             </form>
                                         </div>
@@ -302,7 +341,7 @@
         document.body.className = c;
     </script>
     <script type="text/template" id="tmpl-variation-template">
-	
+
     <script type="text/template" id="tmpl-unavailable-variation-template">
 	<p>Sorry, this product is unavailable. Please choose a different combination.</p>
 </script>

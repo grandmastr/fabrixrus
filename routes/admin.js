@@ -122,10 +122,6 @@ router.get('/dashboard',ensureUserIsAdmin, (req,res) => {
     });
 })
 
-router.get('/edit/:id',ensureUserIsAdmin, (req,res) => {
-    res.render('admin/edit_product');
-});
-
 router.get('/edit-account',ensureUserIsAdmin, (req,res) => {
     res.render('admin/edit_profile');
 });
@@ -179,15 +175,23 @@ router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
         console.log(product);
     });
     req.flash('posted','Posted successfully');
+    res.location('/admin');
     res.redirect(302,'/admin');
 });
 
-router.get('/delete-post/:id', (req,res) => {
+router.get('/delete-post/:id', ensureUserIsAdmin, (req,res) => {
 
 });
 
-router.get('/edit-post/:id', (req,res) => {
-
+router.get('/post-edit/:id', ensureUserIsAdmin, (req,res) => {
+    Product.findOne({
+        _id: req.params.id
+    }, (err, product) => {
+        if (err) throw err;
+        res.render('admin/edit_product', {
+            isAdminPage: 'isAdminPage'
+        }); 
+    });
 });
 
 // router.get('/register', (req, res) => {
