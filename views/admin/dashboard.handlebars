@@ -1,10 +1,3 @@
-{{#if postSuccess}}
-    <div class="container">
-        <div class="alert alert-success">
-            {{ postSuccess }}, reload page is content is not displaying
-        </div>
-    </div>
-{{/if}}
 <div class="main-container front-age">
     <div class="page-content">
         <article id="post-9719" class="post-9719 page type-page status-publish hentry">
@@ -19,6 +12,13 @@
                                             <h3 style="margin-bottom: 15px;">Recent Posts</h3> 
                                         </div>
                                     </div>
+                                    {{#if postSuccess}}
+                                    <div class="container">
+                                        <div class="alert alert-success">
+                                            {{ postSuccess }}, reload page is content is not displaying
+                                        </div>
+                                    </div>
+                                    {{/if}}
                                     {{#if partProducts}}
                                         <div class="recent_products slide style_4">
                                             <div class="woocommerce columns-1 ">
@@ -62,7 +62,7 @@
                                                                         <div class="actions clearfix">
                                                                             <ul class="add-to-links tgm-dash-links">
                                                                                 <li class="pull-left delete">
-                                                                                    <a class="pull-left" href="/admin/delete-post/{{ this._id }}">
+                                                                                    <a class="pull-left" href="/admin/delete/{{ this._id }}">
                                                                                         Delete Post
                                                                                     </a>
                                                                                 </li>
@@ -83,6 +83,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <center>
+                                            <a href="/products/store">
+                                                <button type="submit" name="add-to-cart" value="9496" class="single_add_to_cart_button button alt woocommerce-Button button show-more">
+                                                    See more...
+                                                </button>
+                                            </a>
+                                        </center>
                                     {{else}}
                                         <div class="container">
                                             <div class="alert alert-warning">
@@ -97,13 +104,6 @@
                 </div>
             </div>
         </article>
-        <center>
-            <a href="/products/store">
-                <button type="submit" name="add-to-cart" value="9496" class="single_add_to_cart_button button alt woocommerce-Button button show-more">
-                    See more...
-                </button>
-            </a>
-        </center>
         <br>
     </div>
 </div>

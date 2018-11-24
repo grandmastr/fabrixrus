@@ -16,6 +16,13 @@
                                 <div class="entry-content">
                                     <div class="woocommerce">
                                         <div class="u-columns col2-set" id="customer_login">
+                                            <script>
+                                                $(() => {
+                                                    $(window).load(() => {
+                                                        $('#hiddenField').val(document.referrer);
+                                                    })
+                                                });
+                                            </script>
                                             <div class="u-column1 col-md-6 col-lg-6 col-xs-12 col-sm-12" style="margin:auto;">
                                                 {{#if error}}
                                                     <div class="alert alert-danger">
@@ -36,6 +43,9 @@
                                                         <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
                                                             type="password" name="password" id="password" required/>
                                                     </p>
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <input type="text" id="hiddenField" class="woocommerce-Input woocommerce-Input--text input-text admin-border" name="docRef"
+                                                            id="username" hidden value=""/> </p>
                                                     <p class="form-row">
                                                         <button type="submit" class="woocommerce-Button button" name="login"
                                                             value="Log in">Log in</button>

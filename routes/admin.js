@@ -75,9 +75,20 @@ router.post('/login', passport.authenticate('local', {
     if (req.user.isAdmin === 'admin') {
         console.log('Admin Authentication Successful');
         req.flash('Success', 'You are successfully logged in');
-        res.redirect(302, '/admin');
+        let referrer = req.headers.referrer;
+        console.log(req.body.docRef);
+        // console.log(referrer.toString() === (`${req.headers.origin}/admin${req.url}`));
+        // if (req.headers.referrer == `${req.headers.origin}/admin${req.url}`) {
+        //     referrer = '/admin'
+        // } else {
+        //     referrer = req.headers.referer;
+        // }
+        res.redirect(
+            303,
+            '/admin'
+        );
     } else {
-        console.log('You are not an admin')
+        console.log('You are not an admin');
         res.redirect(302, '../user/login');
     }
 });
@@ -123,7 +134,7 @@ router.get('/dashboard',ensureUserIsAdmin, (req,res) => {
 })
 
 router.get('/edit-account',ensureUserIsAdmin, (req,res) => {
-    res.render('admin/edit_profile');
+    res.render('admin/edit_profile', );
 });
 
 router.get('/post', ensureUserIsAdmin, (req,res) => {
@@ -178,9 +189,59 @@ router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
     res.location('/admin');
     res.redirect(302,'/admin');
 });
+router.post('/post-edit/:id',ensureUserIsAdmin ,upload, (req,res) => {
+    let title = req.body.title;
+    let price = req.body.price;
+    let color = req.body.color;
+    let description = req.body.description;
+    let image = req.files;
 
-router.get('/delete-post/:id', ensureUserIsAdmin, (req,res) => {
+    //checking for validation
+    req.checkBody('title', 'Ma\'am the product must have a title, might I suggest *Aso-Ebi*').notEmpty();
+    req.checkBody('price', 'And the product also must have a price').notEmpty();
+    req.checkBody('price', 'And the product price must also be a number').isNumeric();
+    req.checkBody('description', 'The description field should not be left empty').notEmpty();
+    req.checkBody('color', 'People would love to know what color the clothe is').notEmpty();
 
+    //validation errors
+    let postErrors = req.validationErrors();
+    if (postErrors) {
+        res.render('admin/edit_product', {
+            errors: postErrors,
+            title: 'Edit Product',
+            ptitle: title,
+            price: price,
+            description: description,
+            color: color
+        });
+    }
+    let updatedProduct = {
+        title: title,
+        description: description,
+        price: price,
+        color: color,
+        imagePath1: `/uploads/${image[0].filename}`,
+        imagePath2: `/uploads/${image[1].filename}`,
+        imagePath3: `/uploads/${image[2].filename}`
+    };
+    Product.updateProduct(req.params.id, updatedProduct,(err, product) => {
+        if (err) {
+            console.log(`Images didnt upload for the following reasons ${err}`)
+        };
+        console.log(product);
+    });
+    req.flash('posted','Post Updated successfully');
+    res.location('/admin');
+    res.redirect(303,'/admin');
+});
+
+router.delete('/delete/:id', ensureUserIsAdmin, (req,res) => {
+    Product.deleteProduct(req.params.id, (err) => {
+        if (err) throw err;
+        req.flash('posted','Post deleted successfully');
+        req.location('/admin');
+        res.redirect(303, '/admin')
+    });
 });
 
 router.get('/post-edit/:id', ensureUserIsAdmin, (req,res) => {
@@ -188,11 +249,24 @@ router.get('/post-edit/:id', ensureUserIsAdmin, (req,res) => {
         _id: req.params.id
     }, (err, product) => {
         if (err) throw err;
+        let productDetails = {
+            id: product._id,
+            title: product.title,
+            color: product.color,
+            description: product.description,
+            price: product.price,
+            imagePath1: product.imagePath1,
+            imagePath2: product.imagePath2,
+            imagePath3: product.imagePath3
+        };
         res.render('admin/edit_product', {
-            isAdminPage: 'isAdminPage'
+            isAdminPage: 'isAdminPage',
+            product: productDetails
         }); 
     });
 });
+
+
 
 // router.get('/register', (req, res) => {
 //     res.render('admin/register', {

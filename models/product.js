@@ -39,3 +39,11 @@ let Product = module.exports = mongoose.model('Product', schema);
 module.exports.postProduct = (product,callback) => {
     product.save(callback);
 };
+module.exports.updateProduct = (id,productDetails,callback) => {
+    Product.updateOne({
+        _id: id
+    }, productDetails, callback);
+};
+module.exports.deleteProduct = (id,callback) => {
+    Product.remove({ _id: id }, callback);
+};

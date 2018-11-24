@@ -558,72 +558,74 @@ input[name="pImages"]:hover::before {
 
                         <div class="col-12 col-lg-6 col-sm-12 col-xs-12 col-md-6" style="margin:auto">
                             <div class="page-content default-page">
-
-                                <article id="post-9" class="post-9 page type-page status-publish hentry">
-
-                                    <div class="entry-content">
-                                        <div class="woocommerce">
-                                            {{#if msg}}
-                                            <ul class="errors">
-                                                <li class="alert alert-danger">
-                                                    {{ msg }}
-                                                </li>
-                                            </ul>
-                                            {{/if}}
-                                            {{#if errors}}
-                                            <ul class="errors">
-                                                {{#each errors}}
-                                                <li class="alert alert-warning">
-                                                    {{ this.msg }}
-                                                </li>
-                                                {{/each}}
-                                            </ul>
-                                            {{/if}}
-                                            <form method="post" action="/admin/postProduct" enctype="multipart/form-data"
-                                                class="woocommerce-form woocommerce-form-login login">
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="username">Title</label>
-                                                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text admin-border"
-                                                        name="title" id="username" required value="" /> </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Price</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
-                                                        type="number" name="price" id="password" required value="" />
-                                                </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Color</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
-                                                        type="text" name="color" id="password" value="" required />
-                                                </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Description</label>
-                                                    <textarea name="description" cols="40" rows="20" required class="wpcf7-form-control wpcf7-textarea admin-border"
-                                                        aria-invalid="false">{{#if description}}{{description}}{{/if}}</textarea>
-                                                </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Product Image 1</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text"
-                                                        type="file" value="" name="pImages" id="password" />
-                                                </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Product Image 2</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text"
-                                                        type="file" value="" name="pImages" id="password" />
-                                                </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Product Image 3</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text"
-                                                        type="file" name="pImages" value="" id="password" />
-                                                </p>
-                                                <br>
-                                                <p class="form-row">
-                                                    <button type="submit" class="woocommerce-Button button" name="login"
-                                                        value="Save Changes">Post</button>
-                                                </p>
-                                            </form>
+                                {{#if product }}
+                                    <article id="post-9" class="post-9 page type-page status-publish hentry">
+                                    
+                                        <div class="entry-content">
+                                            <div class="woocommerce">
+                                                {{#if msg}}
+                                                <ul class="errors">
+                                                    <li class="alert alert-danger">
+                                                        {{ msg }}
+                                                    </li>
+                                                </ul>
+                                                {{/if}}
+                                                {{#if errors}}
+                                                <ul class="errors">
+                                                    {{#each errors}}
+                                                    <li class="alert alert-warning">
+                                                        {{ this.msg }}
+                                                    </li>
+                                                    {{/each}}
+                                                </ul>
+                                                {{/if}}
+                                                <form method="post" action="/admin/post-edit/{{ product.id }}" enctype="multipart/form-data" class="woocommerce-form woocommerce-form-login login">
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <label for="username">Title</label>
+                                                        <input type="text" class="woocommerce-Input woocommerce-Input--text input-text admin-border" name="title"
+                                                            id="username" required value="{{ product.title }}" /> </p>
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <label for="password">Price</label>
+                                                        <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="number" name="price"
+                                                            id="password" required value="{{ product.price }}" />
+                                                    </p>
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <label for="password">Color</label>
+                                                        <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="text" name="color"
+                                                            id="password" value="{{ product.color }}" required />
+                                                    </p>
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <label for="password">Description</label>
+                                                        <textarea name="description" cols="40" rows="20" required class="wpcf7-form-control wpcf7-textarea admin-border"
+                                                            aria-invalid="false">{{ product.description }}</textarea>
+                                                    </p>
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <label for="password">Product Image 1</label>
+                                                        <input class="woocommerce-Input woocommerce-Input--text input-text" type="file" accept="image/jpeg, image/jpg, image/png" name="pImages"
+                                                            id="password" />
+                                                    </p>
+                                                    {{!-- <img src="{{product.imagePath1}}" alt="{{product.title}}" height="100"> --}}
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <label for="password">Product Image 2</label>
+                                                        <input class="woocommerce-Input woocommerce-Input--text input-text" type="file"  accept="image/jpeg, image/jpg, image/png" name="pImages"
+                                                            id="password" />
+                                                    </p>
+                                                    {{!-- <img src="{{product.imagePath2}}" alt="{{product.title}}" height="100"> --}}
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <label for="password">Product Image 3</label>
+                                                        <input class="woocommerce-Input woocommerce-Input--text input-text" type="file" accept="image/jpeg, image/jpg, image/png" name="pImages"
+                                                             id="password" />
+                                                    </p>
+                                                    {{!-- <img src="{{product.imagePath1}}" alt="{{product.title}}" height="100"> --}}
+                                                    <br>
+                                                    <p class="form-row">
+                                                        <button type="submit" class="woocommerce-Button button" name="login" value="Save Changes">Post</button>
+                                                    </p>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                {{/if}}
                             </div>
                         </div>
                     </div>
