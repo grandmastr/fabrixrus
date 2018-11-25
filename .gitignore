@@ -1,4 +1,3 @@
-#hiding the damn node_modules folder
 node_modules
 .idea
 .vscode
