@@ -175,19 +175,19 @@ router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
         description: description,
         price: price,
         color: color,
-        imagePath1: `/uploads/${image[0].filename}`,
-        imagePath2: `/uploads/${image[1].filename}`,
-        imagePath3: `/uploads/${image[2].filename}`
+        imagePath1: `/uploads/${image[0].filename}` || '/images/fabrixrus.png',
+        imagePath2: `/uploads/${image[1].filename}` || '/images/fabrixrus.png',
+        imagePath3: `/uploads/${image[2].filename}` || '/images/fabrixrus.png'
     });
     Product.postProduct(newProduct, (err, product) => {
         if (err) {
             console.log(`Images didnt upload for the following reasons ${err}`)
         };
         console.log(product);
+        req.flash('posted', 'Posted successfully');
+        res.location('/admin');
+        res.redirect(302, '/admin');
     });
-    req.flash('posted','Posted successfully');
-    res.location('/admin');
-    res.redirect(302,'/admin');
 });
 router.post('/post-edit/:id',ensureUserIsAdmin ,upload, (req,res) => {
     let title = req.body.title;
@@ -229,17 +229,17 @@ router.post('/post-edit/:id',ensureUserIsAdmin ,upload, (req,res) => {
             console.log(`Images didnt upload for the following reasons ${err}`)
         };
         console.log(product);
+        req.flash('posted', 'Post Updated successfully');
+        res.location('/admin');
+        res.redirect(303, '/admin');
     });
-    req.flash('posted','Post Updated successfully');
-    res.location('/admin');
-    res.redirect(303,'/admin');
 });
 
 router.delete('/delete/:id', ensureUserIsAdmin, (req,res) => {
     Product.deleteProduct(req.params.id, (err) => {
         if (err) throw err;
         req.flash('posted','Post deleted successfully');
-        req.location('/admin');
+        res.location('/admin');
         res.redirect(303, '/admin')
     });
 });

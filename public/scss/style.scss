@@ -1,4 +1,5 @@
 $primaryColor: #76cfb9;
+$secondaryColor: #a54c81;
 body{
     outline:none !important;
     overflow-x: hidden !important;
@@ -22,7 +23,7 @@ body{
 }
 ::selection{
 	color:#fff !important;
-    background: $primaryColor !important;
+    background: $secondaryColor !important;
 }
 .wpb_wrapper > .image > a > img{
     max-height: 270px !important;

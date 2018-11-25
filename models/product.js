@@ -45,5 +45,5 @@ module.exports.updateProduct = (id,productDetails,callback) => {
     }, productDetails, callback);
 };
 module.exports.deleteProduct = (id,callback) => {
-    Product.remove({ _id: id }, callback);
+    Product.deleteOne({ _id: id }, callback);
 };
