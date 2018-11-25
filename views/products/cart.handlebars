@@ -260,7 +260,7 @@
 			</div>
 			<div class="clearfix"></div>
 			<div class="container">
-				{{#if products}}
+				{{#if products.items }}
 				<div class="row">
 				
 					<div class="col-12 ">
@@ -285,41 +285,57 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr class="woocommerce-cart-form__cart-item cart_item">
-				
-				
-														<td class="product-thumbnail">
-															<a href="../product/bareminerals-illuminating/index.html"><img width="300" height="353" src="../wp-content/uploads/2017/03/24-300x353.jpg"
-																 class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" srcset="http://demo.roadthemes.com/beeta/wp-content/uploads/2017/03/24-300x353.jpg 300w, http://demo.roadthemes.com/beeta/wp-content/uploads/2017/03/24-255x300.jpg 255w, http://demo.roadthemes.com/beeta/wp-content/uploads/2017/03/24-100x118.jpg 100w, http://demo.roadthemes.com/beeta/wp-content/uploads/2017/03/24.jpg 510w"
-																 sizes="(max-width: 300px) 100vw, 300px" /></a> </td>
-				
-														<td class="product-name" data-title="Product">
-															<a href="../product/bareminerals-illuminating/index.html">Bareminerals Illuminating</a> </td>
-				
-														<td class="product-price" data-title="Price">
-															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>81.00</span>
-														</td>
-				
-														<td class="product-quantity" data-title="Quantity">
-															<div class="quantity">
-																<label class="screen-reader-text" for="quantity_5bcc703c27523">Quantity</label>
-																<input type="number" id="quantity_5bcc703c27523" class="input-text qty text" step="1" min="0" max="" name="cart[10cc088a48f313ab3b1f4e6e76353dd4][qty]"
-																 value="160" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" aria-labelledby="" />
-															</div>
-														</td>
-				
-														<td class="product-subtotal" data-title="Total">
-															<span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>12,960.00</span>
-														</td>
-														<td class="product-remove">
-															<a href="indexf10b.html?remove_item=10cc088a48f313ab3b1f4e6e76353dd4&amp;_wpnonce=02d79d6595" onclick="roadMiniCartRemove('indexf10b.html?remove_item=10cc088a48f313ab3b1f4e6e76353dd4&amp;_wpnonce=02d79d6595', '10cc088a48f313ab3b1f4e6e76353dd4');return false;"
-															 class="remove" aria-label="Remove this item" data-product_id="8276" data-product_sku=""><i class="icon-x"></i></a>
-														</td>
-													</tr>
+													{{#each products.items  }}
+														<tr class="woocommerce-cart-form__cart-item cart_item">
+														
+														
+															<td class="product-thumbnail">
+																<a href="#"><img width="300" height="353" src="{{ this.imagePath }}"
+																	 class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image" alt="" srcset="{{ this.imagePath }} 300w, {{ this.imagePath }} 255w, {{ this.imagePath }} 100w, {{ this.imagePath }} 510w"
+																	 sizes="(max-width: 300px) 100vw, 300px" /></a> </td>
+														
+															<td class="product-name" data-title="{{ this.title }}">
+																<a href="#">{{ this.title }}</a> </td>
+														
+															<td class="product-price" data-title="Price">
+																<span class="woocommerce-Price-amount amount">
+																	<span class="woocommerce-Price-currencySymbol">
+																		&#36;
+
+																	</span>
+																	{{ this.price }}
+																</span>
+															</td>
+														
+															<td class="product-quantity" data-title="Quantity">
+																<div class="quantity">
+																	<label class="screen-reader-text" for="">Quantity</label>
+																	<input type="number" id="quantity_5bcc703c27523" class="input-text qty text" step="1" min="0" max="" name="qty"
+																	 value="{{ this.qty }}" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" aria-labelledby="" />
+																</div>
+															</td>
+														
+															<td class="product-subtotal" data-title="Total">
+																<span class="woocommerce-Price-amount amount">
+																	<span class="woocommerce-Price-currencySymbol">&#36;
+																	</span>
+																	{{ multiply this.price this.qty }}
+																</span>
+															</td>
+															<td class="product-remove">
+																<a href="/cart/remove-from-cart/{{ this._id }}"
+																 class="remove" aria-label="Remove this item" data-product_id="8276" data-product_sku=""><i class="icon-x"></i></a>
+															</td>
+														</tr>
+													{{/each}}
 													<tr class="table-bottom">
 														<td colspan="6" class="actions">
 				
 															<input type="submit" class="button" name="update_cart" value="Update cart" />
+													</tr>
+													<tr class="table-bottom">
+														<td colspan="6" class="actions">
+															<input type="reset" class="button" name="update_cart" value="Empty Cart" />
 													</tr>
 				
 												</tbody>
@@ -335,7 +351,7 @@
 				
 															<tr class="cart-subtotal">
 																<th>Subtotal</th>
-																<td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>155,992.00</span></td>
+																<td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>{{ products.total }}</span></td>
 															</tr>
 				
 				
@@ -425,7 +441,7 @@
 				
 															<tr class="order-total">
 																<th>Total</th>
-																<td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>155,992.00</span></strong>
+																<td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>{{ products.total }}</span></strong>
 																</td>
 															</tr>
 				
@@ -434,7 +450,7 @@
 				
 														<div class="wc-proceed-to-checkout">
 				
-															<a href="../checkout/index.html" class="checkout-button button alt wc-forward">
+															<a href="/checkout" class="checkout-button button alt wc-forward">
 																Proceed to checkout</a>
 														</div>
 				
