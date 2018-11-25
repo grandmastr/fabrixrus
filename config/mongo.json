@@ -1,0 +1,13 @@
+{
+    "development": {
+        "database": "fabrixrus",
+        "host": "localhost"
+    },
+    "test": {
+        "database": "fabrixrus",
+        "host": "localhost"
+    },
+    "production": {
+        "use_env_variable": "MONGODB_URI"
+    }
+}

@@ -8,3 +8,8 @@ $(document).ready(function() {
         window.location('/admin');
     });
 });
+$(() => {
+    Handlebars.registerHelper('multiply', function(a,b) {
+        return a * b;
+    });
+});
