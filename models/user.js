@@ -10,6 +10,10 @@ let userSchema = new Schema({
         type: String,
         required: true,
     },
+    phone: {
+        type: Number,
+        required:true
+    },
     isAdmin: {
         type: String,
         default: 'user'

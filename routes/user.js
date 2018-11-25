@@ -76,6 +76,7 @@ router.get('/register', (req, res, next) => {
 router.post('/register', (req, res) => {
     let username = req.body.username;
     let email = req.body.email;
+    let phone = req.body.phone;
     let password = req.body.password;
     let password2 = req.body.password2;
 
@@ -83,6 +84,7 @@ router.post('/register', (req, res) => {
     req.checkBody('username', 'Good one but the name field is required').notEmpty();
     req.checkBody('email', 'Email field is required').notEmpty();
     req.checkBody('email', 'I think you should try entering a correct email this time').isEmail();
+    req.checkBody('phone', 'Please enter a valid phone number').isNumeric();
     req.checkBody('password', 'Password is required').notEmpty();
     req.checkBody('password2', 'The password you tried to confirm does\'nt match').equals(password);
 
@@ -114,6 +116,7 @@ router.post('/register', (req, res) => {
                     title: 'Register',
                     username: username,
                     email: email,
+                    phone: phone,
                     password: password,
                     password2: password2
                 });
@@ -121,6 +124,7 @@ router.post('/register', (req, res) => {
                 let newUser = new User({
                     name: username,
                     email: email,
+                    phone: phone,
                     isAdmin: 'user',
                     password: password
                 });

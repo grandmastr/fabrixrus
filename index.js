@@ -42,10 +42,12 @@ app.use(expressValidator({
 //routes
 let admin = require('./routes/admin');
 let user = require('./routes/user');
+let cart = require('./routes/cart');
 
 //using routes
 app.use('/user',user);
 app.use('/admin',admin);
+app.use('/cart',cart);
 
 //models
 const Product = require('./models/product');
@@ -55,7 +57,7 @@ app.use(express.static(path));
 app.use('/user',express.static(path));
 app.use('/products',express.static(path));
 app.use('/admin',express.static(path));
-app.use('/admin/edit', express.static(path));
+app.use('/cart', express.static(path));
 app.set('port', process.env.PORT || 8000);
 
 
@@ -68,8 +70,6 @@ app.get('*', (req, res, next) => {
     res.locals.user = req.user || null;
     next();
 });
-
-
 
 app.get('/', (req,res) => {
     Product.find((err,products) => {
@@ -108,12 +108,6 @@ app.get('/contact', (req,res) => {
         contact: 'contact'
     });
 });
-
-app.get('/cart', (req,res) => {
-    res.render('products/cart', {
-        shop: 'shop'
-    });
-})
 
 app.get('/products/store', (req, res) => {
     Product.find((err, data) => {

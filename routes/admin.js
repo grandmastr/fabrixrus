@@ -10,6 +10,7 @@ const express = require('express')
     , multerUploads = multer({ dest: 'uploads/'});
 
 app.use(require('body-parser').urlencoded({ extended: false }));
+app.use(require('body-parser').urlencoded({ extended: false }));
 
 //importing models
 let Product = require('../models/product');
@@ -128,9 +129,30 @@ router.get('/', ensureUserIsAdmin, (req,res) => {
 });
 
 router.get('/dashboard',ensureUserIsAdmin, (req,res) => {
-    res.render('admin/dashboard', {
-        isAdminPage: 'isAdminPage'
-    });
+    Product.find((err, products) => {
+        let partProducts = [];
+        let desiredNumber = 8;
+        let userName;
+        if (req.user && req.user.isAdmin === 'admin') {
+            userName = 'Admin'
+        } else if (req.user && req.user.isAdmin !== 'admin') {
+            userName = req.user.name;
+        }
+        if (products.length >= desiredNumber) {
+            for (let i = 0; i < desiredNumber; i++) {
+                partProducts.push(products[i]);
+            }
+        } else {
+            partProducts = products;
+        }
+        res.render('admin/dashboard', {
+            isAdminPage: 'isAdminPage',
+            dashboard: 'dashboard',
+            postSuccess: req.flash('posted'),
+            userName: userName,
+            partProducts: partProducts
+        });
+    }, err => { console.warn(`The following error occurred: ${err}`); })
 })
 
 router.get('/edit-account',ensureUserIsAdmin, (req,res) => {

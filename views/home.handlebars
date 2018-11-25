@@ -128,12 +128,7 @@
                                 <div class="wpb_column vc_column_container vc_col-sm-12">
                                     <div class="vc_column-inner">
                                         <div class="wpb_wrapper">
-                                            <div class="wpb_text_column wpb_content_element  title2">
-                                                <div class="wpb_wrapper">
-                                                    <h3 style="margin-bottom: 15px;">New arrivals</h3>
-                                                    <p>Checkout the latest additions to the fabrixRus collection.</p>
-                                                </div>
-                                            </div>
+                                            
                                             {{!-- <div class="recent_products slide style_4">
                                                 <div class="woocommerce columns-1 ">
                                                     <div class="shop-products products row grid-view sidebar">
@@ -221,6 +216,12 @@
                                             </div> --}}
                                             <br>
                                             {{#if partProducts}}
+                                            <div class="wpb_text_column wpb_content_element  title2">
+                                                <div class="wpb_wrapper">
+                                                    <h3 style="margin-bottom: 15px;">New arrivals</h3>
+                                                    <p>Checkout the latest additions to the fabrixRus collection.</p>
+                                                </div>
+                                            </div>
                                                 <div class="recent_products style_4">
                                                     <div class="woocommerce columns-1 ">
                                                         <div class="shop-products products row grid-view sidebar">
@@ -304,8 +305,8 @@
                                                 </div>
                                             {{else}}
                                                 <div class="container">
-                                                    <div class="alert alert-warning">
-                                                        No Posts yet
+                                                    <div class="alert alert-info">
+                                                        No Posts yet, check back with us in a minute
                                                     </div>
                                                 </div>
                                             {{/if}}
