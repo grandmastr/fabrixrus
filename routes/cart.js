@@ -1,7 +1,8 @@
 const express = require('express')
     , router = express.Router()
     , passport = require('passport')
-    , LocalStrategy = require('passport-local').Strategy;
+    , LocalStrategy = require('passport-local').Strategy
+    , { Transaction, Card } = require('paystack-js');
 const Product = require('../models/product');
 
 router.get('/', (req, res) => {

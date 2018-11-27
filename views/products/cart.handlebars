@@ -328,16 +328,6 @@
 															</td>
 														</tr>
 													{{/each}}
-													<tr class="table-bottom">
-														<td colspan="6" class="actions">
-				
-															<input type="submit" class="button" name="update_cart" value="Update cart" />
-													</tr>
-													<tr class="table-bottom">
-														<td colspan="6" class="actions">
-															<input type="reset" class="button" name="update_cart" value="Empty Cart" />
-													</tr>
-				
 												</tbody>
 											</table>
 											<div class="row">
@@ -347,122 +337,10 @@
 				
 														<h2>Cart totals</h2>
 				
-														<table cellspacing="0" class="shop_table shop_table_responsive">
-				
-															<tr class="cart-subtotal">
-																<th>Subtotal</th>
-																<td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>{{ products.total }}</span></td>
-															</tr>
-				
-				
-				
-				
-															<tr class="shipping">
-																<th>Shipping</th>
-																<td data-title="Shipping">
-																	<form class="woocommerce-shipping-calculator" action="" method="post">
-				
-																		<p><a href="#" class="shipping-calculator-button">Calculate shipping</a></p>
-				
-																		<section class="shipping-calculator-form" style="display:none;">
-																			<p class="form-row form-row-wide" id="calc_shipping_state_field">
-																				<span>
-																					<select name="calc_shipping_state" class="state_select" id="calc_shipping_state" placeholder="State / County">
-																						<option value="">Select a state&hellip;</option>
-																						<option value="AB">Abia</option>
-																						<option value="FC">Abuja</option>
-																						<option value="AD">Adamawa</option>
-																						<option value="AK">Akwa Ibom</option>
-																						<option value="AN">Anambra</option>
-																						<option value="BA">Bauchi</option>
-																						<option value="BY">Bayelsa</option>
-																						<option value="BE">Benue</option>
-																						<option value="BO">Borno</option>
-																						<option value="CR">Cross River</option>
-																						<option value="DE">Delta</option>
-																						<option value="EB">Ebonyi</option>
-																						<option value="ED">Edo</option>
-																						<option value="EK">Ekiti</option>
-																						<option value="EN">Enugu</option>
-																						<option value="GO">Gombe</option>
-																						<option value="IM">Imo</option>
-																						<option value="JI">Jigawa</option>
-																						<option value="KD">Kaduna</option>
-																						<option value="KN">Kano</option>
-																						<option value="KT">Katsina</option>
-																						<option value="KE">Kebbi</option>
-																						<option value="KO">Kogi</option>
-																						<option value="KW">Kwara</option>
-																						<option value="LA">Lagos</option>
-																						<option value="NA">Nasarawa</option>
-																						<option value="NI">Niger</option>
-																						<option value="OG">Ogun</option>
-																						<option value="ON">Ondo</option>
-																						<option value="OS">Osun</option>
-																						<option value="OY">Oyo</option>
-																						<option value="PL">Plateau</option>
-																						<option value="RI">Rivers</option>
-																						<option value="SO">Sokoto</option>
-																						<option value="TA">Taraba</option>
-																						<option value="YO">Yobe</option>
-																						<option value="ZA">Zamfara</option>
-																					</select>
-																				</span>
-																			</p>
-				
-				
-				
-																			<p class="form-row form-row-wide" id="calc_shipping_city_field">
-																				<input type="text" class="input-text" value="" placeholder="City" name="calc_shipping_city" id="calc_shipping_city" />
-																			</p>
-				
-				
-				
-																			<p class="form-row form-row-wide" id="calc_shipping_postcode_field">
-																				<input type="text" class="input-text" value="" placeholder="Postcode / ZIP" name="calc_shipping_postcode"
-																				 id="calc_shipping_postcode" />
-																			</p>
-				
-				
-																			<p><button type="submit" name="calc_shipping" value="1" class="button">Update totals</button></p>
-				
-																			<input type="hidden" id="woocommerce-shipping-calculator-nonce" name="woocommerce-shipping-calculator-nonce"
-																			 value="d1c60dfe80" /><input type="hidden" name="_wp_http_referer" value="" />
-																		</section>
-																	</form>
-				
-																</td>
-															</tr>
-				
-				
-				
-				
-				
-				
-															<tr class="order-total">
-																<th>Total</th>
-																<td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>{{ products.total }}</span></strong>
-																</td>
-															</tr>
-				
-				
-														</table>
-				
-														<div class="wc-proceed-to-checkout">
-				
-															<a href="/checkout" class="checkout-button button alt wc-forward">
-																Proceed to checkout</a>
-														</div>
-				
-				
 													</div>
 												</div>
 											</div>
 										</form>
-				
-										<div class="cart-collaterals">
-										</div>
-				
 									</div>
 								</div>
 							</article>

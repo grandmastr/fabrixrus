@@ -91,9 +91,7 @@ html[xmlns] .flexslider .slides {
   -o-transition: all 1s ease;
   transition: all 1s ease;
   border: 1px solid #D1CFCF;
-
 }
-
 .loading .flex-viewport {
   max-height: 300px;
 }
@@ -103,7 +101,6 @@ html[xmlns] .flexslider .slides {
 .flex-direction-nav {
   *height: 0;
 }
-
 .flex-direction-nav .flex-disabled {
   opacity: 0!important;
   filter: alpha(opacity=0);

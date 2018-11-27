@@ -9,8 +9,7 @@ const express = require('express')
 ,flash = require('connect-flash')
 ,passport = require('passport')
 ,expressValidator = require('express-validator')
-,multer = require('multer')
-,{ ensureAuth } = require('./helpers/auth');
+,multer = require('multer');
 
 
 app.disable('x-powered-by');

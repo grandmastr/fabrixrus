@@ -30,7 +30,9 @@
     "nodemon": "^1.18.5",
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "paypal-express-checkout": "^1.6.3",
+    "paystack-js": "^0.18.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

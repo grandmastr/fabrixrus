@@ -29,9 +29,9 @@
                                                 <div class="vc_wp_custommenu wpb_content_element language switcher">
                                                     <div class="widget widget_nav_menu">
                                                         <div class="menu-language-container">
-                                                            <ul id="menu-cart" class="menu">
-                                                                <li id="menu-item-9253" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children first menu-item-9253">
-                                                                    <a href="#">Cart</a>
+                                                            <ul id="menu-cart" class="">
+                                                                <li id="menu-item-9253" class="menu-item menu-item-type-custom menu-item-object-custom first menu-item-9253">
+                                                                    <a href="/cart">Cart</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -203,13 +203,15 @@
                                                                                         </span>
                                                                                     </a>
                                                                                 </li>
-                                                                                <li class="nav_search_box">
-                                                                                    <form method="get" class="mega_main_menu_searchform" action="">
-                                                                                        <input type="text" class="field" name="s" id="s" />
-                                                                                        <i class="im-icon-search-3 icosearch"></i>
-                                                                                        <input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
-                                                                                    </form>
-                                                                                </li><!-- class="nav_search_box" -->
+                                                                                {{#unless isAdmin}}
+                                                                                    <li class="nav_search_box">
+                                                                                        <form method="get" class="mega_main_menu_searchform" action="">
+                                                                                            <input type="text" class="field" name="s" id="s" />
+                                                                                            <i class="im-icon-search-3 icosearch"></i>
+                                                                                            <input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
+                                                                                        </form>
+                                                                                    </li><!-- class="nav_search_box" -->
+                                                                                {{/unless}}
                                                                             </ul>
                                                                         {{/if}}
                                                                     </div><!-- /class="menu_inner" -->
