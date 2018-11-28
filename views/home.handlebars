@@ -260,12 +260,10 @@
                                                                                                 <ul class="add-to-links">
                                                                                                     <li class="add-to-cart">
                                                                                                         <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-                                                                                                            <span class="woocommerce-Price-amount amount">
-                                                                                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>79.00
-                                                                                                            </span>
-                                                                                                            <a href="/cart/{{ this._id }}" data-quantity="1" class="button product_type_simple add_to_cart_button "
-                                                                                                                data-product_id="9496" data-product_sku="" aria-label="Add &ldquo;Aesthetica 5-Piece Brow&rdquo; to your cart"
-                                                                                                                rel="nofollow"> Buy Now</a></p>
+                                                                                                            <form method="POST" action="/cart/{{ this._id }}">
+                                                                                                                <input type="submit" value="Buy Now" style="border:none;outline:none;cursor:pointer;height:auto;background:none;color:#000;padding-left:5px;padding-top:12px">
+                                                                                                            </form>    
+                                                                                                        </p>
                                                                                                     </li>
                                                                                                     <li>
                                                                                                         <div class="yith-wcwl-add-to-wishlist add-to-wishlist-9496">

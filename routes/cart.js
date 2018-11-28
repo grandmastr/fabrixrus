@@ -40,7 +40,7 @@ router.post('/:id', (req,res) => {
                 title: title,
                 price: price,
                 imagePath: imagePath1,
-                qty: 1
+                qty: req.body.qty || 1
             }
         }
         res.redirect('/cart');
