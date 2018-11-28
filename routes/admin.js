@@ -271,15 +271,16 @@ router.get('/post-edit/:id', ensureUserIsAdmin, (req,res) => {
         _id: req.params.id
     }, (err, product) => {
         if (err) throw err;
+        let { _id:id,title,color,description,price,imagePath1,imagePath2,imagePath3 } = product;
         let productDetails = {
-            id: product._id,
-            title: product.title,
-            color: product.color,
-            description: product.description,
-            price: product.price,
-            imagePath1: product.imagePath1,
-            imagePath2: product.imagePath2,
-            imagePath3: product.imagePath3
+            id: id,
+            title: title,
+            color: color,
+            description: description,
+            price: price,
+            imagePath1: imagePath1,
+            imagePath2: imagePath2,
+            imagePath3: imagePath3
         };
         res.render('admin/edit_product', {
             isAdminPage: 'isAdminPage',
@@ -287,8 +288,6 @@ router.get('/post-edit/:id', ensureUserIsAdmin, (req,res) => {
         }); 
     });
 });
-
-
 
 // router.get('/register', (req, res) => {
 //     res.render('admin/register', {
