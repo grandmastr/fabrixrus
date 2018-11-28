@@ -5,8 +5,11 @@ $(document).ready(function () {
             url: `/admin/delete/${deleteId}`,
             type: 'DELETE',
         });
-        window.location('/admin');
     });
+    $('.').click(function(e) {
+        e.preventDefault();
+        
+    })
 });
 (function (w, d) {
     w.HelpCrunch = function () { w.HelpCrunch.q.push(arguments) }; w.HelpCrunch.q = [];
@@ -20,3 +23,17 @@ HelpCrunch('init', 'fabrixrus', {
 });
 
 HelpCrunch('showChatWidget');
+$(() => {
+    var totalPay = [];
+    $('.eachProduct').each((index) => {
+        let productQty = $(`.eachProduct:nth-child(${index + 1}) input`);
+        let pricePerProduct = $(`.eachProduct:nth-child(${index + 1}) span.subTotalPrice`);
+        let productPrice = $(`.eachProduct:nth-child(${index + 1}) span.productPrice`);
+        totalPay += Number($('.eachProduct span.subTotalPrice').text());
+        pricePerProduct.text(productPrice.text() * productQty.val());
+        $(`.eachProduct:nth-child(${index + 1}) input`).on('change',() => {
+            pricePerProduct.text(productPrice.text() * productQty.val());
+            totalPay.push(productPrice.text())
+        });
+    });
+});

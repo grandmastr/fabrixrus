@@ -57,7 +57,7 @@ app.use('/user',express.static(path));
 app.use('/products',express.static(path));
 app.use('/admin',express.static(path));
 app.use('/cart', express.static(path));
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 3000);
 
 
 mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true },err => {
@@ -72,6 +72,7 @@ app.get('*', (req, res, next) => {
 
 app.get('/', (req,res) => {
     Product.find((err,products) => {
+        if (err) throw err;
         let partProducts = [];
         let desiredNumber = 8;
         let userName;

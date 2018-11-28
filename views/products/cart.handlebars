@@ -25,8 +25,8 @@
 	</script>
 	<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
 	<link rel='dns-prefetch' href='http://s.w.org/' />
-	<link rel="alternate" type="application/rss+xml" title="Beeta &raquo; Feed" href="../feed/index.html" />
-	<link rel="alternate" type="application/rss+xml" title="Beeta &raquo; Comments Feed" href="../comments/feed/index.html" />
+	<link rel="alternate" type="application/rss+xml" title="Beeta &raquo; Feed" href="../feed//" />
+	<link rel="alternate" type="application/rss+xml" title="Beeta &raquo; Comments Feed" href="../comments/feed//" />
 	<script type="text/javascript">
 		window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/", "svgExt": ".svg", "source": { "concatemoji": "http:\/\/demo.roadthemes.com\/beeta\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8" } };
 		!function (a, b, c) { function d(a, b) { var c = String.fromCharCode; l.clearRect(0, 0, k.width, k.height), l.fillText(c.apply(this, a), 0, 0); var d = k.toDataURL(); l.clearRect(0, 0, k.width, k.height), l.fillText(c.apply(this, b), 0, 0); var e = k.toDataURL(); return d === e } function e(a) { var b; if (!l || !l.fillText) return !1; switch (l.textBaseline = "top", l.font = "600 32px Arial", a) { case "flag": return !(b = d([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819])) && (b = d([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]), !b); case "emoji": return b = d([55358, 56760, 9792, 65039], [55358, 56760, 8203, 9792, 65039]), !b }return !1 } function f(a) { var c = b.createElement("script"); c.src = a, c.defer = c.type = "text/javascript", b.getElementsByTagName("head")[0].appendChild(c) } var g, h, i, j, k = b.createElement("canvas"), l = k.getContext && k.getContext("2d"); for (j = Array("flag", "emoji"), c.supports = { everything: !0, everythingExceptFlag: !0 }, i = 0; i < j.length; i++)c.supports[j[i]] = e(j[i]), c.supports.everything = c.supports.everything && c.supports[j[i]], "flag" !== j[i] && (c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && c.supports[j[i]]); c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && !c.supports.flag, c.DOMReady = !1, c.readyCallback = function () { c.DOMReady = !0 }, c.supports.everything || (h = function () { c.readyCallback() }, b.addEventListener ? (b.addEventListener("DOMContentLoaded", h, !1), a.addEventListener("load", h, !1)) : (a.attachEvent("onload", h), b.attachEvent("onreadystatechange", function () { "complete" === b.readyState && c.readyCallback() })), g = c.source || {}, g.concatemoji ? f(g.concatemoji) : g.wpemoji && g.twemoji && (f(g.twemoji), f(g.wpemoji))) }(window, document, window._wpemojiSettings);
@@ -161,12 +161,12 @@
 	</script>
 	<script type='text/javascript' src='../wp-includes/js/zxcvbn-async.min5152.js?ver=1.0'></script>
 	<script type='text/javascript' src='../wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart7e15.js?ver=5.5.4'></script>
-	<link rel='https://api.w.org/' href='../wp-json/index.html' />
+	<link rel='https://api.w.org/' href='../wp-json//' />
 	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
 	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../wp-includes/wlwmanifest.xml" />
 	<meta name="generator" content="WordPress 4.9.8" />
 	<meta name="generator" content="WooCommerce 3.4.5" />
-	<link rel="canonical" href="index.html" />
+	<link rel="canonical" href="/" />
 	<link rel='shortlink' href='../indexc4f7.html?p=7' />
 	<link rel="alternate" type="application/json+oembed" href="../wp-json/oembed/1.0/embede134.json?url=http%3A%2F%2Fdemo.roadthemes.com%2Fbeeta%2Fcart%2F" />
 	<link rel="alternate" type="text/xml+oembed" href="../wp-json/oembed/1.0/embed4fef?url=http%3A%2F%2Fdemo.roadthemes.com%2Fbeeta%2Fcart%2F&amp;format=xml" />
@@ -251,7 +251,7 @@
 			<div class="blog-header-title">
 				<div class="container">
 					<div class="title-breadcrumb-inner">
-						<div class="breadcrumbs"><a href="../index.html">Home</a><span class="separator">/</span><span> Cart</span></div>
+						<div class="breadcrumbs"><a href="/">Home</a><span class="separator">/</span><span> Cart</span></div>
 						<header class="entry-header">
 							<h1 class="entry-title">Cart</h1>
 						</header>
@@ -286,7 +286,7 @@
 												</thead>
 												<tbody>
 													{{#each products.items  }}
-														<tr class="woocommerce-cart-form__cart-item cart_item">
+														<tr class="eachProduct woocommerce-cart-form__cart-item cart_item">
 														
 														
 															<td class="product-thumbnail">
@@ -297,12 +297,9 @@
 															<td class="product-name" data-title="{{ this.title }}">
 																<a href="#">{{ this.title }}</a> </td>
 														
-															<td class="product-price" data-title="Price">
-																<span class="woocommerce-Price-amount amount">
-																	<span class="woocommerce-Price-currencySymbol">
-																		&#36;
-
-																	</span>
+															<td class="product-price" data-title="Price">#
+																<span class="woocommerce-Price-amount productPrice">
+																	
 																	{{ this.price }}
 																</span>
 															</td>
@@ -311,15 +308,13 @@
 																<div class="quantity">
 																	<label class="screen-reader-text" for="">Quantity</label>
 																	<input type="number" id="quantity_5bcc703c27523" class="input-text qty text" step="1" min="0" max="" name="qty"
-																	 value="{{ this.qty }}" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" aria-labelledby="" />
+																	 value="{{ this.qty }}" title="Qty" size="2" pattern="[0-9]*" inputmode="numeric" aria-labelledby="" />
 																</div>
 															</td>
 														
-															<td class="product-subtotal" data-title="Total">
-																<span class="woocommerce-Price-amount amount">
-																	<span class="woocommerce-Price-currencySymbol">&#36;
-																	</span>
-																	{{ this.price }} * {{ this.qty }}
+															<td class="product-subtotal" data-title="Total">#&nbsp;
+																<span class="woocommerce-Price-amount amount subTotalPrice">
+																	{{ this.price }}
 																</span>
 															</td>
 															<td class="product-remove">
@@ -336,7 +331,57 @@
 				
 				
 														<h2>Cart totals</h2>
-				
+														<table cellspacing="0" class="shop_table shop_table_responsive">
+															<tr class="shipping">
+																<th>Shipping</th>
+																<td data-title="Shipping">
+																	<form class="woocommerce-shipping-calculator" action="http://demo.roadthemes.com/beeta/cart/" method="post">
+																		<section class="shipping-calculator-form" style="display:none;">
+																			<p class="form-row form-row-wide" id="calc_shipping_city_field">
+																				<input type="text" class="input-text" value="" placeholder="City" name="calc_shipping_city" id="calc_shipping_city" />
+																			</p>
+														
+														
+														
+																			<p class="form-row form-row-wide" id="calc_shipping_postcode_field">
+																				<input type="text" class="input-text" value="" placeholder="Postcode / ZIP" name="calc_shipping_postcode" id="calc_shipping_postcode" />
+																			</p>
+														
+														
+																			<p><button type="submit" name="calc_shipping" value="1" class="button">Update totals</button></p>
+														
+																			<input type="hidden" id="woocommerce-shipping-calculator-nonce" name="woocommerce-shipping-calculator-nonce" value="d1c60dfe80" /><input
+																			 type="hidden" name="_wp_http_referer" value="/beeta/cart/" />
+																		</section>
+																	</form>
+														
+																</td>
+															</tr>
+														
+														
+														
+														
+														
+														
+															<tr class="order-total">
+																<th>Total</th>
+																<td data-title="Total">
+																	<strong><span class="woocommerce-Price-amount amount">
+																		<span class="woocommerce-Price-currencySymbol" id="totalPrice">&#36;</span>
+																			
+																		</span>
+																	</strong>
+																</td>
+															</tr>
+														
+														
+														</table>
+														
+														<div class="wc-proceed-to-checkout">
+														
+															<a href="../checkout//" class="checkout-button button alt wc-forward">
+																Proceed to checkout</a>
+														</div>
 													</div>
 												</div>
 											</div>
