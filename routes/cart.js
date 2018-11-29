@@ -32,7 +32,7 @@ router.post('/:id', (req,res) => {
     }, (err, product) => {
         if (err) throw err;
         if (cart[req.params.id]) {
-            cart[req.params.id].qty++;
+            cart[req.params.id].qty += Number(req.body.qty);
         } else {
             let { _id:id, title, price, imagePath1 } = product;
             cart[req.params.id] = {

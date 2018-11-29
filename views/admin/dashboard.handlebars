@@ -61,15 +61,21 @@
                                                                     <div class="box-hover">
                                                                         <div class="actions clearfix">
                                                                             <ul class="add-to-links tgm-dash-links">
-                                                                                <li class="pull-left deletePost" style="color:red" data-id="{{ this._id }}">
+                                                                                <li class="pull-left deletePost" style="position: absolute;padding-top:10px" data-id="{{ this._id }}">
                                                                                     <a href="">
-                                                                                        Delete Post
+                                                                                        <span class="fa fa-trash-o" title="This process is irreversible"></span>
                                                                                     </a>
                                                                                 </li>
-                                                                                <li class="pull-right edit">
-                                                                                    <a href="/admin/post-edit/{{ this._id }}">
-                                                                                        Edit Post
-                                                                                    </a>
+                                                                                <li>
+                                                                                    <div class="" style="height:45px">
+                                                                                        <div class="" style="display:block;position:relative;top:10px">
+                                                                                            <a href="/admin/post-edit/{{ this._id }}">
+                                                                                                <span class="fa fa-edit" title="Edit Post {{ this.title }}"></span>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div style="clear:both"></div>
+                                                                                    </div>
+                                                                                    <div class="clear"></div>
                                                                                 </li>
                                                                             </ul>
                                                                         </div>

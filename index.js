@@ -124,7 +124,19 @@ app.get('/products/store', (req, res) => {
     }, err => { console.warn(`The following error occurred: ${err}`); })
 });
 
-
+app.get('/products/single-recheck/:id/:qty', (req,res) => {
+    Product.findOne({
+        _id: req.params.id
+    }, (err,product) => {
+        if (err) throw err;
+        console.log(product);
+        console.log(req.params.qty);
+        product.qty = req.params.qty;
+        res.render('products/product_detail_edit', {
+            carted: product
+        });
+    });
+});
 app.get('/products/single/:id', (req,res) => {
     Product.findOne({
         _id: req.params.id
