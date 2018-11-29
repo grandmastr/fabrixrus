@@ -10,7 +10,6 @@ const express = require('express')
     , multerUploads = multer({ dest: 'uploads/'});
 
 app.use(require('body-parser').urlencoded({ extended: false }));
-app.use(require('body-parser').urlencoded({ extended: false }));
 
 //importing models
 let Product = require('../models/product');
@@ -64,10 +63,16 @@ router.get('*', (req, res, next) => {
 });
 
 router.get('/login', (req, res) => {
-    res.render('admin/login', {
-        title: 'Admin Login',
-        isAdminPage: 'isAdminPage'
-    });
+    console.log(req.headers)
+    if (req.user) {
+        res.redirect('/admin');
+    } else {
+        res.render('admin/login', {
+            title: 'Admin Login',
+            isAdminPage: 'isAdminPage',
+            error: req.flash('error')
+        });
+    }
 });
 
 router.post('/login', passport.authenticate('local', {
@@ -76,21 +81,23 @@ router.post('/login', passport.authenticate('local', {
     if (req.user.isAdmin === 'admin') {
         console.log('Admin Authentication Successful');
         req.flash('Success', 'You are successfully logged in');
-        let referrer = req.headers.referrer;
         console.log(req.body.docRef);
-        // console.log(referrer.toString() === (`${req.headers.origin}/admin${req.url}`));
-        // if (req.headers.referrer == `${req.headers.origin}/admin${req.url}`) {
-        //     referrer = '/admin'
-        // } else {
-        //     referrer = req.headers.referer;
-        // }
+        console.log(req.body.docRef2);
+        console.log(req.body.docRef === req.body.docRef2)
+        let newLink;
+        //trying to check for the intended URL
+        if (req.body.docRef === req.body.docRef2) {
+            newLink = '/admin';
+        } else {
+            newLink = req.body.docRef2;
+        }
+        console.log(newLink);
         res.redirect(
             303,
-            '/admin'
+            newLink
         );
     } else {
-        console.log('You are not an admin');
-        res.redirect(302, '../user/login');
+        req.flash('error','You are not an admin')
     }
 });
 
@@ -123,6 +130,7 @@ router.get('/', ensureUserIsAdmin, (req,res) => {
             dashboard: 'dashboard',
             postSuccess: req.flash('posted'),
             userName: userName,
+            title: 'Admin Dashboard',
             partProducts: partProducts
         });
     }, err => { console.warn(`The following error occurred: ${err}`); })
@@ -150,19 +158,23 @@ router.get('/dashboard',ensureUserIsAdmin, (req,res) => {
             dashboard: 'dashboard',
             postSuccess: req.flash('posted'),
             userName: userName,
+            title: 'Admin Dashboard',
             partProducts: partProducts
         });
     }, err => { console.warn(`The following error occurred: ${err}`); })
 })
 
 router.get('/edit-account',ensureUserIsAdmin, (req,res) => {
-    res.render('admin/edit_profile', );
+    res.render('admin/edit_profile',{
+        title: 'Edit Profile'
+    });
 });
 
 router.get('/post', ensureUserIsAdmin, (req,res) => {
     res.render('admin/post_product', {
         isAdminPage: 'isAdminPage',
-        postProduct: 'postProduct'
+        postProduct: 'postProduct',
+        title: 'Add Product'
     });
 });
 
@@ -284,6 +296,7 @@ router.get('/post-edit/:id', ensureUserIsAdmin, (req,res) => {
         };
         res.render('admin/edit_product', {
             isAdminPage: 'isAdminPage',
+            title: 'Admin Dashboard',
             product: productDetails
         }); 
     });

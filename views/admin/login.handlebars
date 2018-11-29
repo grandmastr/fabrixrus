@@ -19,7 +19,10 @@
                                             <script>
                                                 $(() => {
                                                     $(window).load(() => {
-                                                        $('#hiddenField').val(document.referrer);
+                                                        $('#hiddenField').val(window.location);
+                                                        alert(window.location);
+                                                        $('#hiddenField2').val(document.referrer)
+                                                        alert(document.referrer)
                                                     })
                                                 });
                                             </script>
@@ -45,7 +48,10 @@
                                                     </p>
                                                     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                                         <input type="text" id="hiddenField" class="woocommerce-Input woocommerce-Input--text input-text admin-border" name="docRef"
-                                                            id="username" hidden value=""/> </p>
+                                                            hidden value=""/> </p>
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <input type="text" id="hiddenField2" class="woocommerce-Input woocommerce-Input--text input-text admin-border" name="docRef2"
+                                                            hidden value=""/> </p>
                                                     <p class="form-row">
                                                         <button type="submit" class="woocommerce-Button button" name="login"
                                                             value="Log in">Log in</button>
