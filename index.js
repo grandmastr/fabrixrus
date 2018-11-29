@@ -186,6 +186,10 @@ app.use((err,req,res,next) => {
     });
 });
 
+//Just wanna try mu luck with this simple search algorithm
+
+
+
 app.listen(app.get('port'), () => {
     console.log(`Express started on localhost:${app.get('port')};`)
 });      

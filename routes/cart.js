@@ -32,7 +32,8 @@ router.post('/:id', (req,res) => {
     }, (err, product) => {
         if (err) throw err;
         if (cart[req.params.id]) {
-            cart[req.params.id].qty += Number(req.body.qty);
+            cart[req.params.id].qty += Number(req.body.qty) || 1 ;
+            cart[req.params.id].qty = Number(cart[req.params.id].qty);
         } else {
             let { _id:id, title, price, imagePath1 } = product;
             cart[req.params.id] = {
@@ -45,6 +46,11 @@ router.post('/:id', (req,res) => {
         }
         res.redirect('/cart');
     });
+});
+router.delete('/delete-from-cart/:id',(req,res) => {
+    delete req.session.cart[req.params.id];
+    res.location('/cart');
+    res.redirect(303,'/cart');
 });
 
 module.exports = router;

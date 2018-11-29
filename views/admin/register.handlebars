@@ -27,14 +27,16 @@
                                             {{#if errors}}
                                             <ul class="errors">
                                                 {{#each errors}}
-                                                <li class="alert alert-danger">
-                                                    {{ this.msg }}
+                                                <li class="alert alert-dismissible alert-danger">
+                                                    <button aria-hidden="true" class="close" data-dismiss="alert">&times;</button>
+                                                    <strong> {{ this.msg }}</strong>
                                                 </li>
                                                 {{/each}}
                                             </ul>
                                             {{/if}}
                                             {{#if emailExists }}
-                                            <div class="alert alert-danger">
+                                            <div class="alert alert-dismissible alert-danger">
+                                                <button aria-hidden="true" class="close" data-dismiss="alert">&times;</button>
                                                 {{ emailExists }}
                                             </div>
                                             {{/if}}

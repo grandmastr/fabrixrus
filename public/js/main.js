@@ -3,13 +3,20 @@ $(document).ready(function () {
         let deleteId = $(this).data('id');
         $.ajax({
             url: `/admin/delete/${deleteId}`,
-            type: 'DELETE',
+            type: 'DELETE'
         });
     });
-    $('.').click(function(e) {
+    $('.remove').click(function(e) {
         e.preventDefault();
-        
-    })
+        let deleteProductID = $(this).data('id');
+        $.ajax({
+            url:`/cart/delete-from-cart/${deleteProductID}`,
+            type: 'DELETE',
+            success: () => {
+                location.reload(false);
+            }
+        });
+    });
 });
 (function (w, d) {
     w.HelpCrunch = function () { w.HelpCrunch.q.push(arguments) }; w.HelpCrunch.q = [];

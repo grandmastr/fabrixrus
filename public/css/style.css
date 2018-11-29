@@ -292,4 +292,7 @@ input[name="pImages"]:hover::before {
 .tgm-dash-links a {
   white-space: nowrap; }
 
+button.close {
+  color: #76cfb9; }
+
 /*# sourceMappingURL=style.css.map */

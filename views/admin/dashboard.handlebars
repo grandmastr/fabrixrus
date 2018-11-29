@@ -14,8 +14,11 @@
                                     </div>
                                     {{#if postSuccess}}
                                     <div class="container">
-                                        <div class="alert alert-success">
-                                            {{ postSuccess }}, reload page is content is not displaying
+                                        <div class="alert alert-dismissible alert-success">
+                                            <button aria-hidden="true" class="close" data-dismiss="alert"><i class="icon-x"></i></button>
+                                            <strong>
+                                                {{ postSuccess }}
+                                            </strong>,reload page is content is not displaying
                                         </div>
                                     </div>
                                     {{/if}}
