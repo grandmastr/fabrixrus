@@ -48,7 +48,15 @@ body {
 
 .banner-info-wthree {
   text-align: center;
-  padding: 17em 0em 0 0em; }
+  padding: 12em 0em 0 0em; }
+  .banner-info-wthree h1 {
+    color: white;
+    font-family: "Courier New", Courier;
+    font-size: 4em;
+    text-transform: none; }
+    @media (max-width: 425px) {
+      .banner-info-wthree h1 {
+        font-size: 2em; } }
 
 .banner-info-wthree h3 {
   font-size: 13em;
@@ -63,7 +71,7 @@ body {
   margin: 0em 0;
   letter-spacing: 6px;
   font-weight: 600;
-  text-transform: uppercase; }
+  text-transform: none; }
 
 /*-- //banner-top --*/
 /*--slider--*/
