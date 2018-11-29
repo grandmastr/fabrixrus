@@ -138,6 +138,7 @@ router.get('/', ensureUserIsAdmin, (req,res) => {
 
 router.get('/dashboard',ensureUserIsAdmin, (req,res) => {
     Product.find((err, products) => {
+        if (err) throw err;
         let partProducts = [];
         let desiredNumber = 8;
         let userName;
