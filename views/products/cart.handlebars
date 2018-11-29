@@ -3,8 +3,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="../xmlrpc.php" />
+	{{!-- <script type="text/javascript" src="js/inline.js"></script> --}}
 	<script type="text/javascript">document.documentElement.className = document.documentElement.className + ' yes-js js_active js'</script>
-	<title>Cart &#8211; Beeta</title>
 	<style>
 		.wishlist_table .add_to_cart, a.add_to_wishlist.button.alt { border-radius: 16px; -moz-border-radius: 16px; -webkit-border-radius: 16px; }			</style>
 	<script>
@@ -330,41 +330,10 @@
 													<div class="cart_totals ">
 				
 				
-														<h2>Cart totals</h2>
+														<h2>Checkout</h2>
 														<table cellspacing="0" class="shop_table shop_table_responsive">
-															<tr class="shipping">
-																<th>Shipping</th>
-																<td data-title="Shipping">
-																	<form class="woocommerce-shipping-calculator" action="http://demo.roadthemes.com/beeta/cart/" method="post">
-																		<section class="shipping-calculator-form" style="display:none;">
-																			<p class="form-row form-row-wide" id="calc_shipping_city_field">
-																				<input type="text" class="input-text" value="" placeholder="City" name="calc_shipping_city" id="calc_shipping_city" />
-																			</p>
-														
-														
-														
-																			<p class="form-row form-row-wide" id="calc_shipping_postcode_field">
-																				<input type="text" class="input-text" value="" placeholder="Postcode / ZIP" name="calc_shipping_postcode" id="calc_shipping_postcode" />
-																			</p>
-														
-														
-																			<p><button type="submit" name="calc_shipping" value="1" class="button">Update totals</button></p>
-														
-																			<input type="hidden" id="woocommerce-shipping-calculator-nonce" name="woocommerce-shipping-calculator-nonce" value="d1c60dfe80" /><input
-																			 type="hidden" name="_wp_http_referer" value="/beeta/cart/" />
-																		</section>
-																	</form>
-														
-																</td>
-															</tr>
-														
-														
-														
-														
-														
-														
 															<tr class="order-total">
-																<th>Total</th>
+																<th>Total Payable</th>
 																<td data-title="Total">
 																	<strong><span class="woocommerce-Price-amount amount">
 																		<span class="woocommerce-Price-currencySymbol" id="totalPrice">#</span>
@@ -373,15 +342,34 @@
 																	</strong>
 																</td>
 															</tr>
-														
+															<form action="">
+																<tr class="order-total">
+																	<th>Enter your email</th>
+																	<td>
+																		<div>
+																			<input type="email" name="" placeholder="Enter your email" id="userMail" value="" required />
+																		</div>
+																	</td>
+																</tr>
+																<tr class="order-total">
+																	<th>Phone Number</th>
+																	<td>
+																		<div>
+																			<input type="tel" style="width:198px;padding-left:12px" name="" placeholder="Enter your phone number" id="userNum" value="" required />
+																		</div>
+																	</td>
+																</tr>
+																<div class="clearfix"></div>
+																<th></th>
+																<td>
+																	<div class="wc-proceed-to-checkout">
+																		<input type="submit" class="checkout-button button alt wc-forward" id="cartCheckout" value="Proceed to checkout" />
+																	</div>
+																</td>
+															</form>
 														
 														</table>
 														
-														<div class="wc-proceed-to-checkout">
-														
-															<a href="../checkout//" class="checkout-button button alt wc-forward">
-																Proceed to checkout</a>
-														</div>
 													</div>
 												</div>
 											</div>

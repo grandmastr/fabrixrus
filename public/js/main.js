@@ -17,6 +17,12 @@ $(document).ready(function () {
             }
         });
     });
+    $('#cartCheckout').click(function(e) {
+        // e.preventDefault();
+        let handler = PaystackPop.setup({
+
+        });
+    });
 });
 (function (w, d) {
     w.HelpCrunch = function () { w.HelpCrunch.q.push(arguments) }; w.HelpCrunch.q = [];
