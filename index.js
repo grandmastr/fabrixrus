@@ -186,8 +186,35 @@ app.use((err,req,res,next) => {
     });
 });
 
-//Just wanna try mu luck with this simple search algorithm
+//basic linear search algorithm, nothing fancy
+app.post('/search/:id', (req,res) => {
+    Product.find((err,results) => {
+        if (err) throw err;
+        let allResults = [];
+        Product.findOne({
+            _id: req.params.id
+        }, (err,result) => {
+            if (err) throw err;
+            if (result) {
+                let colorSearchString = result.color;
+                if (results.includes(result)) {
+                    results.filter(single => {
+                        single.color === colorSearchString;
+                    }).map(slimmedDownResult => {
+                        allResults.push(slimmedDownResult);
+                    });
+                    res.render('', {
+                        searchResult: allResults
+                    });
+                } else {
 
+                }
+            } else {
+                searchResults = 'No result available';
+            }
+        })
+    });
+});
 
 
 app.listen(app.get('port'), () => {
