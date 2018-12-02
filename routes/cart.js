@@ -10,12 +10,12 @@ router.get('/', (req, res) => {
     let displayCart = {
         items: [],
         total: 0
-    }
+    };
     let totalAmount = 0;
     for (let product in cart) {
         displayCart.items.push(cart[product]);
         totalAmount += (cart[product].price * cart[product].qty);
-    }
+    };
     displayCart.total = totalAmount;
     console.log(cart);
     console.log(displayCart.items);
@@ -32,7 +32,7 @@ router.post('/:id', (req,res) => {
     }, (err, product) => {
         if (err) throw err;
         if (cart[req.params.id]) {
-            cart[req.params.id].qty += Number(req.body.qty) || 1 ;
+            cart[req.params.id].qty += Number(req.body.qty) || 0;
             cart[req.params.id].qty = Number(cart[req.params.id].qty);
         } else {
             let { _id:id, title, price, imagePath1 } = product;

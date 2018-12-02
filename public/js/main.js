@@ -61,14 +61,13 @@ HelpCrunch('showChatWidget');
 $(() => {
     var totalPay = [];
     $('.eachProduct').each((index) => {
-        let productQty = $(`.eachProduct:nth-child(${index + 1}) input`);
-        let pricePerProduct = $(`.eachProduct:nth-child(${index + 1}) span.subTotalPrice`);
-        let productPrice = $(`.eachProduct:nth-child(${index + 1}) span.productPrice`);
-        totalPay += Number($('.eachProduct span.subTotalPrice').text());
-        pricePerProduct.text(productPrice.text() * productQty.val());
-        $(`.eachProduct:nth-child(${index + 1}) input`).on('change',() => {
-            pricePerProduct.text(productPrice.text() * productQty.val());
-            totalPay.push(productPrice.text())
+        let productQty = Number($(`.eachProduct:nth-child(${index + 1}) input`).val());
+        let pricePerProduct = Number($(`.eachProduct:nth-child(${index + 1}) span.subTotalPrice`).text());
+        let productPrice = Number($(`.eachProduct:nth-child(${index + 1}) span.productPrice`).text());
+        pricePerProduct = productPrice * productQty;
+        $(productQty).on('change',() => {
+            pricePerProduct = productPrice * productQty;
+            totalPay.push(productPrice)
         });
     });
 });

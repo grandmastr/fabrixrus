@@ -303,69 +303,73 @@ router.get('/post-edit/:id', ensureUserIsAdmin, (req,res) => {
     });
 });
 
-// router.get('/register', (req, res) => {
-//     res.render('admin/register', {
-//         title: 'Admin Register'
-//     });
-// });
+router.get('/register', (req, res) => {
+    res.render('admin/register', {
+        title: 'Admin Register'
+    });
+});
 
-// router.post('/register',(req,res) => {
-//     let email = req.body.email;
-//     let name =  req.body.name;
-//     let password = req.body.password;
-//     let password2 = req.body.password;
+router.post('/register',(req,res) => {
+    let email = req.body.email;
+    let name =  req.body.name;
+    let phone = req.body.phone;
+    let password = req.body.password;
+    let password2 = req.body.password;
 
-//     //form validation
-//     req.checkBody('email', 'Email field is required').notEmpty();
-//     req.checkBody('email', 'Please enter a valid email').isEmail();
-//     req.checkBody('name', 'name field is required').notEmpty();
-//     req.checkBody('password', 'Password is required').notEmpty();
-//     req.checkBody('password2', 'Passwords don\'t match').equals(password);
+    //form validation
+    req.checkBody('email', 'Email field is required').notEmpty();
+    req.checkBody('phone', 'Phone field is required').notEmpty();
+    req.checkBody('email', 'Please enter a valid email').isEmail();
+    req.checkBody('name', 'name field is required').notEmpty();
+    req.checkBody('password', 'Password is required').notEmpty();
+    req.checkBody('password2', 'Passwords don\'t match').equals(password);
 
-//     //checking for errors
-//     let errors = req.validationErrors();
-//     if (errors) {
-//         res.render('admin/register', {
-//             errors: errors,
-//             title: 'Admin Register',
-//             email: email,
-//             name: name,
-//             password: password,
-//             password2: password2
-//         });
-//     } else {
-//         User.getUserByEmail(email, (err, itExists) => {
-//             if (err) throw err;
-//             if (itExists) {
-//                 console.log('Email already exists');
-//                 let emailExistsError = "Email already exists";
-//                 res.render('admin/register', {
-//                     emailExists: emailExistsError,
-//                     title: 'Admin Register',
-//                     email: email,
-//                     password: password,
-//                     password2: password2
-//                 });
-//             } else {
-//                 let newUser = new User({
-//                     email: email,
-//                     name: name,
-//                     isAdmin: 'admin',
-//                     password: password
-//                 });
+    //checking for errors
+    let errors = req.validationErrors();
+    if (errors) {
+        res.render('admin/register', {
+            errors: errors,
+            title: 'Admin Register',
+            email: email,
+            name: name,
+            password: password,
+            password2: password2
+        });
+    } else {
+        User.getUserByEmail(email, (err, itExists) => {
+            if (err) throw err;
+            if (itExists) {
+                console.log('Email already exists');
+                let emailExistsError = "Email already exists";
+                res.render('admin/register', {
+                    emailExists: emailExistsError,
+                    title: 'Admin Register',
+                    email: email,
+                    phone: phone,
+                    password: password,
+                    password2: password2
+                });
+            } else {
+                let newUser = new User({
+                    email: email,
+                    phone: phone,
+                    name: name,
+                    isAdmin: 'admin',
+                    password: password
+                });
 
-//                 //create user
-//                 User.createUser(newUser, (err, user) => {
-//                     if (err) throw err;
-//                     console.log(user);
-//                 });
-//                 req.flash('success', 'You are registered');
-//                 res.location('/');
-//                 res.redirect(302, '/admin/login');
-//             }
-//         });
-//     }    
-// });
+                //create user
+                User.createUser(newUser, (err, user) => {
+                    if (err) throw err;
+                    console.log(user);
+                });
+                req.flash('success', 'You are registered');
+                res.location('/');
+                res.redirect(302, '/admin/login');
+            }
+        });
+    }
+});
 
 
 module.exports = router;
