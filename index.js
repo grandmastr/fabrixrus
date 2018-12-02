@@ -203,7 +203,7 @@ app.post('/search/:id', (req,res) => {
                     }).map(slimmedDownResult => {
                         allResults.push(slimmedDownResult);
                     });
-                    res.render('', {
+                    res.render('search-result', {
                         searchResult: allResults
                     });
                 } else {

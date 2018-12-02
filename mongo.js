@@ -15,4 +15,4 @@ module.exports = () => {
         if (err) console.warn(err);
         console.log(`Connected to ${mongoUrl.database}`);
     });
-}
+};
