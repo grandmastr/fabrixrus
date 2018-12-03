@@ -23,75 +23,76 @@
                         </div>
                     </div>
                     <div class="container">
-                        <div class="row">
+                        {{#if products}}
+                            <div class="row">
 
-                            <div id="secondary" class="col-12 col-lg-3 sidebar-shop">
-                                <div class="sidebar-inner">
-                                    <aside id="woocommerce_price_filter-2"
-                                           class="widget woocommerce widget_price_filter"><h3 class="widget-title">
-                                        <span>Filter by price</span></h3>
-                                        <form method="post"
-                                              action="/product-filter">
-                                            <div class="price_slider_wrapper">
-                                                <div class="price_slider" style="display:none;"></div>
-                                                <div class="price_slider_amount">
-                                                    <input type="text" id="min_price" name="min_price" value="65"
-                                                           data-min="65" placeholder="Min price"/>
-                                                    <input type="text" id="max_price" name="max_price" value="125"
-                                                           data-max="125" placeholder="Max price"/>
-                                                    <button type="submit" class="button">Filter</button>
-                                                    <div class="price_label" style="display:none;">
-                                                        Price: <span class="from"></span> &mdash; <span
-                                                            class="to"></span>
+                                <div id="secondary" class="col-12 col-lg-3 sidebar-shop">
+                                    <div class="sidebar-inner">
+                                        <aside id="woocommerce_price_filter-2"
+                                               class="widget woocommerce widget_price_filter"><h3 class="widget-title">
+                                            <span>Filter by price</span></h3>
+                                            <form method="post"
+                                                  action="/product-filter">
+                                                <div class="price_slider_wrapper">
+                                                    <div class="price_slider" style="display:none;"></div>
+                                                    <div class="price_slider_amount">
+                                                        <input type="text" id="min_price" name="min_price" value="65"
+                                                               data-min="65" placeholder="Min price"/>
+                                                        <input type="text" id="max_price" name="max_price" value="125"
+                                                               data-max="125" placeholder="Max price"/>
+                                                        <button type="submit" class="button">Filter</button>
+                                                        <div class="price_label" style="display:none;">
+                                                            Price: <span class="from"></span> &mdash; <span
+                                                                class="to"></span>
+                                                        </div>
+
+                                                        <div class="clear"></div>
                                                     </div>
-
-                                                    <div class="clear"></div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    </aside>
-                                    <aside id="woocommerce_layered_nav-1"
-                                           class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
-                                        <h3 class="widget-title"><span>Color</span></h3>
-                                        <ul class="woocommerce-widget-layered-nav-list">
-                                            <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-                                                <a rel="nofollow" href="/he">Black</a>
-                                                <span class="count">(2)</span></li>
-                                            <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-                                                <a rel="nofollow" href="indexf641.html?filter_color=blue">Blue</a> <span
-                                                    class="count">(1)</span></li>
-                                            <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-                                                <a rel="nofollow" href="index6e6e.html?filter_color=red">Red</a> <span
-                                                    class="count">(1)</span></li>
-                                            <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-                                                <a rel="nofollow" href="indexae77.html?filter_color=white">White</a>
-                                                <span class="count">(2)</span></li>
-                                        </ul>
-                                    </aside>
-                                </div>
-                            </div>
-                            <div id="archive-product" class="col-12 col-lg-9 sidebar">
-                                <div class="category-desc sidebar">
-                                    <div class="category_header">
-                                        <div class="category-desc-inner">
-
-                                        </div>
+                                            </form>
+                                        </aside>
+                                        <aside id="woocommerce_layered_nav-1"
+                                               class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
+                                            <h3 class="widget-title"><span>Color</span></h3>
+                                            <ul class="woocommerce-widget-layered-nav-list">
+                                                <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                    <a rel="nofollow" href="/he">Black</a>
+                                                    <span class="count">(2)</span></li>
+                                                <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                    <a rel="nofollow" href="indexf641.html?filter_color=blue">Blue</a> <span
+                                                        class="count">(1)</span></li>
+                                                <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                    <a rel="nofollow" href="index6e6e.html?filter_color=red">Red</a> <span
+                                                        class="count">(1)</span></li>
+                                                <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                    <a rel="nofollow" href="indexae77.html?filter_color=white">White</a>
+                                                    <span class="count">(2)</span></li>
+                                            </ul>
+                                        </aside>
                                     </div>
                                 </div>
+                                <div id="archive-product" class="col-12 col-lg-9 sidebar">
+                                    <div class="category-desc sidebar">
+                                        <div class="category_header">
+                                            <div class="category-desc-inner">
 
-                                <div class="archive-border">
-
-
-                                    <div class="shop-products products row grid-view sidebar">
-
-
-                                        <div class="toolbar">
-                                            <div class="toolbar-inner">
-                                                <p class="woocommerce-result-count">
-                                                    Showing all {{ productsTotal }} results</p>
-                                                <div class="clearfix"></div>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="archive-border">
+
+
+                                        <div class="shop-products products row grid-view sidebar">
+
+
+                                            <div class="toolbar">
+                                                <div class="toolbar-inner">
+                                                    <p class="woocommerce-result-count">
+                                                        Showing all {{ productsTotal }} results</p>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
                                             {{#each products }}
                                                 <div class=" item-col col-12 col-sm-6 col-md-4 col-xl-4 style2 post-9496 product type-product status-publish has-post-thumbnail product_cat-clothings product_cat-men product_tag-creams product_tag-lotions first instock featured shipping-taxable purchasable product-type-simple">
                                                     <div class="product-wrapper">
@@ -178,8 +179,13 @@
                                             {{/each}}
                                         </div>
                                     </div>
+                                </div>
                             </div>
-                        </div>
+                        {{else}}
+                            <div class="alert alert-info">
+                                No product available yet
+                            </div>
+                        {{/if}}
                     </div>
                 </div>
             </div>
