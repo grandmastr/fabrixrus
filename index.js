@@ -118,7 +118,7 @@ app.get('/products/store', (req, res) => {
         res.render('products/product_list', {
             products: data,
             productsTotal: productNumber,
-            title: 'Product',
+            title: 'All',
             shop: 'shop'
         });
     }, err => { console.warn(`The following error occurred: ${err}`); })
