@@ -11,7 +11,7 @@ const express = require('express')
 ,dotenv = require('dotenv')
 ,expressValidator = require('express-validator');
 
-
+require('dotenv').config();
 app.disable('x-powered-by');
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
