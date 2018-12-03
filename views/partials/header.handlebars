@@ -40,30 +40,9 @@
                                                 <div class="vc_wp_custommenu wpb_content_element account switcher">
                                                     <div class="widget widget_nav_menu">
                                                         <div class="menu-account-menu-container">
-                                                            <ul id="menu-account-menu" class="menu">
-                                                                <li id="menu-item-9478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children first menu-item-9478"><a
-                                                                        href="#">My Account</a>
-                                                                    <ul class="sub-menu">
-                                                                        {{#unless isAdminPage}}
-                                                                            <li id="menu-item-9245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9245">
-                                                                                <a href="/checkout">Checkout</a>
-                                                                            </li>
-                                                                        {{/unless}}
-                                                                        {{#if user}}
-                                                                        <li id="menu-item-9245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9245">
-                                                                            <a href="#">
-                                                                                {{userName}}
-                                                                            </a>
-                                                                        </li>
-                                                                        <li id="menu-item-9702" class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-9702">
-                                                                            <a href="{{#if isAdminPage}}/admin/admin-logout {{else}}/user/logout {{/if}}">Logout</a>
-                                                                        </li>
-                                                                        {{else}}
-                                                                        <li id="menu-item-9702" class="menu-item menu-item-type-custom menu-item-object-custom last menu-item-9702">
-                                                                            <a href="/user/login">Log In</a>
-                                                                        </li>
-                                                                        {{/if}}
-                                                                    </ul>
+                                                            <ul id="menu-account-menu" class="">
+                                                                <li id="menu-item-9478" class="menu-item menu-item-type-custom menu-item-object-custom first menu-item-9478"><a
+                                                                        href="/cart">Checkout</a>
                                                                 </li>
                                                             </ul>
                                                         </div>

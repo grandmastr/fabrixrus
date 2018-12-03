@@ -6,6 +6,11 @@ $(document).ready(function () {
             type: 'DELETE'
         });
     });
+    $('.individualProduct').click(function(e) {
+       e.preventDefault();
+       let productID = $(this).data('id');
+       location.href = `products/single/${productID}`
+    });
     $('.remove').click(function(e) {
         e.preventDefault();
         let deleteProductID = $(this).data('id');

@@ -270,9 +270,9 @@
                                                                                                         <ul class="add-to-links">
                                                                                                             <li class="add-to-cart">
                                                                                                                 <p class="product woocommerce add_to_cart_inline">
-                                                                                                                <form method="POST" action="/cart/{{ this._id }}">
-                                                                                                                    <input type="submit" value="Buy Now" title="Add to cart and checkout" style="border:none;outline:none;cursor:pointer;height:auto;background:none;color:#000;padding-left:8px;padding-top:12px;font-weight:bold">
-                                                                                                                </form>
+                                                                                                                    <form method="POST">
+                                                                                                                        <input type="submit" data-id="{{ this._id }}" class="individualProduct" value="+ Buy Now" title="Add to cart and checkout" style="border:none;outline:none;cursor:pointer;height:auto;background:none;color:#000;padding-left:10px;padding-top:12px;font-weight:bold">
+                                                                                                                    </form>
                                                                                                                 </p>
                                                                                                             </li>
                                                                                                             {{!-- <li>

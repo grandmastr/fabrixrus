@@ -26,7 +26,7 @@ app.use(expressValidator({
     errorFormatter: (param,msg,value) => {
         let namespace = param.split('.'),
         root = namespace.shift(),
-        formParam = root
+        formParam = root;
         while(namespace.length) {
             formParam += `[${namespace.shift()}]`;
         }
@@ -60,7 +60,7 @@ app.use('/cart', express.static(path));
 app.set('port', process.env.PORT || 3000);
 
 
-mongoose.connect(process.env.MONGODB, { useNewUrlParser:true },err => {
+mongoose.connect(process.env.LOCAL, { useNewUrlParser:true },err => {
     if (err) console.warn(err);
     console.log('Connected to FabrixRus');
 });

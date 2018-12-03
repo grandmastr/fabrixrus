@@ -368,3 +368,10 @@ input[name="pImages"]:hover {
 button.close{
 	color: $primaryColor;
 }
+.individualProduct {
+	transition: 0.3s all ease-in-out;
+	&:hover {
+		color: $secondaryColor !important;
+		transition: 0.3s all ease-in-out;
+	}
+}

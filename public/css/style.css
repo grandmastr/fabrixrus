@@ -303,4 +303,10 @@ input[name="pImages"]:hover::before {
 button.close {
   color: #76cfb9; }
 
+.individualProduct {
+  transition: 0.3s all ease-in-out; }
+  .individualProduct:hover {
+    color: #a54c81 !important;
+    transition: 0.3s all ease-in-out; }
+
 /*# sourceMappingURL=style.css.map */
