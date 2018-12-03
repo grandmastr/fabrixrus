@@ -8,8 +8,8 @@ const express = require('express')
 ,path = `${__dirname}/public`
 ,flash = require('connect-flash')
 ,passport = require('passport')
-,expressValidator = require('express-validator')
-,multer = require('multer');
+,dotenv = require('dotenv')
+,expressValidator = require('express-validator');
 
 
 app.disable('x-powered-by');
@@ -60,7 +60,7 @@ app.use('/cart', express.static(path));
 app.set('port', process.env.PORT || 3000);
 
 
-mongoose.connect('mongodb://localhost/fabrixrus', { useNewUrlParser:true },err => {
+mongoose.connect(process.env.MONGODB, { useNewUrlParser:true },err => {
     if (err) console.warn(err);
     console.log('Connected to FabrixRus');
 });

@@ -64,10 +64,10 @@ $(() => {
         let productQty = Number($(`.eachProduct:nth-child(${index + 1}) input`).val());
         let pricePerProduct = Number($(`.eachProduct:nth-child(${index + 1}) span.subTotalPrice`).text());
         let productPrice = Number($(`.eachProduct:nth-child(${index + 1}) span.productPrice`).text());
-        pricePerProduct = productPrice * productQty;
-        $(productQty).on('change',() => {
-            pricePerProduct = productPrice * productQty;
-            totalPay.push(productPrice)
-        });
+        $(`.eachProduct:nth-child(${index + 1}) span.subTotalPrice`).text(productPrice * productQty);
+        // $(productQty).on('change',() => {
+        //     pricePerProduct = $(productPrice) * $(productQty);
+        //     totalPay.push(productPrice)
+        // });
     });
 });
