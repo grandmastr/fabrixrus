@@ -112,9 +112,9 @@ app.get('/contact', (req,res) => {
 app.get('/products/store', (req, res) => {
     Product.find((err, data) => {
         let productNumber = 0;
-        for (let datum of data) {
-            productNumber++;
-        }
+        data.forEach(() => {
+           productNumber++
+        });
         res.render('products/product_list', {
             products: data,
             productsTotal: productNumber,
