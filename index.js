@@ -133,7 +133,8 @@ app.get('/products/single-recheck/:id/:qty', (req,res) => {
         console.log(req.params.qty);
         product.qty = req.params.qty;
         res.render('products/product_detail_edit', {
-            carted: product
+            carted: product,
+            title: 'Cart Review'
         });
     });
 });
@@ -210,7 +211,9 @@ app.post('/search/:id', (req,res) => {
 
                 }
             } else {
-                searchResults = 'No result available';
+                res.render('search-result', {
+                    searchResult: 'No result available'
+                });
             }
         })
     });
