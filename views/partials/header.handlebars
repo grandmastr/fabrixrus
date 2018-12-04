@@ -79,9 +79,17 @@
                                                     <div class="clearfix"></div>
                                                     <div class="mobile-menu-container">
                                                         <ul id="menu-horizontal-menu" class="nav-menu">
-                                                            <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children first menu-item-9340">
-                                                                <a href="/">Home</a>
-                                                            </li>
+                                                            {{#if isAdminPage}}
+                                                                <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent first menu-item-9340">
+                                                                    <a href="/">Dashboard</a>
+                                                                </li>
+                                                            {{else}}
+                                                                <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-9340">
+                                                                    <a href="/">Home</a>
+                                                                </li>
+                                                            {{/if}}
+                                                            <li id="menu-item-9339" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-9339"><a
+                                                                    href="/about">About Us</a></li>
                                                             <li id="menu-item-9339" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-9339"><a
                                                                     href="/contact">Contact Us</a></li>
                                                             <li id="menu-item-9339" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-9339">

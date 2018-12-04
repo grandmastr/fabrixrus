@@ -309,4 +309,13 @@ button.close {
     color: #a54c81 !important;
     transition: 0.3s all ease-in-out; }
 
+.main-container.front-page {
+  overflow-x: hidden !important;
+  width: 100% !important; }
+
+@media only screen and (max-width: 425px) {
+  .recent_products {
+    position: relative;
+    left: 5%; } }
+
 /*# sourceMappingURL=style.css.map */

@@ -375,3 +375,14 @@ button.close{
 		transition: 0.3s all ease-in-out;
 	}
 }
+.main-container.front-page {
+	overflow-x: hidden !important;
+	width: 100% !important;
+}
+.recent_products{
+	@media only screen and (max-width:425px) {
+		position: relative;
+		left: 5%;
+	}
+}
+//Signed by theGrandmaster
