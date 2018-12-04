@@ -57,10 +57,10 @@ app.use('/user',express.static(path));
 app.use('/products',express.static(path));
 app.use('/admin',express.static(path));
 app.use('/cart', express.static(path));
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 7000);
 
 
-mongoose.connect(process.env.MONGODB, { useNewUrlParser:true },err => {
+mongoose.connect(process.env.LOCAL, { useNewUrlParser:true },err => {
     if (err) console.warn(err);
     console.log('Connected to FabrixRus');
 });
@@ -171,21 +171,6 @@ app.get('/products/single/:id', (req,res) => {
 });
 
 
-//custom 404 page
-app.use((req,res) => {
-    res.status(404).render('404', {
-        title: 'Page Not Found'
-    });
-});
-
-//custom error 500 page
-app.use((err,req,res,next) => {
-    console.error(err.stack);
-    res.status(500)
-    .render('500', {
-        title: 'Internal server error'
-    });
-});
 
 //basic linear search algorithm, nothing fancy
 app.post('/search/:id', (req,res) => {
@@ -219,6 +204,21 @@ app.post('/search/:id', (req,res) => {
     });
 });
 
+//custom 404 page
+app.use((req,res) => {
+    res.status(404).render('404', {
+        title: 'Page Not Found'
+    });
+});
+
+//custom error 500 page
+app.use((err,req,res,next) => {
+    console.error(err.stack);
+    res.status(500)
+        .render('500', {
+            title: 'Internal server error'
+        });
+});
 
 app.listen(app.get('port'), () => {
     console.log(`Express started on localhost:${app.get('port')};`)

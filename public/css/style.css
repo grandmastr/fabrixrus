@@ -303,9 +303,9 @@ input[name="pImages"]:hover::before {
 button.close {
   color: #76cfb9; }
 
-.individualProduct {
+.individualProduct, .product-list-single {
   transition: 0.3s all ease-in-out; }
-  .individualProduct:hover {
+  .individualProduct:hover, .product-list-single:hover {
     color: #a54c81 !important;
     transition: 0.3s all ease-in-out; }
 

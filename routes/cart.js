@@ -1,8 +1,5 @@
 const express = require('express')
-    , router = express.Router()
-    , passport = require('passport')
-    , LocalStrategy = require('passport-local').Strategy
-    // , { Transaction, Card } = require('paystack-js');
+    , router = express.Router();
 const Product = require('../models/product');
 
 router.get('/', (req, res) => {
@@ -32,8 +29,9 @@ router.post('/:id', (req,res) => {
     }, (err, product) => {
         if (err) throw err;
         if (cart[req.params.id]) {
-            cart[req.params.id].qty += Number(req.body.qty) || 0;
-            cart[req.params.id].qty = Number(cart[req.params.id].qty);
+            let addedQty = Number(req.body.qty);
+            cart[req.params.id].qty = Number(cart[req.params.id].qty) + Number(addedQty);
+            // cart[req.params.id].qty += Number(addedQty);
         } else {
             let { _id:id, title, price, imagePath1 } = product;
             cart[req.params.id] = {
