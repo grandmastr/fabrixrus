@@ -27,10 +27,9 @@ const storage = cloudinaryStorage({
     transformation: [{crop: 'limit'}],
     allowedFormats: ['jpg','png','jpeg'],
     filename: (req, file, cb) => {
-        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+        cb(null, `${file.fieldname}-${Date.now()}`);
     }
 });
-// console.log(cloudinary.v2.uploader.rename('sample.png','sample.jpeg'));
 const upload = multer({
     storage: storage
 }).array('pImages',3);
