@@ -233,9 +233,9 @@ router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
         description: description,
         price: price,
         color: color,
-        imagePath1: `http://res.cloudinary.com/fabrixrus/uploads/${image[0].filename}` || '/images/fabrixrus.png',
-        imagePath2: `http://res.cloudinary.com/fabrixrus/uploads/${image[1].filename}` || '/images/fabrixrus.png',
-        imagePath3: `http://res.cloudinary.com/fabrixrus/uploads/${image[2].filename}` || '/images/fabrixrus.png'
+        imagePath1: image[0].url,
+        imagePath2: image[1].url,
+        imagePath3: image[2].url
     });
     Product.postProduct(newProduct, (err, product) => {
         if (err) {
@@ -278,9 +278,9 @@ router.post('/post-edit/:id',ensureUserIsAdmin ,upload, (req,res) => {
         description: description,
         price: price,
         color: color,
-        imagePath1: `http://res.cloudinary.com/fabrixrus/uploads/${image[0].filename}`,
-        imagePath2: `http://res.cloudinary.com/fabrixrus/uploads/${image[1].filename}`,
-        imagePath3: `http://res.cloudinary.com/fabrixrus/uploads/${image[2].filename}`
+        imagePath1: image[0].url,
+        imagePath2: image[1].url,
+        imagePath3: image[2].url
     };
     Product.updateProduct(req.params.id, updatedProduct,(err, product) => {
         if (err) {
