@@ -26,8 +26,8 @@ const storage = cloudinaryStorage({
     folder: 'uploads',
     transformation: [{crop: 'limit'}],
     allowedFormats: ['jpg','png','jpeg'],
-    filename: (req,file,cb) => {
-        cb(undefined,'shitty');
+    filename: (req, file, cb) => {
+        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
     }
 });
 // console.log(cloudinary.v2.uploader.rename('sample.png','sample.jpeg'));
