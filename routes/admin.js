@@ -7,6 +7,8 @@ const express = require('express')
     , path = require('path')
     , { ensureUserIsAdmin } = require('../helpers/auth')
     , multer = require('multer')
+    , cloudinary = require('cloudinary')
+    , cloudinaryStorage = require('multer-storage-cloudinary')
     , multerUploads = multer({ dest: 'uploads/'});
 
 app.use(require('body-parser').urlencoded({ extended: false }));
@@ -14,16 +16,25 @@ app.use(require('body-parser').urlencoded({ extended: false }));
 //importing models
 let Product = require('../models/product');
 //setting storage
-const storage = multer.diskStorage({
-    destination: './public/uploads',
-    filename: (req, file, cb) => {
-        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
-    }
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
+const storage = cloudinaryStorage({
+    cloudinary: cloudinary,
+    folder: 'uploads',
+    transformation: [{crop: 'limit'}],
+    allowed_formats: ['jpg','png','jpeg'],
+    // destination: './public/uploads',
+    // filename: (req, file, cb) => {
+    //     cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    // }
 });
 
 const upload = multer({
     storage: storage
-}).array('pImages',3)
+}).array('pImages',3);
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -100,7 +111,33 @@ router.post('/login', passport.authenticate('local', {
         req.flash('error','You are not an admin')
     }
 });
+router.get('/account_settings', (req,res) => {
+    User.findOne({
+        isAdmin: 'admin'
+    },(err,user) => {
+        if (err) throw err;
+        res.render('admin/edit_profile',{
+            isAdminPage: 'isAdminPage',
+            dashboard: 'dashboard',
+            title: 'Admin | Account Settings',
+            admin: user
+        });
+    })
+});
 
+router.post('/account_settings', (req,res) => {
+    User.updateOne({
+        isAdmin: 'admin'
+    },(err,user) => {
+        if (err) throw err;
+        res.render('',{
+            isAdminPage: 'isAdminPage',
+            dashboard: 'dashboard',
+            title: 'Admin | Account Settings',
+            admin: user
+        });
+    })
+});
 router.get('/admin-logout', (req, res) => {
     req.logout();
     console.log('You are logged out as an admin')
@@ -185,7 +222,7 @@ router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
     let color = req.body.color;
     let description = req.body.description;
     let image = req.files;
-
+    console.log(req.files.public_id);
     //checking for validation
     req.checkBody('title', 'Ma\'am the product must have a title, might I suggest *Aso-Ebi*').notEmpty();
     req.checkBody('price', 'And the product also must have a price').notEmpty();
