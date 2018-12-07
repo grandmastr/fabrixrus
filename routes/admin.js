@@ -26,10 +26,10 @@ const storage = cloudinaryStorage({
     folder: 'uploads',
     transformation: [{crop: 'limit'}],
     allowedFormats: ['jpg','png','jpeg'],
-    rename: (public_id,`${Date.now()}.${format}`, (err,result) => {
-        if (err) throw err;
-        console.log(result)
-    })
+    // rename: (public_id,`${Date.now()}.${format}`, (err,result) => {
+    //     if (err) throw err;
+    //     console.log(result)
+    // })
     // filename: (req, file, cb) => {
     //     cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
     // }
