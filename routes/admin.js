@@ -72,7 +72,6 @@ router.get('*', (req, res, next) => {
     res.locals.user = req.user || null;
     next();
 });
-
 router.get('/login', (req, res) => {
     console.log(req.headers)
     if (req.user) {
@@ -283,6 +282,7 @@ router.post('/post-edit/:id',ensureUserIsAdmin ,upload, (req,res) => {
             title: 'Edit Product',
             ptitle: title,
             price: price,
+            isAdminPage: 'isAdminPage',
             description: description,
             color: color
         });
