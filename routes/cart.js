@@ -14,8 +14,6 @@ router.get('/', (req, res) => {
         totalAmount += (cart[product].price * cart[product].qty);
     };
     displayCart.total = totalAmount;
-    console.log(cart);
-    console.log(displayCart.items);
     res.render('products/cart',{
         products: displayCart
     });

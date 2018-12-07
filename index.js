@@ -57,7 +57,7 @@ app.use('/user',express.static(path));
 app.use('/products',express.static(path));
 app.use('/admin',express.static(path));
 app.use('/cart', express.static(path));
-app.set('port', process.env.PORT || 7000);
+app.set('port', process.env.PORT || 5000);
 
 
 mongoose.connect(process.env.MONGODB, {useNewUrlParser: true}, err => {

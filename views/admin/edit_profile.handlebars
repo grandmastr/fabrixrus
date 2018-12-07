@@ -239,61 +239,95 @@
     </noscript></head>
 
 <body class="page-template-default page page-id-9 mmm mega_main_menu-2-1-6 woocommerce-account woocommerce-page woocommerce-lost-password woocommerce-no-js wpb-js-composer js-comp-ver-5.5.4 vc_responsive">
-
-    <div class="wrapper ">
-        <div class="page-wrapper">
-            <div class="main-container default-page">
-                <div class="blog-header-title">
+    {{#if admin}}
+        <div class="wrapper ">
+            <div class="page-wrapper">
+                <div class="main-container default-page">
+                    <br>
+                    <div class="clearfix"></div>
                     <div class="container">
-                        <div class="title-breadcrumb-inner">
-                            <header class="entry-header">
-                                <h1 class="entry-title"></h1>
-                            </header>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="container">
+                        <div class="row">
 
-                    <div class="row">
+                            <div class="col-12 col-lg-6 col-sm-12 col-xs-12 col-md-6" style="margin:auto">
+                                <div class="page-content default-page">
 
-                        <div class="col-12 col-lg-6 col-sm-12 col-xs-12 col-md-6" style="margin:auto">
-                            <div class="page-content default-page">
-
-                                <article id="post-9" class="post-9 page type-page status-publish hentry">
-
-                                    <div class="entry-content">
-                                        <div class="woocommerce">
-                                            <form method="post" action="" class="woocommerce-form woocommerce-form-login login">
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="username">Email Adress</label>
-                                                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text admin-border"
-                                                        name="text" id="username" value="" required /> </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Name</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
-                                                        type="text" name="name" minlength="5" id="password" required />
-                                                </p>
-                                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                    <label for="password">Phone Number</label>
-                                                    <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
-                                                        type="tel" name="phone" id="password" minlength="4" required />
-                                                </p>
-                                                <p class="form-row">
-                                                    <button type="submit" class="woocommerce-Button button" name="login"
-                                                        value="Save Changes">Save changes</button>
-                                                </p>
-                                            </form>
+                                    <article id="post-9" class="post-9 page type-page status-publish hentry">
+                                        <div class="entry-content">
+                                            <div class="blog-header-title">
+                                                <div class="container">
+                                                    <div class="title-breadcrumb-inner">
+                                                        <header class="entry-header">
+                                                            <h1 class="entry-title">
+                                                                Edit Profile
+                                                            </h1>
+                                                        </header>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{#if errors}}
+                                                <ul style="list-style-type: none">
+                                                    {{#each errors}}
+                                                        <li class="alert alert-danger">
+                                                            {{ errors }}
+                                                        </li>
+                                                    {{/each}}
+                                                </ul>
+                                            {{/if}}
+                                            {{#if detailError}}
+                                                <div class="alert alert-warning">
+                                                    {{ detailError }}
+                                                </div>
+                                            {{/if}}
+                                            <div class="woocommerce">
+                                                <form method="post" action="/admin/account_settings" class="woocommerce-form woocommerce-form-login login">
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <input type="text" hidden value="{{ admin._id }}" name="id">
+                                                        <label for="email">Email Adress</label>
+                                                        <input type="text" class="woocommerce-Input woocommerce-Input--text input-text admin-border"
+                                                               name="email" id="username" value="{{ admin.email }}" required /> </p>
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <label for="name">Name</label>
+                                                        <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
+                                                               type="text" name="name" minlength="5" id="password" required  value="{{ admin.name }}"/>
+                                                    </p>
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <label for="phone">Phone Number</label>
+                                                        <input class="woocommerce-Input woocommerce-Input--text input-text admin-border"
+                                                               type="tel" name="phone" value="0{{ admin.phone }}" id="password" minlength="4" required />
+                                                    </p>
+                                                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                                        <div class="alert alert-info">
+                                                            <span class="fa fa-info-circle" style="margin-right:5px"></span>
+                                                            Enter your account's password to save these changes
+                                                        </div>
+                                                        <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="password" name="password"  id="password" minlength="4" required autocomplete="false" value=""/>
+                                                    </p>
+                                                    <p class="form-row">
+                                                        <button type="submit" class="woocommerce-Button button" name="login"
+                                                                value="Update Details">Update Details
+                                                        </button>
+                                                    </p>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div><!-- .page -->
+        </div>
+    {{else}}
+        <div class="container">
+            <div class="alert alert-danger">
+                <Strong>
+                    You are not a registered Admin, c'mon go on and register properly
+                </Strong>
             </div>
-        </div><!-- .page -->
-    </div><!-- .wrapper -->
+        </div>
+    {{/if}}
+    <!-- .wrapper -->
     <br>
     <!--<div class="beeta_loading"></div>-->
     <div id="back-top" class="hidden-xs hidden-sm hidden-md"></div>

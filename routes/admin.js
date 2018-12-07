@@ -67,9 +67,10 @@ router.get('*', (req, res, next) => {
     res.locals.user = req.user || null;
     next();
 });
+
 router.get('/login', (req, res) => {
     if (req.user) {
-        res.redirect('/admin');
+        res.redirect(303,'/admin');
     } else {
         res.render('admin/login', {
             title: 'Admin Login',
@@ -77,59 +78,6 @@ router.get('/login', (req, res) => {
             error: req.flash('error')
         });
     }
-});
-
-router.post('/login', passport.authenticate('local', {
-    failureRedirect: '/admin/login', failureFlash: "Invalid Username and/or password"
-}), (req, res) => {
-    if (req.user.isAdmin === 'admin') {
-        req.flash('Success', 'You are successfully logged in');
-        let newLink;
-        //trying to check for the intended URL
-        if (req.body.docRef === req.body.docRef2) {
-            newLink = '/admin';
-        } else {
-            newLink = req.body.docRef2;
-        }
-        res.redirect(
-            303,
-            newLink
-        );
-    } else {
-        req.flash('error','You are not an admin')
-    }
-});
-router.get('/account_settings', (req,res) => {
-    User.findOne({
-        isAdmin: 'admin'
-    },(err,user) => {
-        if (err) throw err;
-        res.render('admin/edit_profile',{
-            isAdminPage: 'isAdminPage',
-            dashboard: 'dashboard',
-            title: 'Admin | Account Settings',
-            admin: user
-        });
-    })
-});
-
-router.post('/account_settings', (req,res) => {
-    User.updateOne({
-        isAdmin: 'admin'
-    },(err,user) => {
-        if (err) throw err;
-        res.render('',{
-            isAdminPage: 'isAdminPage',
-            dashboard: 'dashboard',
-            title: 'Admin | Account Settings',
-            admin: user
-        });
-    })
-});
-router.get('/admin-logout', (req, res) => {
-    req.logout();
-    req.flash('LoggedOut', 'You are logged out');
-    res.redirect(302, '/admin/login');
 });
 
 router.get('/', ensureUserIsAdmin, (req,res) => {
@@ -158,6 +106,101 @@ router.get('/', ensureUserIsAdmin, (req,res) => {
             partProducts: partProducts
         });
     }, err => { console.warn(`The following error occurred: ${err}`); })
+});
+
+router.post('/login', passport.authenticate('local', {
+    failureRedirect: '/admin/login', failureFlash: "Invalid Username and/or password"
+}), (req, res) => {
+    if (req.user.isAdmin === 'admin') {
+        req.flash('Success', 'You are successfully logged in');
+        let newLink;
+        //trying to check for the intended URL
+        if (req.body.docRef === req.body.docRef2) {
+            newLink = '/admin';
+        } else {
+            newLink = req.body.docRef2;
+        }
+        res.redirect(
+            303,
+            newLink
+        );
+    } else {
+        req.flash('error','You are not an admin')
+    }
+});
+router.get('/account_settings', ensureUserIsAdmin, (req,res) => {
+    User.findOne({
+        isAdmin: 'admin'
+    },(err,user) => {
+        if (err) throw err;
+        res.render('admin/edit_profile', {
+            isAdminPage: 'isAdminPage',
+            dashboard: 'dashboard',
+            title: 'Admin | Account Settings',
+            admin: user
+        });
+    })
+});
+
+router.post('/account_settings', (req,res) => {
+    let userID = req.body.id;
+    let email = req.body.email;
+    let phone = req.body.phone;
+    let name = req.body.name;
+    let password = req.body.password;
+
+    // /checking for validation
+    req.checkBody('email', 'Ma\'am this must be a valid email').notEmpty();
+    req.checkBody('phone', 'You should enter a correct phone number ma\'am').notEmpty();
+    req.checkBody('phone', 'And the product also must have a price').isNumeric();
+    req.checkBody('name', 'And the product also must have a price').notEmpty();
+
+    let errors = req.validationErrors();
+
+    if (errors) {
+        res.render('admin/edit_profile', {
+            isAdminPage: 'isAdminPage',
+            dashboard: 'dashboard',
+            title: 'Admin | Account Settings',
+            errors: errors
+        })
+    } else {
+        User.findOne({
+            _id: userID
+        }, (err,user) => {
+            if (err) throw err;
+            if (user && (user.email !== email || user.name !== name || user.phone !== phone)) {
+                User.comparePassword(password, user.password, (err,isMatch) => {
+                    if (err) throw err;
+                    if (isMatch) {
+                        let updateUserDetails = {
+                            email: email,
+                            phone: phone,
+                            name: name
+                        };
+                        User.updateUserDetails(user, updateUserDetails, (err,newUser) => {
+                            if (err) throw err;
+                        });
+                        req.flash('Success','Profile updated successfully');
+                        res.location('/admin');
+                        res.redirect(303,'/admin');
+                    }
+                });
+            } else {
+                res.render('admin/account_settings', {
+                    isAdminPage: 'isAdminPage',
+                    dashboard: 'dashboard',
+                    title: 'Admin | Account Settings',
+                    detailError: req.flash('warning','Yo, you didn\'t change anything, oh please')
+                });
+            }
+        })
+    }
+});
+router.get('/admin-logout', (req, res) => {
+    req.logout();
+    req.flash('LoggedOut', 'You are logged out');
+    res.redirect(303, '/admin/login');
 });
 
 router.get('/dashboard',ensureUserIsAdmin, (req,res) => {
@@ -331,7 +374,7 @@ router.get('/register', (req, res) => {
     });
 });
 
-router.post('/register',(req,res) => {
+router.post('/register', (req,res) => {
     let email = req.body.email;
     let name =  req.body.name;
     let phone = req.body.phone;
