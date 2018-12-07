@@ -25,10 +25,12 @@ const storage = cloudinaryStorage({
     cloudinary: cloudinary,
     folder: 'uploads',
     transformation: [{crop: 'limit'}],
-    allowedFormats: ['jpg','png','jpeg']
-
+    allowedFormats: ['jpg','png','jpeg'],
+    filename: (req,file,cb) => {
+        cb(undefined,'shitty');
+    }
 });
-
+// console.log(cloudinary.v2.uploader.rename('sample.png','sample.jpeg'));
 const upload = multer({
     storage: storage
 }).array('pImages',3);

@@ -60,7 +60,7 @@ app.use('/cart', express.static(path));
 app.set('port', process.env.PORT || 7000);
 
 
-mongoose.connect(process.env.LOCAL, {useNewUrlParser: true}, err => {
+mongoose.connect(process.env.MONGODB, {useNewUrlParser: true}, err => {
     if (err) console.warn(err);
     console.log('Connected to FabrixRus');
 });
