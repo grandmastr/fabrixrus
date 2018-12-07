@@ -29,7 +29,6 @@ const storage = cloudinaryStorage({
     // filename: (req, file, cb) => {
     //     cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
     // }
-    public_ids
 });
 
 const upload = multer({
