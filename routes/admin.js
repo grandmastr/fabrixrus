@@ -252,7 +252,7 @@ router.post('/post-edit/:id',ensureUserIsAdmin ,upload, (req,res) => {
     let color = req.body.color;
     let description = req.body.description;
     let image = req.files;
-
+    console.log(req.files);
     //checking for validation
     req.checkBody('title', 'Ma\'am the product must have a title, might I suggest *Aso-Ebi*').notEmpty();
     req.checkBody('price', 'And the product also must have a price').notEmpty();
