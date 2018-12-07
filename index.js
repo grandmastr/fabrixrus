@@ -60,7 +60,7 @@ app.use('/cart', express.static(path));
 app.set('port', process.env.PORT || 7000);
 
 
-mongoose.connect(process.env.MONGODB, {useNewUrlParser: true}, err => {
+mongoose.connect(process.env.LOCAL, {useNewUrlParser: true}, err => {
     if (err) console.warn(err);
     console.log('Connected to FabrixRus');
 });
@@ -85,7 +85,6 @@ app.get('/', (req,res) => {
             for (let i = 0; i < desiredNumber; i++) {                
                 partProducts.push(products[i]);
             }
-            console.log(products);
         } else {
             partProducts = products;
         }
@@ -129,8 +128,6 @@ app.get('/products/single-recheck/:id/:qty', (req,res) => {
         _id: req.params.id
     }, (err,product) => {
         if (err) throw err;
-        console.log(product);
-        console.log(req.params.qty);
         product.qty = req.params.qty;
         res.render('products/product_detail_edit', {
             carted: product,
@@ -143,7 +140,6 @@ app.get('/products/single/:id', (req,res) => {
         _id: req.params.id
     },(err,product) => {
         if (err) throw err;
-        console.log(product);
         Product.find({
             color: product.color
         }, (error, relatedProducts) => {
@@ -160,7 +156,6 @@ app.get('/products/single/:id', (req,res) => {
                     relProducts.push(relatedProducts[i]);
                 }
             }
-            console.log(relProducts);
             res.render('products/product_detail', {
                 title: product.title,
                 thisProduct: product
@@ -213,7 +208,6 @@ app.use((req,res) => {
 
 //custom error 500 page
 app.use((err,req,res,next) => {
-    console.error(err.stack);
     res.status(500)
         .render('500', {
             title: 'Internal server error'

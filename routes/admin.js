@@ -25,14 +25,8 @@ const storage = cloudinaryStorage({
     cloudinary: cloudinary,
     folder: 'uploads',
     transformation: [{crop: 'limit'}],
-    allowedFormats: ['jpg','png','jpeg'],
-    // rename: (public_id,`${Date.now()}.${format}`, (err,result) => {
-    //     if (err) throw err;
-    //     console.log(result)
-    // })
-    // filename: (req, file, cb) => {
-    //     cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
-    // }
+    allowedFormats: ['jpg','png','jpeg']
+
 });
 
 const upload = multer({
@@ -54,16 +48,13 @@ passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true
     User.getUserByEmail(username, (err, user) => {
         if (err) throw err;
         if (!user) {
-            console.log('Unknown User');
             return done(null, false, { message: 'Unknown User' });
         };
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
-                console.log('Successful');
                 return done(null, user);
             } else {
-                console.log('Invalid Password');
                 return done(null, false, { message: 'Invalid Password' });
             }
         });
@@ -76,7 +67,6 @@ router.get('*', (req, res, next) => {
     next();
 });
 router.get('/login', (req, res) => {
-    console.log(req.headers)
     if (req.user) {
         res.redirect('/admin');
     } else {
@@ -89,14 +79,10 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-    failureRedirect: '/products', failureFlash: "Invalid Username and/or password"
+    failureRedirect: '/admin/login', failureFlash: "Invalid Username and/or password"
 }), (req, res) => {
     if (req.user.isAdmin === 'admin') {
-        console.log('Admin Authentication Successful');
         req.flash('Success', 'You are successfully logged in');
-        console.log(req.body.docRef);
-        console.log(req.body.docRef2);
-        console.log(req.body.docRef === req.body.docRef2)
         let newLink;
         //trying to check for the intended URL
         if (req.body.docRef === req.body.docRef2) {
@@ -104,7 +90,6 @@ router.post('/login', passport.authenticate('local', {
         } else {
             newLink = req.body.docRef2;
         }
-        console.log(newLink);
         res.redirect(
             303,
             newLink
@@ -142,7 +127,6 @@ router.post('/account_settings', (req,res) => {
 });
 router.get('/admin-logout', (req, res) => {
     req.logout();
-    console.log('You are logged out as an admin')
     req.flash('LoggedOut', 'You are logged out');
     res.redirect(302, '/admin/login');
 });
@@ -224,7 +208,6 @@ router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
     let color = req.body.color;
     let description = req.body.description;
     let image = req.files;
-    console.log(req.files.public_id);
     //checking for validation
     req.checkBody('title', 'Ma\'am the product must have a title, might I suggest *Aso-Ebi*').notEmpty();
     req.checkBody('price', 'And the product also must have a price').notEmpty();
@@ -257,7 +240,6 @@ router.post('/postProduct',ensureUserIsAdmin ,upload, (req,res) => {
         if (err) {
             console.log(`Images didnt upload for the following reasons ${err}`)
         };
-        console.log(product);
         req.flash('posted', 'Posted successfully');
         res.location('/admin');
         res.redirect(302, '/admin');
@@ -303,7 +285,6 @@ router.post('/post-edit/:id',ensureUserIsAdmin ,upload, (req,res) => {
         if (err) {
             console.log(`Images didnt upload for the following reasons ${err}`)
         };
-        console.log(product);
         req.flash('posted', 'Post Updated successfully');
         res.location('/admin');
         res.redirect(303, '/admin');
@@ -379,7 +360,6 @@ router.post('/register',(req,res) => {
         User.getUserByEmail(email, (err, itExists) => {
             if (err) throw err;
             if (itExists) {
-                console.log('Email already exists');
                 let emailExistsError = "Email already exists";
                 res.render('admin/register', {
                     emailExists: emailExistsError,
@@ -401,7 +381,6 @@ router.post('/register',(req,res) => {
                 //create user
                 User.createUser(newUser, (err, user) => {
                     if (err) throw err;
-                    console.log(user);
                 });
                 req.flash('success', 'You are registered');
                 res.location('/');
