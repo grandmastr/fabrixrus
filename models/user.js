@@ -16,7 +16,7 @@ let userSchema = new Schema({
     },
     isAdmin: {
         type: String,
-        default: 'user'
+        default: 'admin'
     },
     date:{
         type: Date,
