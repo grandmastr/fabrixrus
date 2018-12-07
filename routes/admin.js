@@ -25,7 +25,7 @@ const storage = cloudinaryStorage({
     cloudinary: cloudinary,
     folder: 'uploads',
     transformation: [{crop: 'limit'}],
-    allowed_formats: ['jpg','png','jpeg'],
+    allowedFormats: ['jpg','png','jpeg'],
     // destination: './public/uploads',
     // filename: (req, file, cb) => {
     //     cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
