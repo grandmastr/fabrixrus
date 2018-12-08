@@ -56,3 +56,10 @@ module.exports.updateUserDetails = (user, newDetails, callback) => {
         User.updateOne({ _id: user.id }, newDetails, callback);
     });
 };
+module.exports.updatePassword = (user, newPassword, callback) => {
+    bcrypt.hash(newPassword.password, 10, (err,hashed) => {
+       if (err) throw err;
+       newPassword.password = hashed;
+       User.updateOne({_id:user._id}, newPassword, callback);
+    });
+};

@@ -326,4 +326,7 @@ button.close {
     position: relative;
     left: 5%; } }
 
+.success {
+  list-style-type: none !important; }
+
 /*# sourceMappingURL=style.css.map */

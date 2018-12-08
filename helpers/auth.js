@@ -3,7 +3,7 @@ module.exports = {
         if(req.isAuthenticated() && req.user.isAdmin === 'admin') {
             return next()
         } else {
-            res.redirect(302,'/admin/login');
+            res.redirect(303,'/admin/login');
         }
     }
 };

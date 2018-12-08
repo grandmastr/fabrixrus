@@ -10,7 +10,9 @@ const express = require('express')
     , cloudinary = require('cloudinary')
     , cloudinaryStorage = require('multer-storage-cloudinary')
     , multerUploads = multer({ dest: 'uploads/'})
-    , sendGrid = require('@sendgrid/mail');
+    , sendGrid = require('@sendgrid/mail')
+    , generator = require('generate-password')
+    , bcrypt = require('bcrypt');
 
 app.use(require('body-parser').urlencoded({ extended: false }));
 
@@ -66,15 +68,6 @@ passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true
 
 sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-let msg = {
-    to: 'israelakintunde005@gmail.com',
-    from: 'admin@fabrixrus.com',
-    subject: 'TESTING',
-    html: '<strong> This is strong, eleyi gidigan </strong>'
-};
-
-sendGrid.send(msg);
-
 router.get('*', (req, res, next) => {
     res.locals.user = req.user || null;
     next();
@@ -87,7 +80,8 @@ router.get('/login', (req, res) => {
         res.render('admin/login', {
             title: 'Admin Login',
             isAdminPage: 'isAdminPage',
-            error: req.flash('error')
+            error: req.flash('error'),
+            enterPassword: req.flash('enterPasswordFromEmail')
         });
     }
 });
@@ -113,6 +107,7 @@ router.get('/', ensureUserIsAdmin, (req,res) => {
             isAdminPage: 'isAdminPage',
             dashboard: 'dashboard',
             postSuccess: req.flash('posted'),
+            success: req.flash('Success'),
             userName: userName,
             title: 'Admin Dashboard',
             partProducts: partProducts
@@ -125,19 +120,81 @@ router.post('/login', passport.authenticate('local', {
 }), (req, res) => {
     if (req.user.isAdmin === 'admin') {
         req.flash('Success', 'You are successfully logged in');
-        let newLink;
+        // let newLink;
         //trying to check for the intended URL
-        if (req.body.docRef === req.body.docRef2) {
-            newLink = '/admin';
-        } else {
-            newLink = req.body.docRef2;
-        }
+        // if (req.body.docRef === req.body.docRef2) {
+        //     newLink = '/admin';
+        // } else {
+        //     newLink = req.body.docRef2;
+        // }
         res.redirect(
             303,
-            newLink
+            '/admin'
         );
     } else {
         req.flash('error','You are not an admin')
+    }
+});
+
+router.get('/forgot-password', (req,res) => {
+    res.render('admin/password-reset', {
+        title: 'Admin | Password Reset',
+        isAdminPage: 'isAdminPage'
+    })
+});
+router.post('/password-reset', (req,res) => {
+    let email = req.body.email;
+    req.checkBody('email', 'Ma\'am this must not be empty').notEmpty();
+    req.checkBody('email', 'Ma\'am this must be a valid email').isEmail();
+
+    let errors = req.validationErrors();
+
+    if (errors) {
+        res.render('admin/password-reset', {
+            title: 'Admin | Password Reset',
+            isAdminPage: 'isAdminPage',
+            errors: errors
+        })
+    } else {
+        User.findOne({
+            email: email
+        }, (err,user) => {
+            if (err) throw err;
+            if (user) {
+                let password = generator.generate({
+                    length: 10,
+                    numbers: true
+                });
+                const resetPasswordMessage = {
+                    to: email,
+                    from: 'no-reply@fabrixrus.com',
+                    subject: 'Password Reset for FabrixRus',
+                    text: `You can now login with this password ${password}, on www.fabrixrus.com/admin/login, have a nice day ma'am`
+                };
+                let newPassword = {
+                    password: password
+                };
+                bcrypt.hash(newPassword.password, 10, (err,hashed) => {
+                    if (err) throw err;
+                    newPassword.password = hashed;
+                    User.updateOne({
+                        email: user.email
+                    }, newPassword , (err,newDetails) => {
+                        if (err) throw err;
+                        console.log(newDetails);
+                        sendGrid.send(resetPasswordMessage);
+                        req.flash('enterPasswordFromEmail',`Please Enter the password sent to ${user.email}`);
+                        res.redirect(303,'/admin/login');
+                    });
+                });
+            } else {
+                res.render('admin/password-reset', {
+                    title: 'Admin | Password Reset',
+                    isAdminPage: 'isAdminPage',
+                    errorMsg: 'The email you entered doesn\'t exist in the database, so I\'m going to ask you nicely to enter something correct'
+                })
+            }
+        });
     }
 });
 router.get('/account_settings', ensureUserIsAdmin, (req,res) => {
@@ -199,7 +256,7 @@ router.post('/account_settings', (req,res) => {
                     }
                 });
             } else {
-                res.render('admin/account_settings', {
+                res.render('admin/edit_profile', {
                     isAdminPage: 'isAdminPage',
                     dashboard: 'dashboard',
                     title: 'Admin | Account Settings',

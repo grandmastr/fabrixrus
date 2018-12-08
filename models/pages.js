@@ -2,11 +2,11 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
-    pageName :{
+    pageName: {
         type: String,
         required: true
     },
-    pageContent:{
+    pageContent: {
         type: String,
         required: true
     },
