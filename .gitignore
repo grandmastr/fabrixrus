@@ -6,3 +6,4 @@ sass-cache
 .DS_Store
 public/css/style.css.map
 uploads/
+.env

@@ -9,7 +9,8 @@ const express = require('express')
     , multer = require('multer')
     , cloudinary = require('cloudinary')
     , cloudinaryStorage = require('multer-storage-cloudinary')
-    , multerUploads = multer({ dest: 'uploads/'});
+    , multerUploads = multer({ dest: 'uploads/'})
+    , sendGrid = require('@sendgrid/mail');
 
 app.use(require('body-parser').urlencoded({ extended: false }));
 
@@ -62,6 +63,17 @@ passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true
 
     });
 }));
+
+sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
+
+let msg = {
+    to: 'israelakintunde005@gmail.com',
+    from: 'admin@fabrixrus.com',
+    subject: 'TESTING',
+    html: '<strong> This is strong, eleyi gidigan </strong>'
+};
+
+sendGrid.send(msg);
 
 router.get('*', (req, res, next) => {
     res.locals.user = req.user || null;

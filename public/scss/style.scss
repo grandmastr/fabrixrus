@@ -75,6 +75,9 @@ body{
 			family: "Courier New", Courier;
 			style: italic;
 		}
+		@media (max-width:425px) {
+			font-size:1em !important;
+		}
 		padding-top:2%;
 	}
 }

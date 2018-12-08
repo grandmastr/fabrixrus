@@ -62,6 +62,9 @@ body {
     font-family: "Courier New", Courier;
     font-style: italic;
     padding-top: 2%; }
+    @media (max-width: 425px) {
+      .banner-info-wthree p {
+        font-size: 1em !important; } }
 
 .banner-info-wthree h3 {
   font-size: 13em;
