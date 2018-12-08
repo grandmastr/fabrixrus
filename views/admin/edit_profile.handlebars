@@ -239,7 +239,7 @@
     </noscript></head>
 
 <body class="page-template-default page page-id-9 mmm mega_main_menu-2-1-6 woocommerce-account woocommerce-page woocommerce-lost-password woocommerce-no-js wpb-js-composer js-comp-ver-5.5.4 vc_responsive">
-    {{#if admin}}
+    {{#if isAdminPage}}
         <div class="wrapper ">
             <div class="page-wrapper">
                 <div class="main-container default-page">
@@ -296,10 +296,17 @@
                                                                type="tel" name="phone" value="0{{ admin.phone }}" id="password" minlength="4" required />
                                                     </p>
                                                     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                                        <div class="alert alert-info">
-                                                            <span class="fa fa-info-circle" style="margin-right:5px"></span>
-                                                            Enter your account's password to save these changes
-                                                        </div>
+                                                        {{#if passwordError}}
+                                                            <div class="alert alert-danger">
+                                                                <span class="fa fa-exclamation-triangle" style="margin-right:5px"></span>
+                                                                The password you entered does not match the one in the database
+                                                            </div>
+                                                        {{else}}
+                                                            <div class="alert alert-info">
+                                                                <span class="fa fa-info-circle" style="margin-right:5px"></span>
+                                                                Enter your account's password to save these changes
+                                                            </div>
+                                                        {{/if}}
                                                         <input class="woocommerce-Input woocommerce-Input--text input-text admin-border" type="password" name="password"  id="password" minlength="4" required autocomplete="false" value=""/>
                                                     </p>
                                                     <p class="form-row">
@@ -319,14 +326,12 @@
             </div><!-- .page -->
         </div>
     {{else}}
-        <div class="container">
-            <div class="alert alert-danger">
-                <Strong>
-                    You are not a registered Admin, c'mon go on and register properly
-                </Strong>
-            </div>
-        </div>
+        <br><br><br><br><br>
+        <script>
+            window.location = '/admin/account_settings';
+        </script>
     {{/if}}
+    <br><br><br><br>
     <!-- .wrapper -->
     <br>
     <!--<div class="beeta_loading"></div>-->

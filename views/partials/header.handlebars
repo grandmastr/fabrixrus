@@ -74,54 +74,57 @@
                                     <div class="vc_column-inner">
                                         <div class="wpb_wrapper">
                                             <div class="main-menu-wrapper">
-                                                <div class="visible-small mobile-menu">
-                                                    <div class="mbmenu-toggler">Menu<span class="mbmenu-icon"><i class="fa fa-bars"></i></span></div>
-                                                    <div class="clearfix"></div>
-                                                    <div class="mobile-menu-container">
-                                                        <ul id="menu-horizontal-menu" class="nav-menu">
-                                                            {{#if isAdminPage}}
-                                                                <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent first menu-item-9340">
-                                                                    <a href="/">Dashboard</a>
-                                                                </li>
-                                                                <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent first menu-item-9340">
-                                                                    <a href="/admin/post">Add Product</a>
-                                                                </li>
-                                                                <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent first menu-item-9340">
-                                                                    <a href="/admin/account_settings">Account Settings</a>
-                                                                </li>
-                                                            {{else}}
-                                                                <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-9340">
-                                                                    <a href="/">Home</a>
-                                                                </li>
-                                                                <li id="menu-item-9339" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-9339"><a
-                                                                        href="/about">About Us</a></li>
-                                                                <li id="menu-item-9339" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-9339"><a
-                                                                        href="/contact">Contact Us</a></li>
-                                                                <li id="menu-item-9339" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-9339">
-                                                                    <a href="/products">
-                                                                        Shop
-                                                                    </a>
-                                                                </li>
-                                                            {{/if}}
-                                                        </ul>
+                                                {{#unless isLogin}}
+                                                    <div class="visible-small mobile-menu">
+                                                        <div class="mbmenu-toggler">Menu<span class="mbmenu-icon"><i class="fa fa-bars"></i></span></div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="mobile-menu-container">
+                                                            <ul id="menu-horizontal-menu" class="nav-menu">
+                                                                {{#if isAdminPage}}
+                                                                    <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent first menu-item-9340">
+                                                                        <a href="/">Dashboard</a>
+                                                                    </li>
+                                                                    <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent first menu-item-9340">
+                                                                        <a href="/admin/postProduct">Add Product</a>
+                                                                    </li>
+                                                                    <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent first menu-item-9340">
+                                                                        <a href="/admin/account_settings">Account Settings</a>
+                                                                    </li>
+                                                                {{else}}
+                                                                    <li id="menu-item-9340" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-9340">
+                                                                        <a href="/">Home</a>
+                                                                    </li>
+                                                                    <li id="menu-item-9339" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-9339"><a
+                                                                            href="/about">About Us</a></li>
+                                                                    <li id="menu-item-9339" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-9339"><a
+                                                                            href="/contact">Contact Us</a></li>
+                                                                    <li id="menu-item-9339" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-9339">
+                                                                        <a href="/products">
+                                                                            Shop
+                                                                        </a>
+                                                                    </li>
+                                                                {{/if}}
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                {{/unless}}
                                                 <div class="header-sticky ">
                                                     <div class="nav-container">
                                                         <div class="logo-sticky"><a href="/" title="FabrixRus" rel="home"><img
                                                                     src="/images/fabrixruslogo.png" alt="FabrixRus" /></a></div>
                                                         <div class="horizontal-menu visible-large">
+                                                            {{#unless isLogin}}
 
-                                                            <!-- begin "mega_main_menu" -->
-                                                            <div id="primary" class="primary primary_style-flat icons-left first-lvl-align-left first-lvl-separator-smooth direction-horizontal fullwidth-disable pushing_content-disable mobile_minimized-enable dropdowns_trigger-hover dropdowns_animation-anim_5 include-logo include-search no-woo_cart no-buddypress responsive-enable coercive_styles-disable indefinite_location_mode-disable language_direction-ltr version-2-1-6 mega_main mega_main_menu">
-                                                                <div class="menu_holder">
-                                                                    <div class="mmm_fullwidth_container"></div><!-- class="fullwidth_container" -->
-                                                                    <div class="menu_inner">
+                                                                <!-- begin "mega_main_menu" -->
+                                                                <div id="primary" class="primary primary_style-flat icons-left first-lvl-align-left first-lvl-separator-smooth direction-horizontal fullwidth-disable pushing_content-disable mobile_minimized-enable dropdowns_trigger-hover dropdowns_animation-anim_5 include-logo include-search no-woo_cart no-buddypress responsive-enable coercive_styles-disable indefinite_location_mode-disable language_direction-ltr version-2-1-6 mega_main mega_main_menu">
+                                                                    <div class="menu_holder">
+                                                                        <div class="mmm_fullwidth_container"></div><!-- class="fullwidth_container" -->
+                                                                        <div class="menu_inner">
                                                                         <span class="nav_logo">
                                                                             <a class="logo_link" href=""
-                                                                                title="FabrixRus">
+                                                                               title="FabrixRus">
                                                                                 <img src="wp-content/plugins/mega_main_menu/framework/src/img/megamain-logo-120x120.png"
-                                                                                    alt="FabrixRus" />
+                                                                                     alt="FabrixRus" />
                                                                             </a>
                                                                             <span class="mobile_toggle">
                                                                                 <span class="mobile_button">
@@ -131,95 +134,96 @@
                                                                                 </span><!-- class="mobile_button" -->
                                                                             </span><!-- /class="mobile_toggle" -->
                                                                         </span><!-- /class="nav_logo" -->
-                                                                        {{#if isAdminPage}}
-                                                                            <ul id="main_ul-primary" class="mega_main_menu_ul">
-                                                                                <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if dashboard}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
-                                                                                    <a href="/admin/dashboard" class="item_link  disable_icon" tabindex="1">
-                                                                                        <i class=""></i>
-                                                                                        <span class="link_content">
+                                                                            {{#if isAdminPage}}
+                                                                                <ul id="main_ul-primary" class="mega_main_menu_ul">
+                                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if dashboard}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
+                                                                                        <a href="/admin/dashboard" class="item_link  disable_icon" tabindex="1">
+                                                                                            <i class=""></i>
+                                                                                            <span class="link_content">
                                                                                             <span class="link_text">
                                                                                                 Dashboard
                                                                                             </span>
                                                                                         </span>
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if postProduct}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
-                                                                                    <a href="/admin/post" class="item_link  disable_icon" tabindex="1">
-                                                                                        <i class=""></i>
-                                                                                        <span class="link_content">
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if postProduct}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
+                                                                                        <a href="/admin/post" class="item_link  disable_icon" tabindex="1">
+                                                                                            <i class=""></i>
+                                                                                            <span class="link_content">
                                                                                             <span class="link_text">
                                                                                                 Add Product
                                                                                             </span>
                                                                                         </span>
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if accountSettings}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
-                                                                                    <a href="/admin/account_settings" class="item_link  disable_icon" tabindex="1">
-                                                                                        <i class=""></i>
-                                                                                        <span class="link_content">
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if accountSettings}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
+                                                                                        <a href="/admin/account_settings" class="item_link  disable_icon" tabindex="1">
+                                                                                            <i class=""></i>
+                                                                                            <span class="link_content">
                                                                                             <span class="link_text">
                                                                                                 Account Settings
                                                                                             </span>
                                                                                         </span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        {{else}}
-                                                                            <ul id="main_ul-primary" class="mega_main_menu_ul">
-                                                                                <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if home}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
-                                                                                    <a href="/" class="item_link  disable_icon" tabindex="1">
-                                                                                        <i class=""></i>
-                                                                                        <span class="link_content">
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            {{else}}
+                                                                                <ul id="main_ul-primary" class="mega_main_menu_ul">
+                                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom {{#if home}} current-menu-item {{/if}} menu-item-home first menu-item-9340 default_dropdown submenu_default_width columns1">
+                                                                                        <a href="/" class="item_link  disable_icon" tabindex="1">
+                                                                                            <i class=""></i>
+                                                                                            <span class="link_content">
                                                                                             <span class="link_text">
                                                                                                 Home
                                                                                             </span>
                                                                                         </span>
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page {{#if about}} current-menu-item {{/if}} last menu-item-9339 default_dropdown default_style drop_to_right submenu_default_width columns1">
-                                                                                    <a href="/about" class="item_link  disable_icon" tabindex="43">
-                                                                                        <i class=""></i>
-                                                                                        <span class="link_content">
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li class="menu-item menu-item-type-post_type menu-item-object-page {{#if about}} current-menu-item {{/if}} last menu-item-9339 default_dropdown default_style drop_to_right submenu_default_width columns1">
+                                                                                        <a href="/about" class="item_link  disable_icon" tabindex="43">
+                                                                                            <i class=""></i>
+                                                                                            <span class="link_content">
                                                                                             <span class="link_text">
                                                                                                 About Us
                                                                                             </span>
                                                                                         </span>
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page {{#if contact}} current-menu-item {{/if}} last menu-item-9339 default_dropdown default_style drop_to_right submenu_default_width columns1">
-                                                                                    <a href="/contact" class="item_link  disable_icon" tabindex="43">
-                                                                                        <i class=""></i>
-                                                                                        <span class="link_content">
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li class="menu-item menu-item-type-post_type menu-item-object-page {{#if contact}} current-menu-item {{/if}} last menu-item-9339 default_dropdown default_style drop_to_right submenu_default_width columns1">
+                                                                                        <a href="/contact" class="item_link  disable_icon" tabindex="43">
+                                                                                            <i class=""></i>
+                                                                                            <span class="link_content">
                                                                                             <span class="link_text">
                                                                                                 Contact Us
                                                                                             </span>
                                                                                         </span>
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page {{#if shop}} current-menu-item {{/if}} last menu-item-9339 default_dropdown default_style drop_to_right submenu_default_width columns1">
-                                                                                    <a href="/products/store" class="item_link  disable_icon" tabindex="43">
-                                                                                        <i class=""></i>
-                                                                                        <span class="link_content">
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li class="menu-item menu-item-type-post_type menu-item-object-page {{#if shop}} current-menu-item {{/if}} last menu-item-9339 default_dropdown default_style drop_to_right submenu_default_width columns1">
+                                                                                        <a href="/products/store" class="item_link  disable_icon" tabindex="43">
+                                                                                            <i class=""></i>
+                                                                                            <span class="link_content">
                                                                                             <span class="link_text">
                                                                                                 Shop
                                                                                             </span>
                                                                                         </span>
-                                                                                    </a>
-                                                                                </li>
-                                                                                {{#unless isAdmin}}
-                                                                                    <li class="nav_search_box">
-                                                                                        <form method="get" class="mega_main_menu_searchform" action="">
-                                                                                            <input type="text" class="field" name="s" id="s" />
-                                                                                            <i class="im-icon-search-3 icosearch"></i>
-                                                                                            <input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
-                                                                                        </form>
-                                                                                    </li><!-- class="nav_search_box" -->
-                                                                                {{/unless}}
-                                                                            </ul>
-                                                                        {{/if}}
-                                                                    </div><!-- /class="menu_inner" -->
-                                                                </div><!-- /class="menu_holder" -->
-                                                            </div><!-- /id="mega_main_menu" -->
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    {{#unless isAdmin}}
+                                                                                        <li class="nav_search_box">
+                                                                                            <form method="get" class="mega_main_menu_searchform" action="">
+                                                                                                <input type="text" class="field" name="s" id="s" />
+                                                                                                <i class="im-icon-search-3 icosearch"></i>
+                                                                                                <input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
+                                                                                            </form>
+                                                                                        </li><!-- class="nav_search_box" -->
+                                                                                    {{/unless}}
+                                                                                </ul>
+                                                                            {{/if}}
+                                                                        </div><!-- /class="menu_inner" -->
+                                                                    </div><!-- /class="menu_holder" -->
+                                                                </div><!-- /id="mega_main_menu" -->
+                                                            {{/unless}}
                                                         </div>
                                                     </div>
                                                 </div>

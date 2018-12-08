@@ -53,7 +53,7 @@ passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true
         if (err) throw err;
         if (!user) {
             return done(null, false, { message: 'Unknown User' });
-        };
+        }
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
@@ -80,6 +80,7 @@ router.get('/login', (req, res) => {
         res.render('admin/login', {
             title: 'Admin Login',
             isAdminPage: 'isAdminPage',
+            isLogin: true,
             error: req.flash('error'),
             enterPassword: req.flash('enterPasswordFromEmail')
         });
@@ -115,21 +116,20 @@ router.get('/', ensureUserIsAdmin, (req,res) => {
     }, err => { console.warn(`The following error occurred: ${err}`); })
 });
 
-router.post('/login', passport.authenticate('local', {
-    failureRedirect: '/admin/login', failureFlash: "Invalid Username and/or password"
+router.post('/login', passport.authenticate('local', { failureRedirect: '/admin/login' , failureFlash: "Invalid Username and/or password"
 }), (req, res) => {
     if (req.user.isAdmin === 'admin') {
-        req.flash('Success', 'You are successfully logged in');
-        // let newLink;
-        //trying to check for the intended URL
-        // if (req.body.docRef === req.body.docRef2) {
-        //     newLink = '/admin';
-        // } else {
-        //     newLink = req.body.docRef2;
-        // }
+        let newLink;
+        // trying to check for the intended URL
+
+        if (req.body.docRef === req.body.docRef2 || (req.body.docRef2 === `${req.headers.origin}/admin/forgot-password` || req.body.docRef2 === `${req.headers.origin}/admin/password-reset` || req.body.docRef2 === `${req.headers.origin}/admin/account_settings`)) {
+            newLink = '/admin';
+        } else {
+            newLink = req.body.docRef2;
+        }
         res.redirect(
             303,
-            '/admin'
+            newLink
         );
     } else {
         req.flash('error','You are not an admin')
@@ -199,19 +199,19 @@ router.post('/password-reset', (req,res) => {
 });
 router.get('/account_settings', ensureUserIsAdmin, (req,res) => {
     User.findOne({
-        isAdmin: 'admin'
+        _id:req.user._id
     },(err,user) => {
         if (err) throw err;
         res.render('admin/edit_profile', {
             isAdminPage: 'isAdminPage',
-            dashboard: 'dashboard',
             title: 'Admin | Account Settings',
+            accountSettings: 'accountSettings',
             admin: user
         });
     })
 });
 
-router.post('/account_settings', (req,res) => {
+router.post('/account_settings', ensureUserIsAdmin , (req,res) => {
     let userID = req.body.id;
     let email = req.body.email;
     let phone = req.body.phone;
@@ -222,15 +222,15 @@ router.post('/account_settings', (req,res) => {
     req.checkBody('email', 'Ma\'am this must be a valid email').notEmpty();
     req.checkBody('phone', 'You should enter a correct phone number ma\'am').notEmpty();
     req.checkBody('phone', 'And the product also must have a price').isNumeric();
-    req.checkBody('name', 'And the product also must have a price').notEmpty();
+    req.checkBody('name', 'Name cannot be empty').notEmpty();
 
     let errors = req.validationErrors();
 
     if (errors) {
         res.render('admin/edit_profile', {
             isAdminPage: 'isAdminPage',
-            dashboard: 'dashboard',
             title: 'Admin | Account Settings',
+            accountSettings: 'accountSettings',
             errors: errors
         })
     } else {
@@ -239,26 +239,39 @@ router.post('/account_settings', (req,res) => {
         }, (err,user) => {
             if (err) throw err;
             if (user && (user.email !== email || user.name !== name || user.phone !== phone)) {
-                User.comparePassword(password, user.password, (err,isMatch) => {
+                User.comparePassword(password,user.password,(err,isMatch) => {
                     if (err) throw err;
                     if (isMatch) {
-                        let updateUserDetails = {
-                            email: email,
-                            phone: phone,
-                            name: name
-                        };
-                        User.updateUserDetails(user, updateUserDetails, (err,newUser) => {
+                        User.comparePassword(password, user.password, (err,isMatch) => {
                             if (err) throw err;
+                            if (isMatch) {
+                                let updateUserDetails = {
+                                    email: email,
+                                    phone: phone,
+                                    name: name
+                                };
+                                User.updateUserDetails(user, updateUserDetails, (err,newUser) => {
+                                    if (err) throw err;
+                                });
+                                req.flash('Success','Profile updated successfully');
+                                res.location('/admin');
+                                res.redirect(303,'/admin');
+                            }
                         });
-                        req.flash('Success','Profile updated successfully');
-                        res.location('/admin');
-                        res.redirect(303,'/admin');
+                    } else if(!isMatch) {
+                        res.render('admin/edit_profile', {
+                            isAdminPage: 'isAdminPage',
+                            title: 'Admin | Account Settings',
+                            errors: errors,
+                            admin: user,
+                            accountSettings: 'accountSettings',
+                            passwordError: 'Passwords dont\'t match'
+                        })
                     }
-                });
+                })
             } else {
                 res.render('admin/edit_profile', {
                     isAdminPage: 'isAdminPage',
-                    dashboard: 'dashboard',
                     title: 'Admin | Account Settings',
                     detailError: req.flash('warning','Yo, you didn\'t change anything, oh please')
                 });
